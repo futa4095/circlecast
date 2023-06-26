@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
   <head>
-    <title>PrivatePodcast</title>
+    <title>Circle Cast(仮)</title>
     <meta name="viewport" content="width=device-width,initial-scale=1">
     <%= csrf_meta_tags %>
     <%= csp_meta_tag %>
@@ -13,8 +13,12 @@
 
   <body>
     <main class="container mx-auto mt-28 px-5 flex">
-      <p class="notice"><%= notice %></p>
-      <p class="alert"><%= alert %></p>
+      <% if notice %>
+        <p class="rounded-md bg-green-50 p-4 text-sm text-green-500"><%= notice %></p>
+      <% end %>
+      <% if alert %>
+        <p class="rounded-md bg-red-50 p-4 text-sm text-red-500"><%= alert %></p>
+      <% end %>
       <%= yield %>
     </main>
   </body>
