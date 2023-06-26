@@ -1,4 +1,15 @@
 <div>
-  <h1 class="font-bold text-4xl">Circle Cast(仮) トップページ</h1>
-  <p>Find me in app/views/root/index.html.erb</p>
+  <h1 class="font-bold text-4xl">Circle Cast(仮)</h1>
+  <p>トップページ作成中</p>
+  <% if user_signed_in? %>
+    <%= current_user.email %>でログインしています！！！
+    <%= button_to 'Logout', destroy_user_session_path, method: :delete %>
+  <% else %>
+    <p>
+      <%= link_to 'Sign up', new_user_registration_path %>
+    </p>
+    <p>
+      <%= link_to 'Login', new_user_session_path %>
+    </p>
+  <% end %>
 </div>
