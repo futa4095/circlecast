@@ -2,7 +2,8 @@
   <h1 class="font-bold text-4xl">Circle Cast(仮)</h1>
   <p>トップページ作成中</p>
   <% if user_signed_in? %>
-    <%= current_user.email %>でログインしています！！！
+    <p><%= current_user.email %>でログインしています！！！</p>
+    <p>ユーザー名は<%= current_user.name %>です</p>
     <%= button_to 'Logout', destroy_user_session_path, method: :delete %>
   <% else %>
     <p>
