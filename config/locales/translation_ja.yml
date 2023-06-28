@@ -1,0 +1,17 @@
+ja:
+  activerecord:
+    models:
+      user: ユーザー  #g
+
+    attributes:
+      user:
+        confirmation_sent_at: パスワード確認送信時刻  #g
+        confirmation_token: パスワード確認用トークン  #g
+        confirmed_at: パスワード確認時刻  #g
+        email: メールアドレス  #g
+        encrypted_password: 暗号化パスワード  #g
+        name: ユーザー名  #g
+        remember_created_at: ログイン記憶時刻  #g
+        reset_password_sent_at: パスワードリセット送信時刻  #g
+        reset_password_token: パスワードリセット用トークン  #g
+        unconfirmed_email: 未確認Eメール  #g
