@@ -8,4 +8,7 @@ class User < ApplicationRecord
          :confirmable, :timeoutable
 
   validates :name, presence: true
+
+  has_many :memberships
+  has_many :groups, through: :memberships
 end
