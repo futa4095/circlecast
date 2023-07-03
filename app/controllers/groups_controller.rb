@@ -21,7 +21,7 @@ class GroupsController < ApplicationController
     if @group.save
       membership = current_user.memberships.new(group_id: @group.id, admin: true)
       membership.save!
-      redirect_to group_url(@group), notice: 'Group was successfully created.'
+      redirect_to group_url(@group), notice: 'グループを作成しました'
     else
       render :new, status: :unprocessable_entity
     end
@@ -29,7 +29,7 @@ class GroupsController < ApplicationController
 
   def update
     if @group.update(group_params)
-      redirect_to group_url(@group), notice: 'Group was successfully updated.'
+      redirect_to group_url(@group), notice: 'グループを更新しました'
     else
       render :edit, status: :unprocessable_entity
     end
@@ -38,7 +38,7 @@ class GroupsController < ApplicationController
   def destroy
     @group.destroy
 
-    redirect_to groups_url, notice: 'Group was successfully destroyed.'
+    redirect_to groups_url, notice: 'グループを削除しました'
   end
 
   private

@@ -2,6 +2,8 @@ ja:
   activerecord:
     models:
       user: ユーザー  #g
+      group: グループ  #g
+      membership: メンバーシップ  #g
 
     attributes:
       user:
@@ -15,3 +17,17 @@ ja:
         reset_password_sent_at: パスワードリセット送信時刻  #g
         reset_password_token: パスワードリセット用トークン  #g
         unconfirmed_email: 未確認Eメール  #g
+        groups: グループ  #g
+        memberships: メンバーシップ  #g
+
+      group:
+        description: 説明  #g
+        memberships: メンバーシップ  #g
+        name: 名前  #g
+        users: ユーザー  #g
+
+      membership:
+        admin: 管理者  #g
+        group: :activerecord.models.group  #g
+        user: :activerecord.models.user  #g
+        withdrawal: 出金  #g
