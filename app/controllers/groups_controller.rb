@@ -19,6 +19,8 @@ class GroupsController < ApplicationController
     @group = Group.new(group_params)
 
     if @group.save
+      membership = current_user.memberships.new(group_id: @group.id, admin: true)
+      membership.save!
       redirect_to group_url(@group), notice: 'Group was successfully created.'
     else
       render :new, status: :unprocessable_entity
