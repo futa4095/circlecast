@@ -1,10 +1,11 @@
 # frozen_string_literal: true
 
 class GroupsController < ApplicationController
+  before_action :authenticate_user!
   before_action :set_group, only: %i[show edit update destroy]
 
   def index
-    @groups = Group.all
+    @groups = current_user.groups.all
   end
 
   def show; end
@@ -44,7 +45,7 @@ class GroupsController < ApplicationController
   private
 
   def set_group
-    @group = Group.find(params[:id])
+    @group = current_user.groups.find(params[:id])
   end
 
   def group_params
