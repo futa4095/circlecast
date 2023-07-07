@@ -23,6 +23,7 @@ module PrivatePodcast
     config.i18n.default_locale = :ja
 
     config.generators do |g|
+      g.jbuilder = false
       g.test_framework :rspec,
         view_specs: false,
         helper_specs: false,
