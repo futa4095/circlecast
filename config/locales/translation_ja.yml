@@ -4,6 +4,7 @@ ja:
       user: ユーザー  #g
       group: グループ  #g
       membership: メンバーシップ  #g
+      channel: 番組
 
     attributes:
       user:
@@ -31,3 +32,8 @@ ja:
         group: :activerecord.models.group  #g
         user: :activerecord.models.user  #g
         withdrawal: 出金  #g
+
+      channel:
+        description: 説明  #g
+        group_id: グループ  #g
+        title: タイトル  #g

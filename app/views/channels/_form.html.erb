@@ -23,7 +23,7 @@
 
   <div class="my-5">
     <%= form.label :group_id %>
-    <%= form.text_field :group_id, class: "block shadow rounded-md border border-gray-200 outline-none px-3 py-2 mt-2 w-full" %>
+    <%= form.collection_select :group_id, current_user.groups.order(:id), :id, :name, class: "block shadow rounded-md border border-gray-200 outline-none px-3 py-2 mt-2 w-full" %>
   </div>
 
   <div class="inline">

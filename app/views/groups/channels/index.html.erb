@@ -4,11 +4,11 @@
   <% end %>
 
   <div class="flex justify-between items-center">
-    <h1 class="font-bold text-4xl">Channels</h1>
-    <%= link_to 'New channel', new_channel_path, class: "rounded-lg py-3 px-5 bg-blue-600 text-white block font-medium" %>
+    <h1 class="font-bold text-4xl"><%= @group.name %>の番組一覧</h1>
+    <%= link_to "番組を作る", new_channel_path, class: "rounded-lg py-3 px-5 bg-blue-600 text-white block font-medium" %>
   </div>
 
   <div id="channels" class="min-w-full">
-    <%= render @channels %>
+    <%= render partial: "channels/channel", collection: @channels or '番組はありません' %>
   </div>
 </div>
