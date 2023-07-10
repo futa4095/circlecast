@@ -3,8 +3,11 @@
     <p class="py-2 px-3 bg-green-50 mb-5 text-green-500 font-medium rounded-lg inline-block" id="notice"><%= notice %></p>
   <% end %>
 
+  <h1 class="font-bold text-4xl"><%= @group.name %></h1>
+  <p><%= @group.description %></p>
+  <h2 class="font-bold text-2xl">番組一覧</h2>
+
   <div class="flex justify-between items-center">
-    <h1 class="font-bold text-4xl"><%= @group.name %>の番組一覧</h1>
     <%= link_to "番組を作る", new_channel_path, class: "rounded-lg py-3 px-5 bg-blue-600 text-white block font-medium" %>
     <%= link_to "#{@group.name}のトップへ", @group, class: "rounded-lg py-3 px-5 bg-gray-100 inline-block font-medium" %>
   </div>
