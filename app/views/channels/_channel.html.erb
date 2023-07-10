@@ -1,0 +1,23 @@
+<div id="<%= dom_id channel %>">
+  <h2 class="my-5 text-2xl">
+    <%= link_to channel.title, channel %>
+  </h2>
+  <p class="my-5">
+    <%= channel.description %>
+  </p>
+  <p class="my-5">
+    <% if channel.artwork.attached? %>
+      <%= link_to channel do %>
+        <%= image_tag channel.artwork %>
+      <% end %>
+    <% else %>
+      アートワーク画像はありません
+    <% end %>
+  </p>
+
+  <% if action_name != "show" %>
+    <%= link_to "詳細", channel, class: "rounded-lg py-3 px-5 bg-gray-100 inline-block font-medium" %>
+    <%= link_to "編集", edit_channel_path(channel), class: "rounded-lg py-3 ml-2 px-5 bg-gray-100 inline-block font-medium" %>
+    <hr class="mt-6">
+  <% end %>
+</div>

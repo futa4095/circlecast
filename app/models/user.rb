@@ -7,8 +7,9 @@ class User < ApplicationRecord
          :recoverable, :rememberable, :validatable,
          :confirmable, :timeoutable
 
-  validates :name, presence: true
-
   has_many :memberships
   has_many :groups, through: :memberships
+  has_many :channels, through: :groups
+
+  validates :name, presence: true
 end

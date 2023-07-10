@@ -1,24 +1,19 @@
 <div id="<%= dom_id group %>">
+  <h2 class="my-5 text-2xl">
+    <%= link_to group.name, group %>
+  </h2>
   <p class="my-5">
-    <strong class="block font-medium mb-1">名前:</strong>
-    <%= group.name %>
-  </p>
-
-  <p class="my-5">
-    <strong class="block font-medium mb-1">グループの説明:</strong>
     <%= group.description %>
   </p>
-
-  <% if group.icon.attached? %>
   <p class="my-5">
-    <strong class="block font-medium mb-1">グループのアイコン:</strong>
-    <%= image_tag group.icon %>
+    <% if group.icon.attached? %>
+      <%= link_to group do %>
+        <%= image_tag group.icon %>
+      <% end %>
+    <% else %>
+      アイコン画像はありません
+    <% end %>
   </p>
-  <% else %>
-  <p class="my-5">
-    アイコン画像はありません
-  </p>
-  <% end %>
 
   <% if action_name != "show" %>
     <%= link_to "詳細", group, class: "rounded-lg py-3 px-5 bg-gray-100 inline-block font-medium" %>
