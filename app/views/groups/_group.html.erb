@@ -1,14 +1,15 @@
 <div id="<%= dom_id group %>">
   <h2 class="my-5 text-2xl">
-    <%= group.name %>
+    <%= link_to group.name, group %>
   </h2>
   <p class="my-5">
     <%= group.description %>
   </p>
   <p class="my-5">
     <% if group.icon.attached? %>
-      <strong class="block font-medium mb-1">グループのアイコン:</strong>
-      <%= image_tag group.icon %>
+      <%= link_to group do %>
+        <%= image_tag group.icon %>
+      <% end %>
     <% else %>
       アイコン画像はありません
     <% end %>

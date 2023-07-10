@@ -1,13 +1,15 @@
 <div id="<%= dom_id channel %>">
   <h2 class="my-5 text-2xl">
-    <%= channel.title %>
+    <%= link_to channel.title, channel %>
   </h2>
   <p class="my-5">
     <%= channel.description %>
   </p>
   <p class="my-5">
     <% if channel.artwork.attached? %>
-      <%= image_tag channel.artwork %>
+      <%= link_to channel do %>
+        <%= image_tag channel.artwork %>
+      <% end %>
     <% else %>
       アートワーク画像はありません
     <% end %>
