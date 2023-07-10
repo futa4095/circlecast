@@ -34,6 +34,7 @@ ja:
         withdrawal: 出金  #g
 
       channel:
+        artwork: アートワーク
         description: 説明  #g
         group_id: グループ  #g
         title: タイトル  #g
