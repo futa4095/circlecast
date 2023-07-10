@@ -4,9 +4,7 @@
       <p class="py-2 px-3 bg-green-50 mb-5 text-green-500 font-medium rounded-lg inline-block" id="notice"><%= notice %></p>
     <% end %>
 
-    <h1 class="font-bold text-4xl"><%= @group.name %></h1>
-
-    <%= render @group %>
+    <%= render "introduction", group: @group %>
 
     <%= link_to '編集', edit_group_path(@group), class: "mt-2 rounded-lg py-3 px-5 bg-gray-100 inline-block font-medium" %>
     <div class="inline-block ml-2">
@@ -14,6 +12,9 @@
     </div>
     <%= link_to '戻る', groups_path, class: "ml-2 rounded-lg py-3 px-5 bg-gray-100 inline-block font-medium" %>
     <%= link_to '番組を作る', new_channel_path, class: "ml-2 rounded-lg py-3 px-5 bg-gray-100 inline-block font-medium" %>
-    <%= link_to '番組一覧', group_channels_path(@group), class: "ml-2 rounded-lg py-3 px-5 bg-gray-100 inline-block font-medium" %>
+    <%= link_to "新着エピソード(here)", @group, class: "rounded-lg py-3 px-5 bg-gray-100 inline-block font-medium" %>
+    <%= link_to '番組', group_channels_path(@group), class: "ml-2 rounded-lg py-3 px-5 bg-gray-100 inline-block font-medium" %>
+    <%= link_to "メンバー(未実装)", @group, class: "rounded-lg py-3 px-5 bg-gray-100 inline-block font-medium" %>
+    <p>↓ここに新着エピソード!!!</p>
   </div>
 </div>
