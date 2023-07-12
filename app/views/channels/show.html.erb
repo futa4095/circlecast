@@ -21,6 +21,7 @@
     </div>
     <%= link_to '戻る', group_channels_path(@channel.group), class: "ml-2 rounded-lg py-3 px-5 bg-gray-100 inline-block font-medium" %>
 
-    <p>ここにエピソード一覧</p>
+    <p>ここに番組のエピソード一覧</p>
+    <%= render @channel.episodes %>
   </div>
 </div>

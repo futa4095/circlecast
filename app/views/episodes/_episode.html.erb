@@ -1,22 +1,10 @@
 <div id="<%= dom_id episode %>">
-  <p class="my-5">
-    <strong class="block font-medium mb-1">Title:</strong>
-    <%= episode.title %>
-  </p>
-
-  <p class="my-5">
-    <strong class="block font-medium mb-1">Description:</strong>
-    <%= episode.description %>
-  </p>
-
-  <p class="my-5">
-    <strong class="block font-medium mb-1">Channel:</strong>
-    <%= episode.channel_id %>
-  </p>
-
-  <% if action_name != "show" %>
-    <%= link_to "Show this episode", episode, class: "rounded-lg py-3 px-5 bg-gray-100 inline-block font-medium" %>
-    <%= link_to 'Edit this episode', edit_episode_path(episode), class: "rounded-lg py-3 ml-2 px-5 bg-gray-100 inline-block font-medium" %>
-    <hr class="mt-6">
+  <%= link_to episode do %>
+    <p class="my-5 text-2xl">
+      <%= episode.title %>
+    </p>
+    <p class="my-5">
+      <%= episode.description %>
+    </p>
   <% end %>
 </div>

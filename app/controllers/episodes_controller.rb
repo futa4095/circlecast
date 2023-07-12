@@ -4,10 +4,6 @@ class EpisodesController < ApplicationController
   before_action :authenticate_user!
   before_action :set_episode, only: %i[show edit update destroy]
 
-  def index
-    @episodes = Episode.all
-  end
-
   def show; end
 
   def new
@@ -37,11 +33,7 @@ class EpisodesController < ApplicationController
 
   def destroy
     @episode.destroy
-
-    respond_to do |format|
-      format.html { redirect_to episodes_url, notice: 'Episode was successfully destroyed.' }
-      format.json { head :no_content }
-    end
+    redirect_to @episode.channel, notice: 'エピソードを削除しました'
   end
 
   private
