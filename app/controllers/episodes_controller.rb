@@ -1,44 +1,36 @@
-class EpisodesController < ApplicationController
-  before_action :set_episode, only: %i[ show edit update destroy ]
+# frozen_string_literal: true
 
-  # GET /episodes or /episodes.json
+class EpisodesController < ApplicationController
+  before_action :authenticate_user!
+  before_action :set_episode, only: %i[show edit update destroy]
+
   def index
     @episodes = Episode.all
   end
 
-  # GET /episodes/1 or /episodes/1.json
-  def show
-  end
+  def show; end
 
-  # GET /episodes/new
   def new
     @episode = Episode.new
   end
 
-  # GET /episodes/1/edit
-  def edit
-  end
+  def edit; end
 
-  # POST /episodes or /episodes.json
   def create
-    @episode = Episode.new(episode_params)
+    channel = current_user.channels.find(episode_params[:channel_id])
+    @episode = channel.episodes.new(episode_params)
 
-    respond_to do |format|
-      if @episode.save
-        format.html { redirect_to episode_url(@episode), notice: "Episode was successfully created." }
-        format.json { render :show, status: :created, location: @episode }
-      else
-        format.html { render :new, status: :unprocessable_entity }
-        format.json { render json: @episode.errors, status: :unprocessable_entity }
-      end
+    if @episode.save
+      redirect_to episode_url(@episode), notice: 'エピソードを作成しました'
+    else
+      render :new, status: :unprocessable_entity
     end
   end
 
-  # PATCH/PUT /episodes/1 or /episodes/1.json
   def update
     respond_to do |format|
       if @episode.update(episode_params)
-        format.html { redirect_to episode_url(@episode), notice: "Episode was successfully updated." }
+        format.html { redirect_to episode_url(@episode), notice: 'Episode was successfully updated.' }
         format.json { render :show, status: :ok, location: @episode }
       else
         format.html { render :edit, status: :unprocessable_entity }
@@ -47,24 +39,22 @@ class EpisodesController < ApplicationController
     end
   end
 
-  # DELETE /episodes/1 or /episodes/1.json
   def destroy
     @episode.destroy
 
     respond_to do |format|
-      format.html { redirect_to episodes_url, notice: "Episode was successfully destroyed." }
+      format.html { redirect_to episodes_url, notice: 'Episode was successfully destroyed.' }
       format.json { head :no_content }
     end
   end
 
   private
-    # Use callbacks to share common setup or constraints between actions.
-    def set_episode
-      @episode = Episode.find(params[:id])
-    end
 
-    # Only allow a list of trusted parameters through.
-    def episode_params
-      params.require(:episode).permit(:title, :description, :channel_id)
-    end
+  def set_episode
+    @episode = Episode.find(params[:id])
+  end
+
+  def episode_params
+    params.require(:episode).permit(:title, :description, :channel_id)
+  end
 end
