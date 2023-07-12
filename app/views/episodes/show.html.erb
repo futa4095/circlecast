@@ -4,12 +4,22 @@
       <p class="py-2 px-3 bg-green-50 mb-5 text-green-500 font-medium rounded-lg inline-block" id="notice"><%= notice %></p>
     <% end %>
 
-    <%= render @episode %>
+    <p class="my-5">
+      <%= link_to @episode.channel.title, channel_path(@episode.channel), class: "text-2xl" %>
+    </p>
 
-    <%= link_to 'Edit this episode', edit_episode_path(@episode), class: "mt-2 rounded-lg py-3 px-5 bg-gray-100 inline-block font-medium" %>
+    <p class="my-5">
+      <h1 class="font-bold text-4xl"><%= @episode.title %></h1>
+    </p>
+
+    <p class="my-5">
+      <%= @episode.description %>
+    </p>
+
+    <%= link_to '編集', edit_episode_path(@episode), class: "mt-2 rounded-lg py-3 px-5 bg-gray-100 inline-block font-medium" %>
     <div class="inline-block ml-2">
-      <%= button_to 'Destroy this episode', episode_path(@episode), method: :delete, class: "mt-2 rounded-lg py-3 px-5 bg-gray-100 font-medium" %>
+      <%= button_to '削除', episode_path(@episode), method: :delete, class: "mt-2 rounded-lg py-3 px-5 bg-gray-100 font-medium" %>
     </div>
-    <%= link_to 'Back to episodes', episodes_path, class: "ml-2 rounded-lg py-3 px-5 bg-gray-100 inline-block font-medium" %>
+    <%= link_to '番組に戻る', channel_path(@episode.channel), class: "ml-2 rounded-lg py-3 px-5 bg-gray-100 inline-block font-medium" %>
   </div>
 </div>
