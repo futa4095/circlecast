@@ -1,6 +1,7 @@
 # frozen_string_literal: true
 
 Rails.application.routes.draw do
+  resources :episodes
   resources :groups do
     resources :channels, only: [:index], controller: "groups/channels"
   end
