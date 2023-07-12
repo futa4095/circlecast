@@ -28,14 +28,10 @@ class EpisodesController < ApplicationController
   end
 
   def update
-    respond_to do |format|
-      if @episode.update(episode_params)
-        format.html { redirect_to episode_url(@episode), notice: 'Episode was successfully updated.' }
-        format.json { render :show, status: :ok, location: @episode }
-      else
-        format.html { render :edit, status: :unprocessable_entity }
-        format.json { render json: @episode.errors, status: :unprocessable_entity }
-      end
+    if @episode.update(episode_params)
+      redirect_to episode_url(@episode), notice: 'エピソードを更新しました'
+    else
+      render :edit, status: :unprocessable_entity
     end
   end
 
@@ -51,7 +47,7 @@ class EpisodesController < ApplicationController
   private
 
   def set_episode
-    @episode = Episode.find(params[:id])
+    @episode = current_user.episodes.find(params[:id])
   end
 
   def episode_params

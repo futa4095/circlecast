@@ -10,6 +10,7 @@ class User < ApplicationRecord
   has_many :memberships
   has_many :groups, through: :memberships
   has_many :channels, through: :groups
+  has_many :episodes, through: :channels
 
   validates :name, presence: true
 end
