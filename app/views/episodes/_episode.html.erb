@@ -1,8 +1,8 @@
 <div id="<%= dom_id episode %>" class="block p-6 bg-white border border-gray-200 rounded-lg shadow hover:bg-gray-100 dark:bg-gray-800 dark:border-gray-700 dark:hover:bg-gray-700">
   <%= link_to episode do %>
-    <p class="mb-2 text-2xl font-bold tracking-tight text-gray-900 dark:text-white">
+    <h5 class="mb-2 text-2xl font-bold tracking-tight text-gray-900 dark:text-white">
       <%= episode.title %>
-    </p>
+    </h5>
     <p class="my-5">
       <%= l episode.created_at.to_date %>に公開
       <% if episode.created_at.to_date != episode.updated_at.to_date %>
