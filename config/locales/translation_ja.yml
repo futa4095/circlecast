@@ -24,6 +24,7 @@ ja:
 
       group:
         description: 説明  #g
+        icon: アイコン
         memberships: メンバーシップ  #g
         name: 名前  #g
         users: ユーザー  #g
