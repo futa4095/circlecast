@@ -5,6 +5,9 @@
     </p>
     <p class="my-5">
       <%= l episode.created_at.to_date %>に公開
+      <% if episode.created_at.to_date != episode.updated_at.to_date %>
+        (<%= l episode.updated_at.to_date %>に更新)
+      <% end %>
     </p>
     <p class="my-5">
       <%= episode.description %>
