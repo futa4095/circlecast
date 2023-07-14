@@ -28,9 +28,10 @@
 
   <div class="my-5">
     <%= form.label :enclosure, class: "mb-1 block font-medium text-gray-800" %>
-    <%= form.file_field :enclosure, class: "block shadow rounded-md border border-gray-200 outline-none px-3 py-2 mt-2 w-full" %>
+    <%= form.file_field :enclosure, accept: "audio/mpeg, audio/mp4",
+      class: "block shadow rounded-md border border-gray-200 outline-none px-3 py-2 mt-2 w-full" %>
     <p class="mt-2 text-sm text-gray-500 dark:text-gray-400">
-      MP3形式, 100MB以内
+      mp3形式またはm4a形式, 100MB以内
     </p>
   </div>
 
