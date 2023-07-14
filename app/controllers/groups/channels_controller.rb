@@ -6,7 +6,7 @@ module Groups
 
     def index
       @group = current_user.groups.find(params[:group_id])
-      @channels = @group.channels.all
+      @channels = @group.channels.order(:id)
     end
   end
 end

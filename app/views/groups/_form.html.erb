@@ -12,18 +12,21 @@
   <% end %>
 
   <div class="my-5">
-    <%= form.label :name, class: "mb-1 block text-sm font-medium text-gray-700" %>
-    <%= form.text_field :name, class: "block shadow rounded-md border border-gray-200 outline-none px-3 py-2 mt-2 w-full" %>
+    <%= form.label :name, class: "mb-1 block font-medium text-gray-800" %>
+    <%= form.text_field :name, maxlength: 100, class: "block shadow rounded-md border border-gray-200 outline-none px-3 py-2 mt-2 w-full" %>
   </div>
 
   <div class="my-5">
-    <%= form.label :description, class: "mb-1 block text-sm font-medium text-gray-700" %>
-    <%= form.text_field :description, class: "block shadow rounded-md border border-gray-200 outline-none px-3 py-2 mt-2 w-full" %>
+    <%= form.label :description, class: "mb-1 block font-medium text-gray-800" %>
+    <%= form.text_area :description, rows: 8, class: "block shadow rounded-md border border-gray-200 outline-none px-3 py-2 mt-2 w-full" %>
   </div>
 
   <div class="my-5">
-    <%= form.label :icon, class: "mb-1 block text-sm font-medium text-gray-700" %>
+    <%= form.label :icon, class: "mb-1 block font-medium text-gray-800" %>
     <%= form.file_field :icon, class: "block shadow rounded-md border border-gray-200 outline-none px-3 py-2 mt-2 w-full" %>
+    <p class="mt-2 text-sm text-gray-500 dark:text-gray-400">
+      画像は正方形で3MB以内
+    </p>
   </div>
 
   <div class="inline">

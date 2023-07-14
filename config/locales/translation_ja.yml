@@ -5,6 +5,7 @@ ja:
       group: グループ  #g
       membership: メンバーシップ  #g
       channel: 番組
+      episode: エピソード
 
     attributes:
       user:
@@ -23,6 +24,7 @@ ja:
 
       group:
         description: 説明  #g
+        icon: アイコン
         memberships: メンバーシップ  #g
         name: 名前  #g
         users: ユーザー  #g
@@ -37,4 +39,10 @@ ja:
         artwork: アートワーク
         description: 説明  #g
         group_id: グループ  #g
+        title: タイトル  #g
+
+      episode:
+        enclosure: 音声ファイル
+        description: 説明  #g
+        channel_id:  番組  #g
         title: タイトル  #g

@@ -33,7 +33,6 @@ class ChannelsController < ApplicationController
 
   def destroy
     @channel.destroy
-
     redirect_to group_channels_url(@channel.group), notice: '番組を削除しました'
   end
 
