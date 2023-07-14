@@ -28,7 +28,8 @@
 
   <div class="my-5">
     <%= form.label :artwork, class: "mb-1 block font-medium text-gray-800" %>
-    <%= form.file_field :artwork, class: "block shadow rounded-md border border-gray-200 outline-none px-3 py-2 mt-2 w-full" %>
+    <%= form.file_field :artwork, accept: "image/jpeg, image/png, image/webp",
+      class: "block shadow rounded-md border border-gray-200 outline-none px-3 py-2 mt-2 w-full" %>
     <p class="mt-2 text-sm text-gray-500 dark:text-gray-400">
       縦横3000ピクセル以内, 正方形を推奨, 3MB以内
     </p>
