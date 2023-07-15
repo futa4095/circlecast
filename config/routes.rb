@@ -4,6 +4,7 @@ Rails.application.routes.draw do
   resources :episodes, except: [:index]
   resources :groups do
     resources :channels, only: [:index], controller: "groups/channels"
+    resources :members, only: [:index], controller: "groups/members"
   end
   resources :channels, except: [:index]
   devise_for :users, controllers: {
