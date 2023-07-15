@@ -14,7 +14,7 @@
     <%= link_to '番組を作る', new_channel_path, class: "ml-2 rounded-lg py-3 px-5 bg-gray-100 inline-block font-medium" %>
     <%= link_to "新着エピソード(here)", @group, class: "rounded-lg py-3 px-5 bg-gray-100 inline-block font-medium" %>
     <%= link_to '番組', group_channels_path(@group), class: "ml-2 rounded-lg py-3 px-5 bg-gray-100 inline-block font-medium" %>
-    <%= link_to "メンバー(未実装)", @group, class: "rounded-lg py-3 px-5 bg-gray-100 inline-block font-medium" %>
+    <%= link_to "メンバー", group_members_path(@group), class: "rounded-lg py-3 px-5 bg-gray-100 inline-block font-medium" %>
     <p>↓ここに新着エピソード!!!</p>
     <%= render @group.episodes.order(created_at: :desc) %>
   </div>
