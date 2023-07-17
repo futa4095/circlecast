@@ -2,6 +2,7 @@
 
 class ChannelsController < ApplicationController
   before_action :authenticate_user!
+  before_action :set_group, only: %i[create destroy]
   before_action :set_channel, only: %i[show edit update destroy]
 
   def show; end
@@ -13,8 +14,7 @@ class ChannelsController < ApplicationController
   def edit; end
 
   def create
-    group = current_user.groups.find(channel_params[:group_id])
-    @channel = group.channels.new(channel_params)
+    @channel = @group.channels.new(channel_params)
 
     if @channel.save
       redirect_to channel_url(@channel), notice: '番組を作成しました'
@@ -33,16 +33,20 @@ class ChannelsController < ApplicationController
 
   def destroy
     @channel.destroy
-    redirect_to group_channels_url(@channel.group), notice: '番組を削除しました'
+    redirect_to group_channels_url(@group), notice: '番組を削除しました'
   end
 
   private
+
+  def set_group
+    @group = current_user.groups.find(params[:group_id])
+  end
 
   def set_channel
     @channel = current_user.channels.find(params[:id])
   end
 
   def channel_params
-    params.require(:channel).permit(:title, :description, :group_id, :artwork)
+    params.require(:channel).permit(:title, :description, :artwork)
   end
 end
