@@ -4,7 +4,7 @@
       <p class="py-2 px-3 bg-green-50 mb-5 text-green-500 font-medium rounded-lg inline-block" id="notice"><%= notice %></p>
     <% end %>
 
-    <%= link_to @channel.group.name, group_path(@channel.group), class: "text-2xl" %>
+    <%= link_to @channel.group.name, @channel.group, class: "text-2xl" %>
     <h1 class="font-bold text-4xl"><%= @channel.title %></h1>
     <p><%= @channel.description %></p>
     <p class="my-5">

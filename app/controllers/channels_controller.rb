@@ -2,13 +2,13 @@
 
 class ChannelsController < ApplicationController
   before_action :authenticate_user!
-  before_action :set_group, only: %i[create destroy]
+  before_action :set_group, only: %i[new create destroy]
   before_action :set_channel, only: %i[show edit update destroy]
 
   def show; end
 
   def new
-    @channel = Channel.new
+    @channel = @group.channels.new
   end
 
   def edit; end
