@@ -2,8 +2,12 @@
 
 class ChannelsController < ApplicationController
   before_action :authenticate_user!
-  before_action :set_group, only: %i[new create destroy]
+  before_action :set_group, only: %i[index new create destroy]
   before_action :set_channel, only: %i[show edit update destroy]
+
+  def index
+    @channels = @group.channels.order(:id)
+  end
 
   def show; end
 
