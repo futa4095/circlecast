@@ -3,10 +3,10 @@
 Rails.application.routes.draw do
   resources :episodes, except: [:index]
   resources :groups do
-    resources :channels, only: [:index], controller: "groups/channels"
+    resources :channels, except: [:show]
     resources :members, only: [:index], controller: "groups/members"
   end
-  resources :channels, except: [:index]
+  resources :channels, only: [:show]
   devise_for :users, controllers: {
     registrations: 'users/registrations',
     sessions: 'users/sessions',
