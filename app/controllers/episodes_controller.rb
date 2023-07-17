@@ -2,7 +2,7 @@
 
 class EpisodesController < ApplicationController
   before_action :authenticate_user!
-  before_action :set_channel, only: %i[new create show edit update destroy]
+  before_action :set_channel
   before_action :set_episode, only: %i[show edit update destroy]
 
   def show; end
@@ -25,7 +25,7 @@ class EpisodesController < ApplicationController
 
   def update
     if @episode.update(episode_params)
-      redirect_to episode_url(@episode), notice: 'エピソードを更新しました'
+      redirect_to [@channel, @episode], notice: 'エピソードを更新しました'
     else
       render :edit, status: :unprocessable_entity
     end
@@ -43,7 +43,7 @@ class EpisodesController < ApplicationController
   end
 
   def set_episode
-    @episode = current_user.episodes.find(params[:id])
+    @episode = @channel.episodes.find(params[:id])
   end
 
   def episode_params
