@@ -1,12 +1,13 @@
 # frozen_string_literal: true
 
 Rails.application.routes.draw do
-  resources :episodes, except: [:index]
   resources :groups do
     resources :channels, except: [:show]
     resources :members, only: [:index], controller: "groups/members"
   end
-  resources :channels, only: [:show]
+  resources :channels, only: [:show] do
+    resources :episodes, except: [:index]
+  end
   devise_for :users, controllers: {
     registrations: 'users/registrations',
     sessions: 'users/sessions',
