@@ -1,0 +1,25 @@
+nakajima:
+  email: nakajima@example.com
+  name: nakajima
+  encrypted_password: <%= Devise::Encryptor.digest(User, 'password') %>
+  confirmed_at: <%= Time.now %>
+
+<% 10.times do |n| %>
+nbc_student<%= n %>:
+  email: nbc_student<%= n %>@example.com
+  name: nbc_student<%= n %>
+  encrypted_password: <%= Devise::Encryptor.digest(User, 'password') %>
+  confirmed_at: <%= Time.now %>
+<% end %>
+
+ageo:
+  email: ageo@example.com
+  name: 上尾
+  encrypted_password: <%= Devise::Encryptor.digest(User, 'password') %>
+  confirmed_at: <%= Time.now %>
+
+koshigaya:
+  email: koshigaya@example.com
+  name: こしがや
+  encrypted_password: <%= Devise::Encryptor.digest(User, 'password') %>
+  confirmed_at: <%= Time.now %>
