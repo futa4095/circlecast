@@ -1,6 +1,9 @@
-<div id="<%= dom_id episode %>" class="block p-6 bg-white border border-gray-200 rounded shadow hover:bg-gray-100 dark:bg-gray-800 dark:border-gray-700 dark:hover:bg-gray-700">
+<div id="<%= dom_id episode %>" class="block p-6 bg-white border border-gray-200 rounded shadow hover:bg-gray-100">
   <%= link_to [episode.channel, episode] do %>
-    <h5 class="mb-2 text-2xl font-bold tracking-tight text-gray-900 dark:text-white">
+    <p>
+      <%= episode.channel.title %>
+    </p>
+    <h5 class="mb-2 text-2xl font-bold tracking-tight text-gray-900">
       <%= episode.title %>
     </h5>
     <p class="my-5">
@@ -9,7 +12,7 @@
         (<%= l episode.updated_at.to_date %>に更新)
       <% end %>
     </p>
-    <p class="font-normal text-gray-700 dark:text-gray-400">
+    <p class="font-normal text-gray-700">
       <%= episode.description %>
     </p>
   <% end %>
