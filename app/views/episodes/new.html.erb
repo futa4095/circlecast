@@ -1,8 +1,8 @@
 <div class="mx-auto md:w-2/3 w-full">
-  <%= link_to @channel.title, @channel, class: "text-xl" %>
+  <%= link_to @channel.title, @channel, class: 'text-xl' %>
   <h1 class="font-bold text-4xl">新しいエピソード</h1>
 
-  <%= render "form", episode: @episode %>
+  <%= render 'form', episode: @episode %>
 
-  <%= link_to '戻る', @channel, class: "ml-2 rounded-lg py-3 px-5 bg-gray-100 inline-block font-medium" %>
+  <%= link_to '戻る', @channel, class: 'ml-2 rounded-lg py-3 px-5 bg-gray-100 inline-block font-medium' %>
 </div>

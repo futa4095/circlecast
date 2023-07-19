@@ -5,7 +5,7 @@
     <% end %>
 
     <p class="my-5">
-      <%= link_to @channel.title, @channel, class: "text-xl" %>
+      <%= link_to @channel.title, @channel, class: 'text-xl' %>
     </p>
 
     <p class="my-5">
@@ -31,10 +31,10 @@
     <% end %>
     </p>
 
-    <%= link_to '編集', edit_channel_episode_path(@channel, @episode), class: "mt-2 rounded-lg py-3 px-5 bg-gray-100 inline-block font-medium" %>
+    <%= link_to '編集', edit_channel_episode_path(@channel, @episode), class: 'mt-2 rounded-lg py-3 px-5 bg-gray-100 inline-block font-medium' %>
     <div class="inline-block ml-2">
-      <%= button_to '削除', [@channel, @episode], method: :delete, class: "mt-2 rounded-lg py-3 px-5 bg-gray-100 font-medium" %>
+      <%= button_to '削除', [@channel, @episode], method: :delete, class: 'mt-2 rounded-lg py-3 px-5 bg-gray-100 font-medium' %>
     </div>
-    <%= link_to '番組に戻る', channel_path(@channel), class: "ml-2 rounded-lg py-3 px-5 bg-gray-100 inline-block font-medium" %>
+    <%= link_to '番組に戻る', channel_path(@channel), class: 'ml-2 rounded-lg py-3 px-5 bg-gray-100 inline-block font-medium' %>
   </div>
 </div>

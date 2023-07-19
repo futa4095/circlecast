@@ -1,8 +1,8 @@
 <div class="mx-auto md:w-2/3 w-full">
   <h1 class="font-bold text-4xl">エピソードの編集</h1>
 
-  <%= render "form", episode: @episode %>
+  <%= render 'form', episode: @episode %>
 
-  <%= link_to "エピソードに戻る", [@channel, @episode], class: "ml-2 rounded-lg py-3 px-5 bg-gray-100 inline-block font-medium" %>
-  <%= link_to "番組に戻る", @channel, class: "ml-2 rounded-lg py-3 px-5 bg-gray-100 inline-block font-medium" %>
+  <%= link_to 'エピソードに戻る', [@channel, @episode], class: 'ml-2 rounded-lg py-3 px-5 bg-gray-100 inline-block font-medium' %>
+  <%= link_to '番組に戻る', @channel, class: 'ml-2 rounded-lg py-3 px-5 bg-gray-100 inline-block font-medium' %>
 </div>

@@ -3,29 +3,29 @@
     <p class="py-2 px-3 bg-green-50 mb-5 text-green-500 font-medium rounded-lg inline-block" id="notice"><%= notice %></p>
   <% end %>
 
-  <%= render "groups/introduction", group: @group %>
+  <%= render 'groups/introduction', group: @group %>
 
-  <%= link_to 'グループの編集(管理者のみ)', edit_group_path(@group), class: "mt-2 rounded-lg py-3 px-5 bg-gray-100 inline-block font-medium" %>
+  <%= link_to 'グループの編集(管理者のみ)', edit_group_path(@group), class: 'mt-2 rounded-lg py-3 px-5 bg-gray-100 inline-block font-medium' %>
   <div class="inline-block ml-2">
-    <%= button_to 'グループの削除(管理者のみ)', group_path(@group), method: :delete, class: "mt-2 rounded-lg py-3 px-5 bg-gray-100 font-medium" %>
+    <%= button_to 'グループの削除(管理者のみ)', group_path(@group), method: :delete, class: 'mt-2 rounded-lg py-3 px-5 bg-gray-100 font-medium' %>
   </div>
   <hr />
-  <%= link_to '参加しているグループに戻る', groups_path, class: "ml-2 rounded-lg py-3 px-5 bg-gray-100 inline-block font-medium" %>
-  <%= link_to '番組を作る(管理者のみ)', new_group_channel_path(@group), class: "ml-2 rounded-lg py-3 px-5 bg-gray-100 inline-block font-medium" %>
+  <%= link_to '参加しているグループに戻る', groups_path, class: 'ml-2 rounded-lg py-3 px-5 bg-gray-100 inline-block font-medium' %>
+  <%= link_to '番組を作る(管理者のみ)', new_group_channel_path(@group), class: 'ml-2 rounded-lg py-3 px-5 bg-gray-100 inline-block font-medium' %>
 
   <div class="border-b border-gray-200 dark:border-gray-700">
     <ul class="flex flex-wrap -mb-px text-md font-medium text-center text-gray-500 dark:text-gray-400">
       <li class="mr-2">
-        <%= link_to "新着エピソード", @group, class: "inline-flex items-center justify-center p-4 border-b-2 border-transparent rounded-t-lg hover:text-gray-600 hover:border-gray-300 dark:hover:text-gray-300 group" %>
+        <%= link_to '新着エピソード', @group, class: 'inline-flex items-center justify-center p-4 border-b-2 border-transparent rounded-t-lg hover:text-gray-600 hover:border-gray-300 dark:hover:text-gray-300 group' %>
       </li>
       <li class="mr-2">
-        <%= link_to '番組', group_channels_path(@group), class: "inline-flex items-center justify-center p-4 border-b-2 border-transparent rounded-t-lg hover:text-gray-600 hover:border-gray-300 dark:hover:text-gray-300 group" %>
+        <%= link_to '番組', group_channels_path(@group), class: 'inline-flex items-center justify-center p-4 border-b-2 border-transparent rounded-t-lg hover:text-gray-600 hover:border-gray-300 dark:hover:text-gray-300 group' %>
       </li>
       <li class="mr-2">
-        <%= link_to "メンバー(管理者以外は隠す)", group_members_path(@group), class: "inline-flex items-center justify-center p-4 text-blue-600 border-b-2 border-blue-600 rounded-t-lg active dark:text-blue-500 dark:border-blue-500 group" %>
+        <%= link_to 'メンバー(管理者以外は隠す)', group_members_path(@group), class: 'inline-flex items-center justify-center p-4 text-blue-600 border-b-2 border-blue-600 rounded-t-lg active dark:text-blue-500 dark:border-blue-500 group' %>
       </li>
     </ul>
   </div>
 
-  <%= render "member_table", memberships: @memberships %>
+  <%= render 'member_table', memberships: @memberships %>
 </div>

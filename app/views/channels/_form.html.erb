@@ -1,7 +1,7 @@
-<%= form_with(model: [channel.group, channel], class: "contents") do |form| %>
+<%= form_with(model: [channel.group, channel], class: 'contents') do |form| %>
   <% if channel.errors.any? %>
     <div id="error_explanation" class="bg-red-50 text-red-500 px-3 py-2 font-medium rounded-lg mt-3">
-      <h2><%= pluralize(channel.errors.count, "error") %> prohibited this channel from being saved:</h2>
+      <h2><%= pluralize(channel.errors.count, 'error') %> prohibited this channel from being saved:</h2>
 
       <ul>
         <% channel.errors.each do |error| %>
@@ -12,25 +12,26 @@
   <% end %>
 
   <div class="my-5">
-    <%= form.label :title, class: "mb-1 block font-medium text-gray-800" %>
-    <%= form.text_field :title, maxlength: 100, class: "block shadow rounded-md border border-gray-200 outline-none px-3 py-2 mt-2 w-full" %>
+    <%= form.label :title, class: 'mb-1 block font-medium text-gray-800' %>
+    <%= form.text_field :title, maxlength: 100, class: 'block shadow rounded-md border border-gray-200 outline-none px-3 py-2 mt-2 w-full' %>
   </div>
 
   <div class="my-5">
-    <%= form.label :description, class: "mb-1 block font-medium text-gray-800" %>
-    <%= form.text_area :description, rows: 8, class: "block shadow rounded-md border border-gray-200 outline-none px-3 py-2 mt-2 w-full" %>
+    <%= form.label :description, class: 'mb-1 block font-medium text-gray-800' %>
+    <%= form.text_area :description, rows: 8, class: 'block shadow rounded-md border border-gray-200 outline-none px-3 py-2 mt-2 w-full' %>
   </div>
 
   <div class="my-5">
-    <%= form.label :artwork, class: "mb-1 block font-medium text-gray-800" %>
-    <%= form.file_field :artwork, accept: "image/jpeg, image/png, image/webp",
-      class: "block shadow rounded-md border border-gray-200 outline-none px-3 py-2 mt-2 w-full" %>
+    <%= form.label :artwork, class: 'mb-1 block font-medium text-gray-800' %>
+    <%= form.file_field :artwork,
+                        accept: 'image/jpeg, image/png, image/webp',
+                        class: 'block shadow rounded-md border border-gray-200 outline-none px-3 py-2 mt-2 w-full' %>
     <p class="mt-2 text-sm text-gray-500 dark:text-gray-400">
       縦横3000ピクセル以内, 正方形を推奨, 3MB以内
     </p>
   </div>
 
   <div class="inline">
-    <%= form.submit class: "rounded-lg py-3 px-5 bg-blue-600 text-white inline-block font-medium cursor-pointer" %>
+    <%= form.submit class: 'rounded-lg py-3 px-5 bg-blue-600 text-white inline-block font-medium cursor-pointer' %>
   </div>
 <% end %>
