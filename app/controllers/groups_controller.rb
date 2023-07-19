@@ -8,7 +8,9 @@ class GroupsController < ApplicationController
     @groups = current_user.groups.order(:id)
   end
 
-  def show; end
+  def show
+    @episodes = @group.episodes.order(created_at: :desc)
+  end
 
   def new
     @group = Group.new
