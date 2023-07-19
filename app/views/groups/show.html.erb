@@ -6,14 +6,6 @@
 
     <%= render 'introduction', group: @group %>
 
-    <%= link_to 'グループの編集(管理者のみ)', edit_group_path(@group), class: 'mt-2 rounded-lg py-3 px-5 bg-gray-100 inline-block font-medium' %>
-    <div class="inline-block ml-2">
-      <%= button_to 'グループの削除(管理者のみ)', @group, method: :delete, class: 'mt-2 rounded-lg py-3 px-5 bg-gray-100 font-medium' %>
-    </div>
-    <hr />
-    <%= link_to '参加しているグループに戻る', groups_path, class: 'ml-2 rounded-lg py-3 px-5 bg-gray-100 inline-block font-medium' %>
-    <%= link_to '番組を作る(管理者のみ)', new_group_channel_path(@group), class: 'ml-2 rounded-lg py-3 px-5 bg-gray-100 inline-block font-medium' %>
-
     <div class="border-b border-gray-200">
       <ul class="flex flex-wrap -mb-px text-md font-medium text-center text-gray-500">
         <li class="mr-2">
