@@ -6,7 +6,7 @@ module Groups
 
     def index
       @group = current_user.groups.find(params[:group_id])
-      @memberships = @group.memberships.order(admin: :desc)
+      @memberships = @group.memberships.order(admin: :desc, id: :asc)
     end
   end
 end
