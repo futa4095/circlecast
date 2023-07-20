@@ -1,17 +1,19 @@
 <div id="<%= dom_id channel %>" class="block p-6 bg-white border border-gray-200 rounded shadow hover:bg-gray-100">
-  <%= link_to channel do %>
-    <h5 class="mb-2 text-2xl font-bold tracking-tight text-gray-900">
-      <%= channel.title %>
-    </h5>
-    <p class="font-normal text-gray-700">
-      <%= channel.description %>
-    </p>
-    <p class="my-5">
-      <% if channel.artwork.attached? %>
+  <%= link_to channel, class: 'flex' do %>
+      <div class="order-2">
+        <h5 class="mb-2 text-2xl font-bold tracking-tight text-gray-900">
+          <%= channel.title %>
+        </h5>
+        <p class="font-normal text-gray-700">
+          <%= channel.description %>
+        </p>
+      </div>
+      <p class="my-5">
+        <% if channel.artwork.attached? %>
           <%= image_tag channel.artwork %>
-      <% else %>
-        アートワーク画像はありません
-      <% end %>
-    </p>
+        <% else %>
+          アートワーク画像はありません(TODO: デフォルト画像を置く)
+        <% end %>
+      </p>
   <% end %>
 </div>
