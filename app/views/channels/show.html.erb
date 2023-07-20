@@ -16,13 +16,13 @@
         <%= link_to '戻る', group_channels_path(@channel.group), class: 'ml-2 rounded-lg py-3 px-5 bg-gray-100 inline-block font-medium' %>
         <%= link_to 'エピソードを作成', new_channel_episode_path(@channel), class: 'ml-2 rounded-lg py-3 px-5 bg-gray-100 inline-block font-medium' %>
       </div>
-      <p class="my-5">
+      <div class="my-5">
         <% if @channel.artwork.attached? %>
           <%= image_tag @channel.artwork %>
         <% else %>
           アートワーク画像はありません
         <% end %>
-      </p>
+      </div>
     </div>
 
 
