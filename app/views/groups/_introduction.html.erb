@@ -1,7 +1,14 @@
 <div class="flex">
-  <div class="order-2">
+  <div class="m-3">
+    <% if group.icon.attached? %>
+      <%= image_tag group.icon %>
+    <% else %>
+      アイコン画像はありません(TODO: デフォルト画像を置く)
+    <% end %>
+  </div>
+  <div>
     <h1 class="font-bold text-4xl"><%= group.name %></h1>
-    <p><%= group.description %></p>
+    <p class="my-5"><%= group.description %></p>
     <%= link_to 'グループの編集(管理者のみ)', edit_group_path(group), class: 'mt-2 rounded-lg py-3 px-5 bg-gray-100 inline-block font-medium' %>
     <div class="inline-block ml-2">
       <%= button_to 'グループの削除(管理者のみ)', group, method: :delete, class: 'mt-2 rounded-lg py-3 px-5 bg-gray-100 font-medium' %>
@@ -9,12 +16,5 @@
     <hr />
     <%= link_to '参加しているグループに戻る', groups_path, class: 'ml-2 rounded-lg py-3 px-5 bg-gray-100 inline-block font-medium' %>
     <%= link_to '番組を作る(管理者のみ)', new_group_channel_path(group), class: 'ml-2 rounded-lg py-3 px-5 bg-gray-100 inline-block font-medium' %>
-  </div>
-  <div class="my-5">
-    <% if group.icon.attached? %>
-      <%= image_tag group.icon %>
-    <% else %>
-      アイコン画像はありません(TODO: デフォルト画像を置く)
-    <% end %>
   </div>
 </div>

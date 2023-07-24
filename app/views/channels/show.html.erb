@@ -5,23 +5,23 @@
     <% end %>
 
     <div class="flex">
-      <div class="order-2">
+      <div class="m-3">
+        <% if @channel.artwork.attached? %>
+          <%= image_tag @channel.artwork %>
+        <% else %>
+          アートワーク画像はありません
+        <% end %>
+      </div>
+      <div>
         <%= link_to @channel.group.name, @channel.group, class: 'text-xl' %>
         <h1 class="font-bold text-4xl"><%= @channel.title %></h1>
-        <p><%= @channel.description %></p>
+        <p class="my-3"><%= @channel.description %></p>
         <%= link_to '編集', edit_group_channel_path(@channel.group), class: 'mt-2 rounded-lg py-3 px-5 bg-gray-100 inline-block font-medium' %>
         <div class="inline-block ml-2">
           <%= button_to '削除', [@channel.group, @channel], method: :delete, class: 'mt-2 rounded-lg py-3 px-5 bg-gray-100 font-medium' %>
         </div>
         <%= link_to '戻る', group_channels_path(@channel.group), class: 'ml-2 rounded-lg py-3 px-5 bg-gray-100 inline-block font-medium' %>
         <%= link_to 'エピソードを作成', new_channel_episode_path(@channel), class: 'ml-2 rounded-lg py-3 px-5 bg-gray-100 inline-block font-medium' %>
-      </div>
-      <div class="my-5">
-        <% if @channel.artwork.attached? %>
-          <%= image_tag @channel.artwork %>
-        <% else %>
-          アートワーク画像はありません
-        <% end %>
       </div>
     </div>
 
