@@ -9,6 +9,21 @@
   </div>
 
   <div id="groups" class="min-w-full">
-    <%= render @groups %>
+    <% if @groups.present? %>
+      <%= render @groups %>
+    <% else %>
+      <div class="p-4 my-4 text-blue-800 border border-blue-300 rounded-lg bg-blue-50" role="alert">
+        <div class="flex items-center">
+          <h3 class="text-xl font-medium">グループに参加していません！</h3>
+        </div>
+        <div class="mt-2 mb-4">
+          <p>グループを作るか、グループへの招待を受けてください！</p>
+          <p>グループを作ると、グループ内のメンバーにポッドキャストを公開できます！</p>
+        </div>
+        <div class="flex">
+          <%= link_to 'グループを作る', new_group_path, class: 'text-white bg-blue-800 hover:bg-blue-900 focus:ring-4 focus:outline-none focus:ring-blue-200 font-medium rounded-lg text-xs px-3 py-1.5 mr-2 text-center inline-flex items-center' %>
+        </div>
+      </div>
+    <% end %>
   </div>
 </div>

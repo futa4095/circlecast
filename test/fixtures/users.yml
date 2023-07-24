@@ -23,3 +23,9 @@ koshigaya:
   name: こしがや
   encrypted_password: <%= Devise::Encryptor.digest(User, 'password') %>
   confirmed_at: <%= Time.now %>
+
+no_groups_user:
+  email: nogroups@example.com
+  name: グループ未加入さん
+  encrypted_password: <%= Devise::Encryptor.digest(User, 'password') %>
+  confirmed_at: <%= Time.now %>
