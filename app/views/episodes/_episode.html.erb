@@ -7,10 +7,7 @@
       <%= episode.title %>
     </h5>
     <p class="my-5">
-      <%= l episode.created_at.to_date %>に公開
-      <% if episode.created_at.to_date != episode.updated_at.to_date %>
-        (<%= l episode.updated_at.to_date %>に更新)
-      <% end %>
+      <%= publication_and_update_dates(episode) %>
     </p>
     <p class="font-normal text-gray-700">
       <%= episode.description %>
