@@ -2,8 +2,8 @@ nbc:
   name: 中島ブートキャンプ
   description: 中島県中島市のプログラミングスクールです。
 group1:
-  name: 上尾
+  name: 上尾パワー
   description: 上尾にある会社です。番組はありません
 group2:
-  name: 越谷
+  name: 越谷プレムアム
   description: 越谷にある会社です。番組はありますがエピソードはありません。

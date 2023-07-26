@@ -26,7 +26,13 @@
     </div>
 
 
-    <h5 class="text-xl">この番組のエピソード</h5>
-    <%= render @channel.episodes.order(created_at: :desc) %>
+    <% if @channel.episodes.present? %>
+      <h5 class="text-xl">この番組のエピソード</h5>
+      <%= render @channel.episodes.order(created_at: :desc) %>
+    <% else %>
+      <div class="p-4 my-4 text-sm text-blue-800 rounded-lg bg-blue-50" role="alert">
+        <span class="font-medium">エピソードが投稿されていません</span>
+      </div>
+    <% end %>
   </div>
 </div>

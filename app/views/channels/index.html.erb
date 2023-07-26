@@ -20,6 +20,12 @@
   </div>
 
   <div id="channels" class="min-w-full">
-    <%= render partial: 'channels/channel', collection: @channels or '番組はありません' %>
+    <% if @channels.present? %>
+      <%= render partial: 'channels/channel', collection: @channels %>
+    <% else %>
+      <div class="p-4 my-4 text-sm text-blue-800 rounded-lg bg-blue-50" role="alert">
+        <span class="font-medium">番組がありません</span>
+      </div>
+    <% end %>
   </div>
 </div>
