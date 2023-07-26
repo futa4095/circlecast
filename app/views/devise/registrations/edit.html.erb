@@ -5,8 +5,13 @@
     <%= render 'devise/shared/error_messages', resource: %>
 
     <div class="my-5">
+      <%= f.label :name, class: 'mb-1 block font-medium text-gray-800' %>
+      <%= f.text_field :name, autofocus: true, class: 'bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5' %>
+    </div>
+
+    <div class="my-5">
       <%= f.label :email, class: 'mb-1 block font-medium text-gray-800' %>
-      <%= f.email_field :email, autofocus: true, autocomplete: 'email', class: 'bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5' %>
+      <%= f.email_field :email, autocomplete: 'email', class: 'bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5' %>
     </div>
 
     <% if devise_mapping.confirmable? && resource.pending_reconfirmation? %>
