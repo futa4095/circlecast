@@ -1,25 +1,27 @@
-<h2><%= t('.change_your_password') %></h2>
+<div class="flex-col">
+  <h2 class="font-bold text-4xl"><%= t('.change_your_password') %></h2>
 
-<%= form_for(resource, as: resource_name, url: password_path(resource_name), html: { method: :put }) do |f| %>
-  <%= render 'devise/shared/error_messages', resource: %>
-  <%= f.hidden_field :reset_password_token %>
+  <%= form_for(resource, as: resource_name, url: password_path(resource_name), html: { method: :put }) do |f| %>
+    <%= render 'devise/shared/error_messages', resource: %>
+    <%= f.hidden_field :reset_password_token %>
 
-  <div class="field">
-    <%= f.label :password, t('.new_password') %><br />
-    <% if @minimum_password_length %>
-      <em><%= t('devise.shared.minimum_password_length', count: @minimum_password_length) %></em><br />
-    <% end %>
-    <%= f.password_field :password, autofocus: true, autocomplete: 'new-password' %>
-  </div>
+    <div class="my-5">
+      <%= f.label :password, t('.new_password'), class: 'mb-1 font-medium text-gray-800' %>
+      <% if @minimum_password_length %>
+        <em class="mb-1 font-medium text-gray-800"><%= t('devise.shared.minimum_password_length', count: @minimum_password_length) %></em>
+      <% end %>
+      <%= f.password_field :password, autofocus: true, autocomplete: 'new-password', class: 'bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5' %>
+    </div>
 
-  <div class="field">
-    <%= f.label :password_confirmation, t('.confirm_new_password') %><br />
-    <%= f.password_field :password_confirmation, autocomplete: 'new-password' %>
-  </div>
+    <div class="my-5">
+      <%= f.label :password_confirmation, t('.confirm_new_password'), class: 'mb-1 block font-medium text-gray-800' %>
+      <%= f.password_field :password_confirmation, autocomplete: 'new-password', class: 'bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5' %>
+    </div>
 
-  <div class="actions">
-    <%= f.submit t('.change_my_password') %>
-  </div>
-<% end %>
+    <div class="my-3">
+      <%= f.submit t('.change_my_password'), class: 'rounded-lg py-3 px-5 bg-blue-600 text-white inline-block font-medium cursor-pointer' %>
+    </div>
+  <% end %>
 
-<%= render 'devise/shared/links' %>
+  <%= render 'devise/shared/links' %>
+</div>
