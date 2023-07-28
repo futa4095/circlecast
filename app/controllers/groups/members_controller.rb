@@ -3,10 +3,29 @@
 module Groups
   class MembersController < ApplicationController
     before_action :authenticate_user!
+    before_action :set_group
 
     def index
-      @group = current_user.groups.find(params[:group_id])
       @memberships = @group.memberships.order(admin: :desc, id: :asc)
+    end
+
+    def update
+      @membership = @group.memberships.find_by!(user_id: params[:id])
+      if @membership.update(membership_params)
+        flash.now.notice = '更新しました'
+      else
+        render :edit, status: unprocessable_entity
+      end
+    end
+
+    private
+
+    def set_group
+      @group = current_user.groups.find(params[:group_id])
+    end
+
+    def membership_params
+      params.require(:membership).permit(:id, :admin, :withdrawal)
     end
   end
 end

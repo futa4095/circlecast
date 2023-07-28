@@ -26,10 +26,18 @@
           <%= membership.user.email %>
         </td>
         <td class="px-6 py-4">
-          <%= membership.admin %>
+          <%= button_to "#{membership.admin} から変更する",
+            group_member_path(membership.group, membership.user),
+            method: :patch,
+            params: { membership: { admin: !membership.admin }},
+            class: 'mt-2 rounded-lg py-3 px-5 bg-gray-100 font-medium' %>
         </td>
         <td class="px-6 py-4">
-          <%= membership.withdrawal %>
+          <%= button_to "#{membership.withdrawal} から変更する",
+            group_member_path(membership.group, membership.user),
+            method: :patch,
+            params: { membership: { withdrawal: !membership.withdrawal }},
+            class: 'mt-2 rounded-lg py-3 px-5 bg-gray-100 font-medium' %>
         </td>
       </tr>
       <% end %>
