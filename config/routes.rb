@@ -3,7 +3,7 @@
 Rails.application.routes.draw do
   resources :groups do
     resources :channels, except: [:show]
-    resources :members, only: [:index], controller: "groups/members"
+    resources :members, only: [:index, :update], controller: "groups/members"
   end
   resources :channels, only: [:show] do
     resources :episodes, except: [:index]
