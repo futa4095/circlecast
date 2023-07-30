@@ -21,10 +21,12 @@
         </div>
       <% end %>
     </header>
-    <main class="container mx-auto mt-28 px-5 flex">
-      <% if notice %>
-        <p class="rounded-md bg-green-50 p-4 text-sm text-green-500"><%= notice %></p>
-      <% end %>
+    <main class="container mx-auto mt-28 px-5 flex flex-col">
+      <div id="notice">
+        <% if notice.present? %>
+          <p class="p-4 mb-4 text-sm text-green-800 rounded-lg bg-green-50"><%= notice %></p>
+        <% end %>
+      </div>
       <% if alert %>
         <p class="rounded-md bg-red-50 p-4 text-sm text-red-500"><%= alert %></p>
       <% end %>
