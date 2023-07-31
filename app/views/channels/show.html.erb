@@ -21,7 +21,7 @@
       </div>
     </div>
   </div>
-  <section class="w-full">
+  <section class="space-y-2">
     <% if @channel.episodes.present? %>
       <h5 class="text-xl">この番組のエピソード</h5>
       <%= render @channel.episodes.order(created_at: :desc) %>
