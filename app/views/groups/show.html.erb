@@ -1,9 +1,5 @@
-<div class="mx-auto md:w-2/3 w-full flex">
-  <div class="mx-auto">
-    <% if notice.present? %>
-      <p class="py-2 px-3 bg-green-50 mb-5 text-green-500 font-medium rounded-lg inline-block" id="notice"><%= notice %></p>
-    <% end %>
-
+<div class="w-full">
+  <div>
     <%= render 'introduction', group: @group %>
 
     <div class="border-b border-gray-200">
@@ -19,7 +15,8 @@
         </li>
       </ul>
     </div>
-
+  </div>
+  <div class="space-y-2">
     <% if @episodes.present? %>
       <%= render @episodes %>
     <% else %>

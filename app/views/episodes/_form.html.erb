@@ -1,8 +1,6 @@
 <%= form_with(model: [episode.channel, episode], class: 'contents') do |form| %>
   <% if episode.errors.any? %>
     <div id="error_explanation" class="bg-red-50 text-red-500 px-3 py-2 font-medium rounded-lg mt-3">
-      <h2><%= pluralize(episode.errors.count, 'error') %> prohibited this episode from being saved:</h2>
-
       <ul>
         <% episode.errors.each do |error| %>
           <li><%= error.full_message %></li>
