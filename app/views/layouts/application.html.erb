@@ -27,9 +27,11 @@
           <p class="p-4 mb-4 text-sm text-green-800 rounded-lg bg-green-50"><%= notice %></p>
         <% end %>
       </div>
-      <% if alert %>
-        <p class="rounded-md bg-red-50 p-4 text-sm text-red-500"><%= alert %></p>
-      <% end %>
+      <div id="alert">
+        <% if alert.present? %>
+          <p class="p-4 mb-4 text-sm text-red-800 rounded-lg bg-red-50" role="alert"><%= alert %></p>
+        <% end %>
+      </div>
       <%= yield %>
     </main>
   </body>
