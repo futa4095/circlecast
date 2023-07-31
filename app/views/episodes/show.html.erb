@@ -1,41 +1,39 @@
-<div class="mx-auto md:w-2/3 w-full flex">
-  <div class="mx-auto">
-    <div class="flex">
-      <div class="m-3">
-        <% if @channel.artwork.attached? %>
-          <%= image_tag @channel.artwork %>
+<article class="mx-auto md:w-2/3 w-full flex">
+  <div class="flex">
+    <div class="m-3">
+      <% if @channel.artwork.attached? %>
+        <%= image_tag @channel.artwork %>
+      <% else %>
+        アートワーク画像はありません(TODO: デフォルト画像を置く)
+      <% end %>
+    </div>
+    <div class="my-5">
+      <%= link_to @channel.title, @channel, class: 'text-xl' %>
+      <h1 class="font-bold text-4xl"><%= @episode.title %></h1>
+      <p class="my-5">
+        <%= l @episode.created_at.to_date %>に公開
+        <% if @episode.created_at.to_date != @episode.updated_at.to_date %>
+          (<%= l @episode.updated_at.to_date %>に更新)
+        <% end %>
+      </p>
+
+      <p class="my-5">
+        <%= @episode.description %>
+      </p>
+
+      <div class="my-5">
+        <% if @episode.enclosure.attached? %>
+          <%= audio_tag polymorphic_path(@episode.enclosure), controls: true, controlsList: [:nodownload] %>
         <% else %>
-          アートワーク画像はありません(TODO: デフォルト画像を置く)
+          添付ファイルはありません
         <% end %>
       </div>
-      <div class="my-5">
-        <%= link_to @channel.title, @channel, class: 'text-xl' %>
-        <h1 class="font-bold text-4xl"><%= @episode.title %></h1>
-        <p class="my-5">
-          <%= l @episode.created_at.to_date %>に公開
-          <% if @episode.created_at.to_date != @episode.updated_at.to_date %>
-            (<%= l @episode.updated_at.to_date %>に更新)
-          <% end %>
-        </p>
 
-        <p class="my-5">
-          <%= @episode.description %>
-        </p>
-
-        <div class="my-5">
-          <% if @episode.enclosure.attached? %>
-            <%= audio_tag polymorphic_path(@episode.enclosure), controls: true, controlsList: [:nodownload] %>
-          <% else %>
-            添付ファイルはありません
-          <% end %>
-        </div>
-
-        <%= link_to '編集', edit_channel_episode_path(@channel, @episode), class: 'mt-2 rounded-lg py-3 px-5 bg-gray-100 inline-block font-medium' %>
-        <div class="inline-block ml-2">
-          <%= button_to '削除', [@channel, @episode], method: :delete, class: 'mt-2 rounded-lg py-3 px-5 bg-gray-100 font-medium' %>
-        </div>
-        <%= link_to '番組に戻る', channel_path(@channel), class: 'ml-2 rounded-lg py-3 px-5 bg-gray-100 inline-block font-medium' %>
+      <%= link_to '編集', edit_channel_episode_path(@channel, @episode), class: 'mt-2 rounded-lg py-3 px-5 bg-gray-100 inline-block font-medium' %>
+      <div class="inline-block ml-2">
+        <%= button_to '削除', [@channel, @episode], method: :delete, class: 'mt-2 rounded-lg py-3 px-5 bg-gray-100 font-medium' %>
       </div>
+      <%= link_to '番組に戻る', channel_path(@channel), class: 'ml-2 rounded-lg py-3 px-5 bg-gray-100 inline-block font-medium' %>
     </div>
   </div>
-</div>
+</article>
