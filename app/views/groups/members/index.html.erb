@@ -1,23 +1,21 @@
 <div class="w-full">
-  <% if notice.present? %>
-    <p class="py-2 px-3 bg-green-50 mb-5 text-green-500 font-medium rounded-lg inline-block" id="notice"><%= notice %></p>
-  <% end %>
-
   <%= render 'groups/introduction', group: @group %>
 
-  <div class="border-b border-gray-200">
-    <ul class="flex flex-wrap -mb-px text-md font-medium text-center text-gray-500">
-      <li class="mr-2">
-        <%= link_to '新着エピソード', @group, class: 'inline-flex items-center justify-center p-4 border-b-2 border-transparent rounded-t-lg hover:text-gray-600 hover:border-gray-300 group' %>
-      </li>
-      <li class="mr-2">
-        <%= link_to '番組', group_channels_path(@group), class: 'inline-flex items-center justify-center p-4 border-b-2 border-transparent rounded-t-lg hover:text-gray-600 hover:border-gray-300 group' %>
-      </li>
-      <li class="mr-2">
-        <%= link_to 'メンバー(管理者以外は隠す)', group_members_path(@group), class: 'inline-flex items-center justify-center p-4 text-blue-600 border-b-2 border-blue-600 rounded-t-lg active group' %>
-      </li>
-    </ul>
-  </div>
+  <%= turbo_frame_tag 'group-tab', data: { turbo_action: 'advance' } do %>
+    <div class="mb-3 border-b border-gray-200">
+      <ul class="flex flex-wrap -mb-px text-md font-medium text-center text-gray-500">
+        <li class="mr-2">
+          <%= link_to '新着エピソード', @group, class: 'inline-flex items-center justify-center p-4 border-b-2 border-transparent rounded-t-lg hover:text-gray-600 hover:border-gray-300 group' %>
+        </li>
+        <li class="mr-2">
+          <%= link_to '番組', group_channels_path(@group), class: 'inline-flex items-center justify-center p-4 border-b-2 border-transparent rounded-t-lg hover:text-gray-600 hover:border-gray-300 group' %>
+        </li>
+        <li class="mr-2">
+          <%= link_to 'メンバー(管理者以外は隠す)', group_members_path(@group), class: 'inline-flex items-center justify-center p-4 text-blue-600 border-b-2 border-blue-600 rounded-t-lg active group' %>
+        </li>
+      </ul>
+    </div>
 
-  <%= render 'member_table', memberships: @memberships %>
+    <%= render 'member_table', memberships: @memberships %>
+  <% end %>
 </div>
