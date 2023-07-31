@@ -15,7 +15,7 @@
     </ul>
   </div>
 
-  <div id="channels" class="min-w-full">
+  <div id="channels" class="min-w-full space-y-2">
     <% if @channels.present? %>
       <%= render partial: 'channels/channel', collection: @channels %>
     <% else %>
