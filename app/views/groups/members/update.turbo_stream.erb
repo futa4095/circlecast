@@ -1,3 +1,8 @@
 <%= turbo_stream.replace @membership do %>
   <%= render 'membership', membership: @membership %>
 <% end %>
+<%= turbo_stream.update 'notice' do %>
+  <p class="p-4 mb-4 text-sm text-green-800 rounded-lg bg-green-50">
+    <%= @membership.user.name %>を更新しました
+  </p>
+<% end %>

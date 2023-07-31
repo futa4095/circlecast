@@ -12,7 +12,7 @@ module Groups
     def update
       @membership = @group.memberships.find_by!(user_id: params[:id])
       if @membership.update(membership_params)
-        flash.now.notice = '更新しました'
+        render
       else
         render :edit, status: unprocessable_entity
       end
