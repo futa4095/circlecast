@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2023_07_12_051505) do
+ActiveRecord::Schema[7.0].define(version: 2023_08_02_041243) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
@@ -67,6 +67,15 @@ ActiveRecord::Schema[7.0].define(version: 2023_07_12_051505) do
     t.datetime "updated_at", null: false
   end
 
+  create_table "invitations", force: :cascade do |t|
+    t.bigint "group_id", null: false
+    t.string "token", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["group_id"], name: "index_invitations_on_group_id"
+    t.index ["token"], name: "index_invitations_on_token", unique: true
+  end
+
   create_table "memberships", force: :cascade do |t|
     t.bigint "group_id", null: false
     t.bigint "user_id", null: false
@@ -101,6 +110,7 @@ ActiveRecord::Schema[7.0].define(version: 2023_07_12_051505) do
   add_foreign_key "active_storage_variant_records", "active_storage_blobs", column: "blob_id"
   add_foreign_key "channels", "groups"
   add_foreign_key "episodes", "channels"
+  add_foreign_key "invitations", "groups"
   add_foreign_key "memberships", "groups"
   add_foreign_key "memberships", "users"
 end

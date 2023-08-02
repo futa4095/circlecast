@@ -5,6 +5,7 @@ class Group < ApplicationRecord
   has_many :users, through: :memberships
   has_many :channels
   has_many :episodes, through: :channels
+  has_one :invitation
   has_one_attached :icon
 
   validates :name, presence: true, length: { maximum: 100 }
