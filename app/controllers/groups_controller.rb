@@ -22,8 +22,8 @@ class GroupsController < ApplicationController
     @group = Group.new(group_params)
 
     if @group.save
-      membership = current_user.memberships.new(group_id: @group.id, admin: true)
-      membership.save!
+      current_user.memberships.create!(group_id: @group.id, admin: true)
+      @group.create_invitation!(token: SecureRandom.urlsafe_base64)
       redirect_to group_url(@group), notice: 'グループを作成しました'
     else
       render :new, status: :unprocessable_entity
