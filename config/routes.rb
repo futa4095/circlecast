@@ -1,6 +1,7 @@
 # frozen_string_literal: true
 
 Rails.application.routes.draw do
+  get 'invitations/:token',to: 'invitations#show', as: :invitations
   resources :groups do
     resources :channels, except: [:show]
     resources :members, only: [:index, :update], controller: "groups/members"

@@ -6,6 +6,10 @@ class GroupsController < ApplicationController
 
   def index
     @groups = current_user.groups.order(:id)
+    return unless session[:group_to_join].present?
+
+    flash[:notice] = session[:group_to_join]
+    session.delete :group_to_join
   end
 
   def show
