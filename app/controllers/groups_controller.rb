@@ -8,8 +8,10 @@ class GroupsController < ApplicationController
     @groups = current_user.groups.order(:id)
     return unless session[:group_to_join].present?
 
-    membership = current_user.memberships.create(group_id: session[:group_to_join])
-    flash.now[:notice] = "#{membership.group.name}に加入しました"
+    unless current_user.memberships.exists?(group_id: session[:group_to_join])
+      membership = current_user.memberships.create(group_id: session[:group_to_join])
+      flash.now[:notice] = "#{membership.group.name}に加入しました"
+    end
     session.delete :group_to_join
   end
 
