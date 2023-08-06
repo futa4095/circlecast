@@ -6,8 +6,7 @@ module.exports = {
     './public/*.html',
     './app/helpers/**/*.rb',
     './app/javascript/**/*.js',
-    './app/views/**/*.{erb,haml,html,slim}',
-    { raw: '<div class="bg-gray-900 bg-opacity-50 dark:bg-opacity-80 fixed inset-0 z-40">', extention: 'html' },
+    './app/views/**/*.{erb,haml,html,slim}'
   ],
   theme: {
     extend: {
