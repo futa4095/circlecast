@@ -6,13 +6,7 @@ class GroupsController < ApplicationController
 
   def index
     @groups = current_user.groups.order(:id)
-    return unless session[:group_to_join].present?
-
-    unless current_user.memberships.exists?(group_id: session[:group_to_join])
-      membership = current_user.memberships.create(group_id: session[:group_to_join])
-      flash.now[:notice] = "#{membership.group.name}に加入しました"
-    end
-    session.delete :group_to_join
+    join_group if session[:group_to_join].present?
   end
 
   def show
@@ -59,5 +53,14 @@ class GroupsController < ApplicationController
 
   def group_params
     params.require(:group).permit(:name, :description, :icon)
+  end
+
+  def join_group
+    group_id = session[:group_to_join]
+    unless current_user.memberships.exists?(group_id:)
+      membership = current_user.memberships.create(group_id:)
+      flash.now[:notice] = "#{membership.group.name}に加入しました"
+    end
+    session.delete :group_to_join
   end
 end
