@@ -91,4 +91,6 @@ RSpec.configure do |config|
   #   # test failures related to randomization by passing the same `--seed` value
   #   # as the one that triggered the failure.
   #   Kernel.srand config.seed
+  require 'active_support/testing/time_helpers'
+  config.include ActiveSupport::Testing::TimeHelpers
 end
