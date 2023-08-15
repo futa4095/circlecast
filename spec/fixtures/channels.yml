@@ -1,0 +1,18 @@
+nbc_channel1:
+  group: nbc
+  title: 中島ブートキャンプへようこそ
+  description: 学習を始めるにあたっての必要事項を説明します。
+nbc_channel2:
+  group: nbc
+  title: 中島Radio
+  description: 毎週水曜日に更新します。
+nbc_channel3:
+  group: nbc
+  title: 中島トーク
+  description: 不定期更新
+
+<% 10.times do |n| %>
+group2_ch<%= n %>:
+  group: group2
+  title: ばんぐみ<%= n %>
+<% end %>

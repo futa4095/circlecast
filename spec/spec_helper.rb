@@ -94,4 +94,8 @@ RSpec.configure do |config|
 
   require 'active_support/testing/time_helpers'
   config.include ActiveSupport::Testing::TimeHelpers
+
+  config.before(:each, type: :system) do
+    driven_by :selenium, using: :headless_chrome
+  end
 end
