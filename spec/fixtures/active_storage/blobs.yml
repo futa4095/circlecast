@@ -1,0 +1,11 @@
+nbc_icon_blob: <%= ActiveStorage::FixtureSet.blob filename: "icon1.png" %>
+group1_icon_blob: <%= ActiveStorage::FixtureSet.blob filename: "icon2.png" %>
+group2_icon_blob: <%= ActiveStorage::FixtureSet.blob filename: "icon3.png" %>
+
+nbc_artwork1_blob: <%= ActiveStorage::FixtureSet.blob filename: "artwork1.png" %>
+nbc_artwork2_blob: <%= ActiveStorage::FixtureSet.blob filename: "artwork2.png" %>
+nbc_artwork3_blob: <%= ActiveStorage::FixtureSet.blob filename: "artwork3.png" %>
+
+<% (10..39).each do |n| %>
+nbc_enclosure<%= n %>_blob: <%= ActiveStorage::FixtureSet.blob filename: "audio#{n % 4 + 1}.m4a" %>
+<% end %>
