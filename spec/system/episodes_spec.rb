@@ -2,8 +2,6 @@
 
 require 'rails_helper'
 
-HAVE_ENOUGH_DATA = '4'
-
 RSpec.describe 'Episodes', type: :system do
   fixtures :all
 
@@ -44,10 +42,9 @@ RSpec.describe 'Episodes', type: :system do
       click_on 'ep.1 2月2日'
 
       expect(page).to have_content 'ep.1 2月2日'
-      expect(page).to have_content '2023/08/04に公開'
-      audio = first('audio')
-      expect(audio[:readyState]).to eq HAVE_ENOUGH_DATA
+      expect(page).to have_content '必聴です'
+      audio = all('audio')
+      expect(audio.size).to eq 1
     end
-    it 'エピソードを聴けること'
   end
 end

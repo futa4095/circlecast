@@ -3,10 +3,6 @@
 require 'rails_helper'
 
 RSpec.describe 'Invitations', type: :system do
-  before do
-    driven_by(:rack_test)
-  end
-
   describe 'ログインしている場合' do
     it '招待リンクからグループ加入すること'
     describe '既加入の場合' do
