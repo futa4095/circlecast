@@ -1,5 +1,11 @@
 require 'rails_helper'
 
 RSpec.describe Channel, type: :model do
-  pending "add some examples to (or delete) #{__FILE__}"
+  describe 'title' do
+    it '空文字の場合、無効であること' do
+      channel = Channel.new(title: '')
+      expect(channel.valid?).to be(false)
+      expect(channel.errors[:title]).to include('を入力してください')
+    end
+  end
 end

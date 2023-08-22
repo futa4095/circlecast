@@ -9,7 +9,9 @@ class ChannelsController < ApplicationController
     @channels = @group.channels.order(:id)
   end
 
-  def show; end
+  def show
+    @episodes = @channel.episodes.order(created_at: :desc)
+  end
 
   def new
     @channel = @group.channels.new
