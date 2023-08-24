@@ -11,11 +11,7 @@ module Groups
 
     def update
       @membership = @group.memberships.find_by!(user_id: params[:id])
-      if @membership.update(membership_params)
-        render
-      else
-        render :edit, status: unprocessable_entity
-      end
+      @membership.update!(membership_params)
     end
 
     private
