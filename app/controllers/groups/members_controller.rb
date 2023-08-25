@@ -10,8 +10,13 @@ module Groups
     end
 
     def update
-      @membership = @group.memberships.find_by!(user_id: params[:id])
-      @membership.update!(membership_params)
+      if self_leave?
+        @group.leave_member current_user
+        redirect_to groups_path, notice: "#{@group.name}から脱退しました"
+      else
+        @membership = @group.memberships.find_by!(user_id: params[:id])
+        @membership.update!(membership_params)
+      end
     end
 
     private
@@ -22,6 +27,10 @@ module Groups
 
     def membership_params
       params.require(:membership).permit(:id, :admin, :withdrawal)
+    end
+
+    def self_leave?
+      current_user.id == params[:id].to_i && membership_params[:withdrawal] == 'true'
     end
   end
 end
