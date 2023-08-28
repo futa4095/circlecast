@@ -2,7 +2,7 @@
 
 class Channel < ApplicationRecord
   belongs_to :group
-  has_many :episodes
+  has_many :episodes, dependent: :destroy
   has_one_attached :artwork
 
   validates :title, presence: true, length: { maximum: 100 }
