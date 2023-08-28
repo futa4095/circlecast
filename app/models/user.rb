@@ -13,4 +13,8 @@ class User < ApplicationRecord
   has_many :episodes, through: :channels
 
   validates :name, presence: true
+
+  def active_participating_groups
+    groups.where(memberships: { withdrawal: false }).order(:created_at)
+  end
 end

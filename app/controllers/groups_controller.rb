@@ -5,8 +5,8 @@ class GroupsController < ApplicationController
   before_action :set_group, only: %i[show edit update destroy]
 
   def index
-    @groups = current_user.groups.order(:id)
     join_group if session[:group_to_join].present?
+    @groups = current_user.active_participating_groups
   end
 
   def show
@@ -57,9 +57,10 @@ class GroupsController < ApplicationController
 
   def join_group
     group_id = session[:group_to_join]
-    unless current_user.memberships.exists?(group_id:)
-      membership = current_user.memberships.create(group_id:)
-      flash.now[:notice] = "#{membership.group.name}に加入しました"
+    unless current_user.groups.exists?(group_id)
+      group = Group.find(group_id)
+      group.add_member current_user
+      flash.now[:notice] = "#{group.name}に加入しました"
     end
     session.delete :group_to_join
   end

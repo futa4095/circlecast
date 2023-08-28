@@ -13,4 +13,13 @@ class Group < ApplicationRecord
   validates :icon, content_type: ['image/jpeg', 'image/png', 'image/webp'],
                    dimension: { width: { in: 300..3000 }, height: { in: 300..3000 } },
                    size: { between: (1.kilobyte)..(3.megabyte) }
+
+  def add_member(user)
+    users << user
+  end
+
+  def withdraw_member(user)
+    membership = memberships.find_by(user:)
+    membership.update!(withdrawal: true)
+  end
 end
