@@ -11,7 +11,7 @@ module Groups
 
     def update
       if self_leave?
-        @group.leave_member current_user
+        @group.withdraw_member current_user
         redirect_to groups_path, notice: "#{@group.name}から脱退しました"
       else
         @membership = @group.memberships.find_by!(user_id: params[:id])

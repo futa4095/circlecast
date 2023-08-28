@@ -17,7 +17,7 @@ class Group < ApplicationRecord
   # def add_member(user)
   # end
 
-  def leave_member(user)
+  def withdraw_member(user)
     membership = memberships.find_by(user:)
     membership.update!(withdrawal: true)
   end
