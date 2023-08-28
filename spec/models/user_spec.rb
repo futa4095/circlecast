@@ -10,4 +10,20 @@ RSpec.describe User, type: :model do
       expect(user.errors[:name]).to include('を入力してください')
     end
   end
+
+  describe '#active_participating_groups' do
+    it '参加しているグループをすること' do
+      user = User.create(name: 'test', email: 'test@example.com', password: 'password')
+      active_group = Group.create(name: 'active group')
+      active_group.add_member user
+
+      inactive_group = Group.create(name: 'inactive group')
+      inactive_group.add_member user
+      inactive_group.withdraw_member user
+
+      active_groups = user.active_participating_groups
+      expect(active_groups.size).to eq 1
+      expect(active_groups[0].name).to eq active_group.name
+    end
+  end
 end
