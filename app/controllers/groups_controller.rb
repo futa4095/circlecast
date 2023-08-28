@@ -5,8 +5,8 @@ class GroupsController < ApplicationController
   before_action :set_group, only: %i[show edit update destroy]
 
   def index
-    @groups = current_user.groups.order(:id)
     join_group if session[:group_to_join].present?
+    @groups = current_user.active_participating_groups
   end
 
   def show
