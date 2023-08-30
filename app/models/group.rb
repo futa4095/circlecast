@@ -1,11 +1,11 @@
 # frozen_string_literal: true
 
 class Group < ApplicationRecord
-  has_many :memberships
+  has_many :memberships, dependent: :destroy
   has_many :users, through: :memberships
-  has_many :channels
+  has_many :channels, dependent: :destroy
   has_many :episodes, through: :channels
-  has_one :invitation
+  has_one :invitation, dependent: :destroy
   has_one_attached :icon
 
   validates :name, presence: true, length: { maximum: 100 }
