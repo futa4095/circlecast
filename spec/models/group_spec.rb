@@ -33,4 +33,24 @@ RSpec.describe Group, type: :model do
       expect(membership.withdrawal).to be_truthy
     end
   end
+
+  describe 'associations' do
+    let(:group) { Group.create(name: 'test group') }
+
+    it 'destroys associated memberships when destroyed' do
+      user = User.create(email: 'test@example.com', password: 'password', name: 'test user')
+      group.users << user
+      expect { group.destroy }.to change(Membership, :count).by(-1)
+    end
+
+    it 'destroys associated channels when destroyed' do
+      Channel.create(title: 'test channel', group:)
+      expect { group.destroy }.to change(Channel, :count).by(-1)
+    end
+
+    it 'destroys associated invitation when destroyed' do
+      Invitation.create(group:, token: 'abcdef')
+      expect { group.destroy }.to change(Invitation, :count).by(-1)
+    end
+  end
 end
