@@ -11,7 +11,7 @@
     <p class="my-5"><%= group.description %></p>
     <%= link_to 'グループの編集(管理者のみ)', edit_group_path(group), class: 'mt-2 rounded-lg py-3 px-5 bg-gray-100 inline-block font-medium' %>
     <div class="inline-block ml-2">
-      <%= button_to 'グループの削除(管理者のみ)', group, method: :delete, class: 'mt-2 rounded-lg py-3 px-5 bg-gray-100 font-medium' %>
+      <%= button_to 'グループの削除(管理者のみ)', group, method: :delete, data: { turbo_confirm: "このグループすると、それに関連するデータも失われますが、後で取り消すことはできません。\n\n本当に削除してもよろしいですか？" }, class: 'mt-2 rounded-lg py-3 px-5 bg-gray-100 font-medium' %>
     </div>
     <hr />
     <%= link_to '参加しているグループに戻る', groups_path, class: 'ml-2 rounded-lg py-3 px-5 bg-gray-100 inline-block font-medium' %>
