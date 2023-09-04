@@ -28,6 +28,8 @@ jobs:
         uses: ruby/setup-ruby@v1
         with:
           bundler-cache: true
+      - name: Build TailwindCSS
+        run: bin/rails tailwindcss:build
       - name: Set up database schema
         run: bin/rails db:schema:load
       - name: Run tests
