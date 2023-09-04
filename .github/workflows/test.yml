@@ -22,6 +22,8 @@ jobs:
     steps:
       - name: Checkout code
         uses: actions/checkout@v3
+      - name: Install libvips
+        run: apt install -y libvips
       - name: Install Ruby and gems
         uses: ruby/setup-ruby@v1
         with:
