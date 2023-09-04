@@ -24,10 +24,10 @@ RSpec.describe 'Channels', type: :system do
 
     it '番組を削除すること' do
       visit channel_path(channels(:group2_ch1))
-      click_on '削除'
+      accept_confirm { click_on '削除' }
 
       expect(page).to have_content '番組を削除しました'
-      expect(page).to have_no_content 'ばんぐみ1'
+      expect(page).not_to have_content 'ばんぐみ1'
     end
   end
 
