@@ -1,3 +1,9 @@
+require:
+  - rubocop-capybara
+  - rubocop-performance
+  - rubocop-rails
+  - rubocop-rspec
+
 AllCops:
   NewCops: enable
   Exclude:
@@ -8,9 +14,21 @@ AllCops:
     - storage/**/*
     - tmp/**/*
     - bin/**/*
+    - vendor/**/*
+
 Style/Documentation:
   Enabled: false
+
 Metrics/BlockLength:
   Exclude:
     - spec/models/**
     - spec/system/**
+
+Rails/I18nLocaleTexts:
+  Enabled: false
+
+RSpec/ExampleLength:
+  Enabled: false
+
+RSpec/MultipleExpectations:
+  Enabled: false

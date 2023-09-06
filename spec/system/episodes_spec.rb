@@ -2,7 +2,7 @@
 
 require 'rails_helper'
 
-RSpec.describe 'Episodes', type: :system do
+RSpec.describe 'Episodes' do
   fixtures :all
 
   describe '管理者の場合' do
@@ -25,10 +25,10 @@ RSpec.describe 'Episodes', type: :system do
 
     it 'エピソードを削除すること' do
       visit channel_episode_path(channels(:nbc_channel2), episodes(:nbc_episode21))
-      click_on '削除'
+      accept_confirm { click_on '削除' }
 
       expect(page).to have_content 'エピソードを削除しました'
-      expect(page).to have_no_content 'ep.1 2月2日'
+      expect(page).not_to have_content 'ep.1 2月2日'
     end
   end
 

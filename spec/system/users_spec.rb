@@ -2,7 +2,7 @@
 
 require 'rails_helper'
 
-RSpec.describe 'Users', type: :system do
+RSpec.describe 'Users' do
   it 'ログイン・ログアウトできること' do
     visit new_user_session_path
     fill_in 'メールアドレス', with: 'nakajima@example.com'
@@ -13,6 +13,6 @@ RSpec.describe 'Users', type: :system do
 
     click_on 'ログアウト'
     expect(page).to have_content 'ログアウトしました。'
-    expect(current_path).to eq root_path
+    expect(page).to have_current_path root_path, ignore_query: true
   end
 end

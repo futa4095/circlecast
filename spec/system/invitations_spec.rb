@@ -2,7 +2,7 @@
 
 require 'rails_helper'
 
-RSpec.describe 'Invitations', type: :system do
+RSpec.describe 'Invitations' do
   fixtures :all
   let(:group) { groups(:nbc) }
 
@@ -24,7 +24,7 @@ RSpec.describe 'Invitations', type: :system do
         sign_in users(:nakajima)
         visit invitations_path(group.invitation.token)
 
-        expect(page).to have_no_content "#{group.name}に加入しました"
+        expect(page).not_to have_content "#{group.name}に加入しました"
         expect(page).to have_content group.description
       end
     end
@@ -33,23 +33,23 @@ RSpec.describe 'Invitations', type: :system do
   describe 'ログインしていない場合' do
     it 'ログイン後にグループに加入すること' do
       visit invitations_path(group.invitation.token)
-      expect(current_path).to eq new_user_session_path
+      expect(page).to have_current_path new_user_session_path, ignore_query: true
 
       fill_in 'メールアドレス', with: 'nogroups@example.com'
       fill_in 'パスワード', with: 'password'
       click_on 'ログイン'
 
-      expect(page).to have_no_content "#{group.name}に加入しました"
+      expect(page).not_to have_content "#{group.name}に加入しました"
       expect(page).to have_content group.description
     end
 
     it '新規登録後にグループ加入すること' do
       visit invitations_path(group.invitation.token)
-      expect(current_path).to eq new_user_session_path
+      expect(page).to have_current_path new_user_session_path, ignore_query: true
 
       click_on 'アカウント登録'
       expect(page).to have_content 'ユーザー名'
-      expect(current_path).to eq new_user_registration_path
+      expect(page).to have_current_path new_user_registration_path, ignore_query: true
       fill_in 'ユーザー名', with: 'グループ加入希望者'
       fill_in 'メールアドレス', with: 'kanyuu_shitaiyo@example.com'
       fill_in 'パスワード', with: 'password'

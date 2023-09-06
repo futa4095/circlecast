@@ -2,10 +2,10 @@
 
 require 'rails_helper'
 
-RSpec.describe Group, type: :model do
+RSpec.describe Group do
   describe 'name' do
     it '空文字の場合、無効であること' do
-      group = Group.new(name: '')
+      group = described_class.new(name: '')
       expect(group.valid?).to be(false)
       expect(group.errors[:name]).to include('を入力してください')
     end
@@ -13,7 +13,7 @@ RSpec.describe Group, type: :model do
 
   describe '#add_member' do
     it 'グループにメンバーを追加すること' do
-      group = Group.create(name: 'test group')
+      group = described_class.create(name: 'test group')
       user = User.create(email: 'test@example.com', password: 'password', name: 'test user')
       group.add_member user
 
@@ -24,7 +24,7 @@ RSpec.describe Group, type: :model do
 
   describe '#withdraw_member' do
     it 'withdrawalをtrueに更新すること' do
-      group = Group.create(name: 'test group')
+      group = described_class.create(name: 'test group')
       user = User.create(email: 'test@example.com', password: 'password', name: 'test user')
       group.users << user
       group.withdraw_member user
@@ -35,7 +35,7 @@ RSpec.describe Group, type: :model do
   end
 
   describe 'associations' do
-    let(:group) { Group.create(name: 'test group') }
+    let(:group) { described_class.create(name: 'test group') }
 
     it 'destroys associated memberships when destroyed' do
       user = User.create(email: 'test@example.com', password: 'password', name: 'test user')

@@ -2,10 +2,10 @@
 
 require 'rails_helper'
 
-RSpec.describe User, type: :model do
+RSpec.describe User do
   describe 'name' do
     it '空文字の場合、無効であること' do
-      user = User.new(name: '', email: 'test@example.com', password: 'password')
+      user = described_class.new(name: '', email: 'test@example.com', password: 'password')
       expect(user.valid?).to be(false)
       expect(user.errors[:name]).to include('を入力してください')
     end
@@ -13,7 +13,7 @@ RSpec.describe User, type: :model do
 
   describe '#active_participating_groups' do
     it '参加しているグループを取得すること' do
-      user = User.create(name: 'test', email: 'test@example.com', password: 'password')
+      user = described_class.create(name: 'test', email: 'test@example.com', password: 'password')
       active_group = Group.create(name: 'active group')
       active_group.add_member user
 
