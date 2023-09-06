@@ -2,7 +2,7 @@
 
 require 'rails_helper'
 
-RSpec.describe 'Roots', type: :system do
+RSpec.describe 'Roots' do
   it 'トップページを表示すること' do
     visit root_path
     expect(page).to have_content 'Circle Cast'

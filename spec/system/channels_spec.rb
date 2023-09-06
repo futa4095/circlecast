@@ -2,7 +2,7 @@
 
 require 'rails_helper'
 
-RSpec.describe 'Channels', type: :system do
+RSpec.describe 'Channels' do
   fixtures :all
 
   describe '管理者の場合' do

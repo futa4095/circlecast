@@ -2,7 +2,7 @@
 
 require 'rails_helper'
 
-RSpec.describe 'Episodes', type: :system do
+RSpec.describe 'Episodes' do
   fixtures :all
 
   describe '管理者の場合' do
