@@ -32,12 +32,26 @@ RSpec.describe 'Channels' do
   end
 
   describe 'メンバーの場合' do
-    it 'エピソードを一覧表示すること' do
+    before do
       sign_in users(:nbc_student1)
       visit channel_path(channels(:nbc_channel1))
+    end
 
+    it 'エピソードを一覧表示すること' do
       expect(page).to have_content '第9回のエピソード'
       expect(page).to have_content '第1回のエピソード'
+    end
+
+    it '編集を表示しないこと' do
+      expect(page).not_to have_content '編集'
+    end
+
+    it '削除を表示しないこと' do
+      expect(page).not_to have_content '削除'
+    end
+
+    it 'エピソードの作成を表示しないこと' do
+      expect(page).not_to have_content 'エピソードを作成'
     end
   end
 

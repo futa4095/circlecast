@@ -20,10 +20,41 @@ RSpec.describe 'Groups' do
       expect(page).to have_content '新しいグループ'
     end
 
-    it 'グループを削除すること', pending: 'バグ解消待ち' do
+    it 'グループを削除すること' do
       group = groups(:group1)
-      visit groups_path(group)
-      click_on 'グループを削除'
+      visit group_path(group)
+      accept_confirm { click_on 'グループの削除' }
+      expect(page).not_to have_content group.name
+    end
+  end
+
+  describe 'メンバーの場合' do
+    before do
+      sign_in users(:nbc_student1)
+    end
+
+    it 'グループを編集が表示されないこと' do
+      group = groups(:nbc)
+      visit group_path(group)
+      expect(page).not_to have_content 'グループの編集'
+    end
+
+    it 'グループを削除が表示されないこと' do
+      group = groups(:nbc)
+      visit group_path(group)
+      expect(page).not_to have_content 'グループの削除'
+    end
+
+    it '番組が作るが表示されないこと' do
+      group = groups(:nbc)
+      visit group_path(group)
+      expect(page).not_to have_content '番組を作る'
+    end
+
+    it 'グループに招待が表示されないこと' do
+      group = groups(:nbc)
+      visit group_path(group)
+      expect(page).not_to have_content 'グループに招待'
     end
   end
 

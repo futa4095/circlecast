@@ -2,7 +2,8 @@
 
 class ChannelsController < ApplicationController
   before_action :authenticate_user!
-  before_action :set_group, only: %i[index new create destroy]
+  before_action :set_group, only: %i[index new edit update create destroy]
+  before_action :require_group_admin, only: %i[new create edit update destroy]
   before_action :set_channel, only: %i[show edit update destroy]
 
   def index
@@ -54,5 +55,11 @@ class ChannelsController < ApplicationController
 
   def channel_params
     params.require(:channel).permit(:title, :description, :artwork)
+  end
+
+  def require_group_admin
+    return if @group.admin? current_user
+
+    redirect_back fallback_location: @group, alert: 'この操作を行うには、グループ管理者である必要があります'
   end
 end

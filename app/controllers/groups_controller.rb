@@ -3,6 +3,7 @@
 class GroupsController < ApplicationController
   before_action :authenticate_user!
   before_action :set_group, only: %i[show edit update destroy]
+  before_action :require_group_admin, only: %i[edit update destroy]
 
   def index
     join_group if session[:group_to_join].present?
@@ -63,5 +64,11 @@ class GroupsController < ApplicationController
       flash.now[:notice] = "#{group.name}に加入しました"
     end
     session.delete :group_to_join
+  end
+
+  def require_group_admin
+    return if @group.admin? current_user
+
+    redirect_back fallback_location: @group, alert: 'この操作を行うには、グループ管理者である必要があります'
   end
 end

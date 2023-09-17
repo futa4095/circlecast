@@ -22,4 +22,9 @@ class Group < ApplicationRecord
     membership = memberships.find_by(user:)
     membership.update!(withdrawal: true)
   end
+
+  def admin?(user)
+    membership = memberships.find_by(user:)
+    membership&.admin
+  end
 end

@@ -35,10 +35,10 @@ RSpec.describe 'Episodes' do
   describe 'メンバーの場合' do
     before do
       sign_in users(:nbc_student1)
+      visit channel_path(channels(:nbc_channel2))
     end
 
     it 'エピソードを表示すること' do
-      visit channel_path(channels(:nbc_channel2))
       click_on 'ep.1 2月2日'
 
       expect(page).to have_content 'ep.1 2月2日'
@@ -46,5 +46,13 @@ RSpec.describe 'Episodes' do
       audio = all('audio')
       expect(audio.size).to eq 1
     end
+  end
+
+  it '編集を表示しないこと' do
+    expect(page).not_to have_content '編集'
+  end
+
+  it '削除を表示しないこと' do
+    expect(page).not_to have_content '削除'
   end
 end
