@@ -4,7 +4,7 @@ module Groups
   class MembersController < ApplicationController
     before_action :authenticate_user!
     before_action :set_group
-    before_action :require_group_admin
+    before_action :require_group_admin, except: [:update]
 
     def index
       @memberships = @group.memberships.order(admin: :desc, id: :asc)
@@ -15,6 +15,7 @@ module Groups
         @group.withdraw_member current_user
         redirect_to groups_path, notice: "#{@group.name}から脱退しました"
       else
+        require_group_admin
         @membership = @group.memberships.find_by!(user_id: params[:id])
         @membership.update!(membership_params)
       end
