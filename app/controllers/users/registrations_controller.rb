@@ -26,9 +26,9 @@ module Users
     # end
 
     # DELETE /resource
-    # def destroy
-    #   super
-    # end
+    def destroy
+      redirect_to edit_user_registration_path, alert: 'アカウントの削除は許可されていません'
+    end
 
     # GET /resource/cancel
     # Forces the session data which is usually expired after sign
