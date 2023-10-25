@@ -11,6 +11,7 @@ RSpec.describe 'Users' do
     expect(page).to have_content 'ログインしました。'
     expect(page).to have_content '参加しているグループ'
 
+    find('header nav svg').click
     click_on 'ログアウト'
     expect(page).to have_content 'ログアウトしました。'
     expect(page).to have_current_path root_path, ignore_query: true
