@@ -24,6 +24,7 @@
       group_member_path(group, current_user),
       method: :patch,
       params: { membership: { withdrawal: true } },
+      data: { turbo_confirm: '脱退すると、グループの番組を利用できなくなります。よろしいですか？' },
       class: 'ml-2 rounded-lg py-3 px-5 bg-gray-100 inline-block font-medium'
     ) %>
   </div>
