@@ -11,7 +11,7 @@ RSpec.describe User do
     end
   end
 
-  describe '#active_participating_groups' do
+  describe '#groups' do
     it '参加しているグループを取得すること' do
       user = described_class.create(name: 'test', email: 'test@example.com', password: 'password')
       active_group = Group.create(name: 'active group')
@@ -21,7 +21,7 @@ RSpec.describe User do
       inactive_group.add_member user
       inactive_group.withdraw_member user
 
-      active_groups = user.active_participating_groups
+      active_groups = user.groups
       expect(active_groups.size).to eq 1
       expect(active_groups[0].name).to eq active_group.name
     end

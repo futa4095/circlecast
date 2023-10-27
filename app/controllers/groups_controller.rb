@@ -7,7 +7,7 @@ class GroupsController < ApplicationController
 
   def index
     join_group if session[:group_to_join].present?
-    @groups = current_user.active_participating_groups
+    @groups = current_user.groups.order(:created_at)
   end
 
   def show
