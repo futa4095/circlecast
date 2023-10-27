@@ -26,4 +26,22 @@ RSpec.describe User do
       expect(active_groups[0].name).to eq active_group.name
     end
   end
+
+  describe '#channels' do
+    it '参加しているグループの番組を取得すること' do
+      user = described_class.create(name: 'test', email: 'test@example.com', password: 'password')
+      active_group = Group.create(name: 'active group')
+      active_group.add_member user
+      active_group.channels.create(title: 'active channel')
+
+      inactive_group = Group.create(name: 'inactive group')
+      inactive_group.add_member user
+      inactive_group.withdraw_member user
+      inactive_group.channels.create(title: 'inactive channel')
+
+      active_channels = user.channels
+      expect(active_channels.size).to eq 1
+      expect(active_channels[0].title).to eq 'active channel'
+    end
+  end
 end
