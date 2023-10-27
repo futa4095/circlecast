@@ -8,12 +8,15 @@ class User < ApplicationRecord
          :confirmable, :timeoutable
 
   has_many :memberships, dependent: :destroy
-  has_many :channels, through: :groups
   has_many :episodes, through: :channels
 
   validates :name, presence: true
 
   def groups
     Group.joins(:memberships).where(memberships: { user: self, withdrawal: false })
+  end
+
+  def channels
+    Channel.joins(group: :memberships).where(memberships: { user: self, withdrawal: false })
   end
 end
