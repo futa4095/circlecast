@@ -8,7 +8,6 @@ class User < ApplicationRecord
          :confirmable, :timeoutable
 
   has_many :memberships, dependent: :destroy
-  has_many :episodes, through: :channels
 
   validates :name, presence: true
 
