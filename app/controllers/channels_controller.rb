@@ -11,7 +11,7 @@ class ChannelsController < ApplicationController
   end
 
   def show
-    @episodes = @channel.episodes.order(created_at: :desc)
+    @episodes = @channel.episodes.order(created_at: :desc).page(params[:page])
   end
 
   def new
