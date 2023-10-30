@@ -28,3 +28,9 @@ membership4:
   user: nakajima
   group: group2
   admin: true
+
+<% 50.times do |n| %>
+membership5_<%= n %>:
+  user: nakajima
+  group: group_<%= n %>
+<% end %>

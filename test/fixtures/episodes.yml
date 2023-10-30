@@ -1,10 +1,10 @@
-<% 10.times do |n| %>
+<% 50.times do |n| %>
 nbc_episode1<%= n %>:
   channel: nbc_channel1
   title: 第<%= n %>回のエピソード
   description: 必聴です
-  created_at: <%= Time.now - 12.days + n.days %>
-  updated_at: <%= Time.now - 10.days + n.days %>
+  created_at: <%= Time.now - 52.days + n.days %>
+  updated_at: <%= Time.now - 50.days + n.days %>
 <% end %>
 
 <% 10.times do |n| %>
