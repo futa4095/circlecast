@@ -11,7 +11,7 @@ class GroupsController < ApplicationController
   end
 
   def show
-    @episodes = @group.episodes.order(created_at: :desc)
+    @episodes = @group.episodes.order(created_at: :desc).page(params[:page])
   end
 
   def new
