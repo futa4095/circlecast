@@ -7,6 +7,7 @@
   <div id="groups" class="min-w-full space-y-2">
     <% if @groups.present? %>
       <%= render @groups %>
+      <%= paginate @groups %>
     <% else %>
       <div class="p-4 my-4 text-blue-800 border border-blue-300 rounded-lg bg-blue-50" role="alert">
         <div class="flex items-center">
