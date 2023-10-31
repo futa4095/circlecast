@@ -3,7 +3,7 @@ nbc_admin:
   group: nbc
   admin: true
 
-<% 10.times do |n| %>
+<% 30.times do |n| %>
 nbc_student<%= n %>:
   user: nbc_student<%= n %>
   group: nbc
