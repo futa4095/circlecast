@@ -10,6 +10,12 @@ nbc_channel3:
   group: nbc
   title: 中島トーク
   description: 不定期更新
+<% 50.times do |n| %>
+nbc_ch<%= n %>:
+  group: nbc
+  title: ザ・番組<%= n %>
+  description: ページネーションの確認に使います
+<% end %>
 
 <% 10.times do |n| %>
 group2_ch<%= n %>:

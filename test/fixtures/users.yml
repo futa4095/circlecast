@@ -4,7 +4,7 @@ nakajima:
   encrypted_password: <%= Devise::Encryptor.digest(User, 'password') %>
   confirmed_at: <%= Time.now %>
 
-<% 10.times do |n| %>
+<% 30.times do |n| %>
 nbc_student<%= n %>:
   email: nbc_student<%= n %>@example.com
   name: nbc_student<%= n %>

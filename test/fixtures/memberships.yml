@@ -3,7 +3,7 @@ nbc_admin:
   group: nbc
   admin: true
 
-<% 10.times do |n| %>
+<% 30.times do |n| %>
 nbc_student<%= n %>:
   user: nbc_student<%= n %>
   group: nbc
@@ -28,3 +28,9 @@ membership4:
   user: nakajima
   group: group2
   admin: true
+
+<% 50.times do |n| %>
+membership5_<%= n %>:
+  user: nakajima
+  group: group_<%= n %>
+<% end %>

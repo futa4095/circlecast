@@ -56,6 +56,7 @@ gem 'image_processing', '~> 1.2'
 gem 'active_storage_validations'
 gem 'devise'
 gem 'devise-i18n'
+gem 'kaminari'
 gem 'ruby-vips'
 
 group :development, :test do

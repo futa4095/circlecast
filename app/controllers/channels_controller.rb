@@ -7,11 +7,11 @@ class ChannelsController < ApplicationController
   before_action :set_channel, only: %i[show edit update destroy]
 
   def index
-    @channels = @group.channels.order(:id)
+    @channels = @group.channels.order(:id).page(params[:page])
   end
 
   def show
-    @episodes = @channel.episodes.order(created_at: :desc)
+    @episodes = @channel.episodes.order(created_at: :desc).page(params[:page])
   end
 
   def new
