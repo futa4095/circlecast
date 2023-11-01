@@ -9,12 +9,12 @@
 -%>
 <li>
   <% if page.current? %>
-  <span aria-current="page" class="page current z-10 flex items-center justify-center px-3 h-8 leading-tight text-blue-600 border border-blue-300 bg-blue-50 hover:bg-blue-100 hover:text-blue-700">
-    <%= link_to_unless page.current?, page, url, {remote: remote, rel: page.rel} %>
-  </span>
+    <span aria-current="page" class="page current z-10 flex items-center justify-center px-3 h-8 leading-tight text-blue-600 border border-blue-300 bg-blue-50 hover:bg-blue-100 hover:text-blue-700">
+      <%= page %>
+    </span>
   <% else %>
-  <span class="page flex items-center justify-center px-3 h-8 leading-tight text-gray-500 bg-white border border-gray-300 hover:bg-gray-100 hover:text-gray-700">
-    <%= link_to_unless page.current?, page, url, {remote: remote, rel: page.rel} %>
-  </span>
+    <span class="page">
+      <%= link_to page, url, {remote: remote, rel: page.rel, class: 'flex items-center justify-center px-3 h-8 leading-tight text-gray-500 bg-white border border-gray-300 hover:bg-gray-100 hover:text-gray-700'} %>
+    </span>
   <% end %>
 </li>
