@@ -8,6 +8,11 @@
 -%>
 <li>
   <span class="last">
-    <%= link_to_unless current_page.last?, t('views.pagination.last').html_safe, url, remote: remote, class: 'flex items-center justify-center px-3 h-8 leading-tight text-gray-500 bg-white border border-gray-300 rounded-r-lg hover:bg-gray-100 hover:text-gray-700' %>
+    <%= link_to url, class: 'flex items-center justify-center px-3 h-8 leading-tight text-gray-500 bg-white border border-gray-300 rounded-r-lg hover:bg-gray-100 hover:text-gray-700' do %>
+      <span class="sr-only">Last</span>
+      <svg class="w-2.5 h-2.5" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 12 10">
+        <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="m7 9 4-4-4-4M1 9l4-4-4-4"/>
+      </svg>
+    <% end %>
   </span>
 </li>
