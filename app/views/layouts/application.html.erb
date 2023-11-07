@@ -1,8 +1,9 @@
 <!DOCTYPE html>
 <html lang="ja">
   <head>
-    <title>Circle Cast(仮)</title>
+    <title><%= yield :title %>Circle Cast</title>
     <meta name="viewport" content="width=device-width,initial-scale=1">
+    <meta name="description" content="<%= yield :meta_description %>プライベートな空間でポッドキャストを共有。グループ内のコミュニケーションを最適化しましょう。">
     <%= csrf_meta_tags %>
     <%= csp_meta_tag %>
     <%= stylesheet_link_tag 'tailwind', 'inter-font', 'data-turbo-track': 'reload' %>
