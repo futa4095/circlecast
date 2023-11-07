@@ -114,6 +114,8 @@ GEM
     devise-i18n (1.11.0)
       devise (>= 4.9.0)
     diff-lcs (1.5.0)
+    dockerfile-rails (1.5.12)
+      rails (>= 3.0.0)
     erb_lint (0.4.0)
       activesupport
       better_html (>= 2.0.1)
@@ -297,6 +299,11 @@ GEM
       rexml (~> 3.2, >= 3.2.5)
       rubyzip (>= 1.2.2, < 3.0)
       websocket (~> 1.0)
+    sentry-rails (5.12.0)
+      railties (>= 5.0)
+      sentry-ruby (~> 5.12.0)
+    sentry-ruby (5.12.0)
+      concurrent-ruby (~> 1.0, >= 1.0.2)
     smart_properties (1.17.0)
     sprockets (4.2.0)
       concurrent-ruby (~> 1.0)
@@ -349,6 +356,7 @@ DEPENDENCIES
   debug
   devise
   devise-i18n
+  dockerfile-rails (>= 1.5)
   erb_lint
   i18n_generators
   image_processing (~> 1.2)
@@ -366,6 +374,8 @@ DEPENDENCIES
   rubocop-rspec
   ruby-vips
   selenium-webdriver
+  sentry-rails (~> 5.12)
+  sentry-ruby (~> 5.12)
   sprockets-rails
   stimulus-rails
   tailwindcss-rails
