@@ -57,6 +57,7 @@ gem 'active_storage_validations'
 gem 'devise'
 gem 'devise-i18n'
 gem 'kaminari'
+gem 'resend'
 gem 'ruby-vips'
 
 group :development, :test do
