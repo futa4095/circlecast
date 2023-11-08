@@ -57,6 +57,7 @@ gem 'active_storage_validations'
 gem 'devise'
 gem 'devise-i18n'
 gem 'kaminari'
+gem 'resend'
 gem 'ruby-vips'
 
 group :development, :test do
@@ -79,7 +80,6 @@ group :development do
   gem 'erb_lint', require: false
   gem 'i18n_generators'
   gem 'letter_opener_web', '~> 2.0'
-  gem 'resend'
   gem 'rubocop', require: false
   gem 'rubocop-performance', require: false
   gem 'rubocop-rails', require: false
