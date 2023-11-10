@@ -6,6 +6,14 @@ local:
   service: Disk
   root: <%= Rails.root.join("storage") %>
 
+google_cloud_storage:
+  service: S3
+  endpoint: https://storage.googleapis.com
+  access_key_id: <%= ENV['GCS_ACCESS_KEY'] %>
+  secret_access_key: <%= ENV['GCS_SECRET_KEY'] %>
+  region: auto
+  bucket: circlecast-<%= Rails.env %>
+
 # Use bin/rails credentials:edit to set the AWS secrets (as aws:access_key_id|secret_access_key)
 # amazon:
 #   service: S3

@@ -6,6 +6,7 @@
 app = "circlecast"
 primary_region = "nrt"
 console_command = "/rails/bin/rails console"
+swap_size_mb = 512
 
 [build]
 
