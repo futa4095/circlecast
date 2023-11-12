@@ -17,9 +17,7 @@
       <% end %>
     </p>
 
-    <p class="my-5">
-      <%= @episode.description %>
-    </p>
+    <%= simple_format h(@episode.description), class: 'my-5' %>
 
     <div class="my-5">
       <% if @episode.enclosure.attached? %>
