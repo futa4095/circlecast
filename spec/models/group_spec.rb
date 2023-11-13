@@ -53,4 +53,28 @@ RSpec.describe Group do
       expect { group.destroy }.to change(Invitation, :count).by(-1)
     end
   end
+
+  describe '#admin?'
+
+  describe '#only_one_admin?' do
+    it '管理者が1人の場合, trueになること' do
+      group = described_class.create(name: 'test group')
+      user = User.create(email: 'test@example.com', password: 'password', name: 'test user')
+      group.memberships.create(user:, admin: true)
+      withdrawn_user = User.create(email: 'withdrawn@example.com', password: 'password', name: 'withdrawn user')
+      group.memberships.create(user: withdrawn_user, admin: true, withdrawal: true)
+
+      expect(group).to be_only_one_admin
+    end
+
+    it '管理者が2人の場合, falseになること' do
+      group = described_class.create(name: 'test group')
+      user = User.create(email: 'test@example.com', password: 'password', name: 'test user')
+      group.memberships.create(user:, admin: true)
+      second_user = User.create(email: 'second@example.com', password: 'password', name: 'second user')
+      group.memberships.create(user: second_user, admin: true)
+
+      expect(group).not_to be_only_one_admin
+    end
+  end
 end
