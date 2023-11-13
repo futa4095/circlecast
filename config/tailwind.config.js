@@ -12,6 +12,7 @@ module.exports = {
     extend: {
       fontFamily: {
         sans: ['Inter var', ...defaultTheme.fontFamily.sans],
+        logo: ['Poppins'],
       },
       colors: {
         primary: colors.blue,
