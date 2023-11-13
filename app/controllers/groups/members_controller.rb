@@ -12,6 +12,10 @@ module Groups
 
     def update
       if self_leave?
+        if @group.admin?(current_user) && @group.only_one_admin?
+          redirect_to @group, alert: '唯一の管理者が脱退することはできません'
+          return
+        end
         @group.withdraw_member current_user
         redirect_to groups_path, notice: "#{@group.name}から脱退しました"
       else
