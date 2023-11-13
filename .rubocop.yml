@@ -19,10 +19,16 @@ AllCops:
 Style/Documentation:
   Enabled: false
 
+Metrics/AbcSize:
+  Max: 20
+
 Metrics/BlockLength:
   Exclude:
     - spec/models/**
     - spec/system/**
+
+Metrics/MethodLength:
+  Max: 15
 
 Rails/I18nLocaleTexts:
   Enabled: false

@@ -27,4 +27,8 @@ class Group < ApplicationRecord
     membership = memberships.find_by(user:)
     membership&.admin
   end
+
+  def only_one_admin?
+    memberships.where(admin: true, withdrawal: false).count == 1
+  end
 end
