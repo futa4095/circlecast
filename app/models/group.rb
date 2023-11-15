@@ -31,4 +31,8 @@ class Group < ApplicationRecord
   def only_one_admin?
     memberships.where(admin: true, withdrawal: false).count == 1
   end
+
+  def recent_episodes
+    Episode.eager_load(:channel).where(channel: { group: self }).order(created_at: :desc)
+  end
 end
