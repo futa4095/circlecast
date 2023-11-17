@@ -7,11 +7,11 @@ class GroupsController < ApplicationController
 
   def index
     join_group if session[:group_to_join].present?
-    @groups = current_user.groups.order(:created_at).page(params[:page])
+    @groups = current_user.groups.order(:created_at).with_attached_icon.page(params[:page])
   end
 
   def show
-    @episodes = @group.episodes.order(created_at: :desc).page(params[:page])
+    @episodes = @group.recent_episodes.page(params[:page])
   end
 
   def new

@@ -7,7 +7,7 @@ module Groups
     before_action :require_group_admin, except: [:update]
 
     def index
-      @memberships = @group.memberships.order(admin: :desc, id: :asc).page(params[:page])
+      @memberships = @group.memberships.eager_load(:user).order(admin: :desc, id: :asc).page(params[:page])
     end
 
     def update

@@ -7,7 +7,7 @@ class ChannelsController < ApplicationController
   before_action :set_channel, only: %i[show edit update destroy]
 
   def index
-    @channels = @group.channels.order(:id).page(params[:page])
+    @channels = @group.channels.with_attached_artwork.order(:id).page(params[:page])
   end
 
   def show

@@ -12,9 +12,10 @@ RSpec.describe Episode do
                                        enclosure: fixture_file_upload('audio1.m4a', 'audio/mp4'))
       expect(episode.updated?).to be(false)
 
-      travel 1.day
-      episode.update(title: 'Updated Test Episode')
-      expect(episode.updated?).to be(true)
+      travel 1.day do
+        episode.update(title: 'Updated Test Episode')
+        expect(episode.updated?).to be(true)
+      end
     end
   end
 end
