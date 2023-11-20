@@ -42,7 +42,7 @@
                   ></path>
                 </svg>
               </button>
-              <div x-show="open" @click.away="open = false" class="absolute right-0 mt-2 w-40 bg-white border border-gray-200 rounded-lg shadow-lg group-hover:block z-10">
+              <div x-show="open" @click.away="open = false" class="absolute right-0 mt-2 w-40 bg-white border border-gray-300 rounded-lg group-hover:block z-10">
                 <%= link_to '参加グループ', groups_path, class: 'flex w-full items-center rounded-md px-3 py-2 text-gray-700 hover:bg-gray-100' %>
                 <%= link_to 'ユーザー情報', edit_user_registration_path, class: 'flex w-full items-center rounded-md px-3 py-2 text-gray-700 hover:bg-gray-100' %>
                 <%= button_to 'ログアウト', destroy_user_session_path, method: :delete, class: 'flex w-full items-center rounded-md px-3 py-2 text-gray-700 hover:bg-gray-100' %>
@@ -65,7 +65,7 @@
       </div>
       <%= yield %>
     </main>
-    <footer class="bg-white rounded-lg shadow m-4">
+    <footer class="bg-white rounded-lg m-4">
       <div class="w-full mx-auto max-w-screen-xl p-4 md:flex md:items-center md:justify-between">
         <a href="https://twitter.com/futa4095" target="_blank" class="text-sm text-gray-500 sm:text-center">© 2023 futa4095
         </a>
