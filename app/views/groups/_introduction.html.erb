@@ -8,7 +8,12 @@
   </div>
   <div>
     <h1 class="font-bold text-4xl"><%= group.name %></h1>
-    <%= simple_format h(group.description), class: 'my-5' %>
+    <input type="checkbox" id="toggle_show_hidden" class="peer invisible absolute">
+    <div class="my-2 max-h-24 overflow-hidden transition-all ease-out peer-checked:max-h-[100rem] peer-checked:overflow-visible">
+      <%= simple_format h(group.description), class: 'leading-6' %>
+    </div>
+    <label for="toggle_show_hidden" class="block text-blue-600 cursor-pointer peer-checked:hidden">続きを見る</label>
+    <label for="toggle_show_hidden" class="text-blue-600 cursor-pointer hidden peer-checked:block">閉じる</label>
     <% if group.admin? current_user %>
       <%= link_to 'グループの編集(管理者のみ)', edit_group_path(group), class: 'mt-2 rounded-lg py-3 px-5 bg-gray-100 inline-block font-medium' %>
       <div class="inline-block ml-2">
