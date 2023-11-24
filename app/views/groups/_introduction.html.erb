@@ -3,7 +3,7 @@
     <% if group.icon.attached? %>
       <%= image_tag group.icon %>
     <% else %>
-      アイコン画像はありません(TODO: デフォルト画像を置く)
+      <%= image_tag 'default-group.svg', size: '300' %>
     <% end %>
   </div>
   <div>

@@ -4,7 +4,7 @@
       <% if channel.artwork.attached? %>
         <%= image_tag channel.artwork %>
       <% else %>
-        アートワーク画像はありません(TODO: デフォルト画像を置く)
+        <%= image_tag 'default-channel.svg', size: '160' %>
       <% end %>
     </div>
     <div class="flex flex-col justify-between p-4 leading-normal">
