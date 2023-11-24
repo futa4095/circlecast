@@ -4,7 +4,7 @@
       <% if group.icon.attached? %>
           <%= image_tag group.icon %>
       <% else %>
-        アイコン画像はありません(TODO: デフォルト画像を置く)
+        <%= image_tag 'default-group.svg', size: '160' %>
       <% end %>
     </div>
     <div class="flex flex-col justify-between p-4 leading-normal">
