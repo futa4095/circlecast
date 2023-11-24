@@ -6,7 +6,7 @@
         <% if @channel.artwork.attached? %>
           <%= image_tag @channel.artwork %>
         <% else %>
-          アートワーク画像はありません
+          <%= image_tag 'default-channel.svg', size: '300' %>
         <% end %>
       </div>
       <div>
