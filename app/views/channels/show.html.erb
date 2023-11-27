@@ -2,11 +2,11 @@
 <div class="w-full">
   <div>
     <div class="flex">
-      <div class="m-3">
+      <div class="m-4">
         <% if @channel.artwork.attached? %>
-          <%= image_tag @channel.artwork %>
+          <%= image_tag @channel.artwork, class: 'w-72 max-w-none' %>
         <% else %>
-          <%= image_tag 'default-channel.svg', size: '300' %>
+          <%= image_tag 'default-channel.svg', class: 'w-72 max-w-none' %>
         <% end %>
       </div>
       <div>
