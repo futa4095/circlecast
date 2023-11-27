@@ -1,9 +1,9 @@
 <div class="flex">
-  <div class="m-3">
+  <div class="m-4">
     <% if group.icon.attached? %>
-      <%= image_tag group.icon %>
+      <%= image_tag group.icon, class: 'w-72 max-w-none' %>
     <% else %>
-      <%= image_tag 'default-group.svg', size: '300' %>
+      <%= image_tag 'default-group.svg', class: 'w-72 max-w-none' %>
     <% end %>
   </div>
   <div>
