@@ -12,25 +12,25 @@
     <div class="my-2 max-h-24 overflow-hidden transition-all ease-out peer-checked:max-h-[100rem] peer-checked:overflow-visible">
       <%= simple_format h(group.description), class: 'leading-6' %>
     </div>
-    <label for="toggle_show_hidden" class="block text-blue-600 cursor-pointer peer-checked:hidden">続きを見る</label>
-    <label for="toggle_show_hidden" class="text-blue-600 cursor-pointer hidden peer-checked:block">閉じる</label>
+    <label for="toggle_show_hidden" class="block text-blue-700 cursor-pointer peer-checked:hidden">続きを見る</label>
+    <label for="toggle_show_hidden" class="text-blue-700 cursor-pointer hidden peer-checked:block">閉じる</label>
     <% if group.admin? current_user %>
-      <%= link_to 'グループの編集(管理者のみ)', edit_group_path(group), class: 'mt-2 rounded-lg py-3 px-5 bg-gray-100 inline-block font-medium' %>
-      <div class="inline-block ml-2">
-        <%= button_to 'グループの削除(管理者のみ)', group, method: :delete, data: { turbo_confirm: "このグループすると、それに関連するデータも失われますが、後で取り消すことはできません。\n\n本当に削除してもよろしいですか？" }, class: 'mt-2 rounded-lg py-3 px-5 bg-gray-100 font-medium' %>
+      <%= link_to 'グループの編集', edit_group_path(group), class: 'text-blue-600 hover:text-white border border-blue-600 hover:bg-blue-600 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center me-2 mb-2' %>
+      <div class="inline-block me-2 mb-2">
+        <%= button_to 'グループの削除', group, method: :delete, data: { turbo_confirm: "このグループを削除すると、それに関連するデータも失われますが、後で取り消すことはできません。\n\n本当に削除してもよろしいですか？" }, class: 'text-blue-600 hover:text-white border border-blue-600 hover:bg-blue-600 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center' %>
       </div>
-      <hr />
-      <%= link_to '番組を作る(管理者のみ)', new_group_channel_path(group), class: 'ml-2 rounded-lg py-3 px-5 bg-gray-100 inline-block font-medium' %>
+      <%= link_to '番組を作る', new_group_channel_path(group), class: 'text-white bg-blue-600 hover:bg-blue-700 focus:ring-4 focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 me-2 mb-2' %>
       <%= render 'groups/invitation_modal', group: %>
     <% end %>
-    <%= link_to '参加しているグループに戻る', groups_path, class: 'ml-2 rounded-lg py-3 px-5 bg-gray-100 inline-block font-medium' %>
-    <%= button_to(
-      'このグループから脱退する',
-      group_member_path(group, current_user),
-      method: :patch,
-      params: { membership: { withdrawal: true } },
-      data: { turbo_confirm: '脱退すると、グループの番組を利用できなくなります。よろしいですか？' },
-      class: 'ml-2 rounded-lg py-3 px-5 bg-gray-100 inline-block font-medium'
-    ) %>
+    <div class="inline-block me-2 mb-2">
+      <%= button_to(
+        'グループから脱退する',
+        group_member_path(group, current_user),
+        method: :patch,
+        params: { membership: { withdrawal: true } },
+        data: { turbo_confirm: '脱退すると、グループの番組を利用できなくなります。よろしいですか？' },
+        class: 'text-blue-600 hover:text-white border border-blue-600 hover:bg-blue-600 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center me-2 mb-2'
+      ) %>
+    </div>
   </div>
 </div>

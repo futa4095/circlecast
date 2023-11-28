@@ -14,13 +14,13 @@
         <h1 class="font-bold text-4xl"><%= @channel.title %></h1>
         <%= simple_format h(@channel.description), class: 'my-3' %>
         <% if @channel.group.admin? current_user %>
-          <%= link_to '編集', edit_group_channel_path(@channel.group), class: 'mt-2 rounded-lg py-3 px-5 bg-gray-100 inline-block font-medium' %>
+          <%= link_to '編集', edit_group_channel_path(@channel.group), class: 'text-blue-600 hover:text-white border border-blue-600 hover:bg-blue-600 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center me-2 mb-2' %>
           <div class="inline-block ml-2">
-            <%= button_to '削除', [@channel.group, @channel], method: :delete, data: { turbo_confirm: "この番組を削除すると、それに関連するエピソードも失われます。\n\n本当に削除してもよろしいですか？" }, class: 'mt-2 rounded-lg py-3 px-5 bg-gray-100 font-medium' %>
+            <%= button_to '削除', [@channel.group, @channel], method: :delete, data: { turbo_confirm: "この番組を削除すると、それに関連するエピソードも失われます。\n\n本当に削除してもよろしいですか？" }, class: 'text-blue-600 hover:text-white border border-blue-600 hover:bg-blue-600 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center me-2 mb-2' %>
           </div>
-          <%= link_to 'エピソードを作成', new_channel_episode_path(@channel), class: 'ml-2 rounded-lg py-3 px-5 bg-gray-100 inline-block font-medium' %>
+          <%= link_to 'エピソードを作成', new_channel_episode_path(@channel), class: 'text-white bg-blue-600 hover:bg-blue-700 focus:ring-4 focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 me-2 mb-2' %>
         <% end %>
-        <%= link_to '戻る', group_channels_path(@channel.group), class: 'ml-2 rounded-lg py-3 px-5 bg-gray-100 inline-block font-medium' %>
+        <%= link_to '戻る', group_channels_path(@channel.group), class: 'text-blue-600 hover:text-white border border-blue-600 hover:bg-blue-600 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center me-2 mb-2' %>
       </div>
     </div>
   </div>

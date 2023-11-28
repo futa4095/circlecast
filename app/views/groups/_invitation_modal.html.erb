@@ -9,8 +9,8 @@
 <%= invitations_url group.invitation.token %>
 
 [サービス名]にはユーザー登録が必要です。リンク先で簡単な登録手続きを行い、すぐに素晴らしいポッドキャストコンテンツを楽しんでください！
-` }">
-  <button @click="invitationText=defaultText; dialog.showModal()" class="ml-2 rounded-lg py-3 px-5 bg-gray-100 inline-block font-medium">グループに招待</button>
+` }" class="inline-block">
+  <button @click="invitationText=defaultText; dialog.showModal()" class="text-blue-600 hover:text-white border border-blue-600 hover:bg-blue-600 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center me-2 mb-2">グループに招待</button>
   <dialog
     x-data="{ close() { $el.close() } }"
     @click="$event.target === $el && close"
