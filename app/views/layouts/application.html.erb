@@ -51,6 +51,14 @@
             </div>
           </div>
         </nav>
+      <% else %>
+        <nav>
+          <div class="p-4">
+            <%= link_to root_path do %>
+              <p class="font-logo text-3xl text-blue-600">CIRCLECAST</p>
+            <% end %>
+          </div>
+        </nav>
       <% end %>
     </header>
     <main class="container mx-auto mt-20 px-5 flex flex-col">
