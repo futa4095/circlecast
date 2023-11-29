@@ -2,7 +2,7 @@
 <div class="w-full">
   <div class="flex justify-between items-center mb-4">
     <h1 class="font-bold text-4xl">参加しているグループ</h1>
-    <%= link_to 'グループを作る', new_group_path, class: 'rounded-lg py-3 px-5 bg-blue-600 text-white block font-medium' %>
+    <%= link_to 'グループを作る', new_group_path, class: 'text-white bg-blue-600 hover:bg-blue-700 focus:ring-4 focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 me-2 mb-2' %>
   </div>
 
   <div id="groups" class="min-w-full space-y-2">
@@ -19,7 +19,7 @@
           <p>グループを作ると、グループ内のメンバーにポッドキャストを公開できます！</p>
         </div>
         <div class="flex">
-          <%= link_to 'グループを作る', new_group_path, class: 'text-white bg-blue-800 hover:bg-blue-900 focus:ring-4 focus:outline-none focus:ring-blue-200 font-medium rounded-lg text-xs px-3 py-1.5 mr-2 text-center inline-flex items-center' %>
+          <%= link_to 'グループを作る', new_group_path, class: 'text-white bg-blue-600 hover:bg-blue-700 focus:ring-4 focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 me-2 mb-2' %>
         </div>
       </div>
     <% end %>

@@ -14,7 +14,7 @@
           </li>
           <% if @group.admin? current_user %>
             <li class="mr-2">
-              <%= link_to 'メンバー(管理者以外は隠す)', group_members_path(@group), class: 'inline-flex items-center justify-center p-4 border-b-2 border-transparent rounded-t-lg hover:text-gray-600 hover:border-gray-300 group' %>
+              <%= link_to 'メンバー', group_members_path(@group), class: 'inline-flex items-center justify-center p-4 border-b-2 border-transparent rounded-t-lg hover:text-gray-600 hover:border-gray-300 group' %>
             </li>
           <% end %>
         </ul>
