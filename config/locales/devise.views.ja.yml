@@ -61,7 +61,7 @@ ja:
         message: あなたのアカウントのパスワードが正常に変更されました。
         subject: パスワードの変更について
       reset_password_instructions:
-        action: パスワード変更
+        action: パスワード再設定
         greeting: "%{recipient}様"
         instruction: パスワード再設定の依頼を受けたため、メールを送信しています。下のリンクからパスワードの再設定ができます。
         instruction_2: パスワード再設定の依頼をしていない場合、このメールを無視してください。
