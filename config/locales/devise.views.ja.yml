@@ -58,7 +58,7 @@ ja:
         subject: メールアドレスの変更完了
       password_change:
         greeting: "%{recipient}様"
-        message: パスワードが再設定されました。
+        message: あなたのアカウントのパスワードが正常に変更されました。
         subject: パスワードの変更について
       reset_password_instructions:
         action: パスワード変更
