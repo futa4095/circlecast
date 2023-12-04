@@ -53,8 +53,8 @@ ja:
         subject: メールアドレス確認のお願い
       email_changed:
         greeting: "%{recipient}様"
-        message: メールアドレスの（%{email}）変更が完了したため、メールを送信しています。
-        message_unconfirmed: メールアドレスが（%{email}）変更されたため、メールを送信しています。
+        message: ご登録いただいているメールアドレスの（%{email}）変更が完了したため、メールを送信しています。
+        message_unconfirmed: ご登録いただいたメールアドレスが（%{email}）変更されたため、メールを送信しています。
         subject: メールアドレスの変更完了
       password_change:
         greeting: "%{recipient}様"
