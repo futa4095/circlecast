@@ -24,7 +24,7 @@ Devise.setup do |config|
   # Configure the e-mail address which will be shown in Devise::Mailer,
   # note that it will be overwritten if you use your own mailer class
   # with default "from" parameter.
-  config.mailer_sender = 'notice@circlecast.net'
+  config.mailer_sender = ActionMailer::Base.email_address_with_name 'no-reply@circlecast.net', 'CIRCLECAST'
 
   # Configure the class responsible to send e-mails.
   # config.mailer = 'Devise::Mailer'
