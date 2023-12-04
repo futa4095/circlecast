@@ -48,19 +48,20 @@ ja:
       confirmation_instructions:
         action: メールアドレスの確認
         greeting: "%{recipient}様"
-        instruction: 以下のリンクをクリックし、メールアドレスの確認手続を完了させてください。
-        subject: メールアドレス確認メール
+        instruction: CIRCLECASTへ登録いただきありがとうございます。
+        instruction_2: 以下のリンクをクリックし、メールアドレスの確認手続を完了させてください。
+        subject: メールアドレス確認のお願い
       email_changed:
-        greeting: こんにちは、%{recipient}様。
-        message: メールアドレスの（%{email}）変更が完了したため、メールを送信しています。
-        message_unconfirmed: メールアドレスが（%{email}）変更されたため、メールを送信しています。
-        subject: メール変更完了
+        greeting: "%{recipient}様"
+        message: ご登録いただいているメールアドレスの（%{email}）変更が完了したため、メールを送信しています。
+        message_unconfirmed: ご登録いただいたメールアドレスが（%{email}）変更されたため、メールを送信しています。
+        subject: メールアドレスの変更完了
       password_change:
         greeting: "%{recipient}様"
-        message: パスワードが再設定されました。
+        message: あなたのアカウントのパスワードが正常に変更されました。
         subject: パスワードの変更について
       reset_password_instructions:
-        action: パスワード変更
+        action: パスワード再設定
         greeting: "%{recipient}様"
         instruction: パスワード再設定の依頼を受けたため、メールを送信しています。下のリンクからパスワードの再設定ができます。
         instruction_2: パスワード再設定の依頼をしていない場合、このメールを無視してください。
