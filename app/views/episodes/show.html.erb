@@ -8,7 +8,7 @@
     <% end %>
   </div>
   <div class="m-5">
-    <%= link_to @channel.title, @channel, class: 'text-xl' %>
+    <%= link_to @channel.title, @channel, class: 'bg-blue-50 hover:bg-blue-100 text-blue-700 text-sm font-medium me-2 px-2.5 py-0.5 rounded border border-blue-400' %>
     <h1 class="font-bold text-4xl"><%= @episode.title %></h1>
     <p class="my-5">
       <%= l @episode.created_at.to_date %>に公開
