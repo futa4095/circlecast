@@ -2,9 +2,9 @@
 <article class="w-full flex">
   <div class="m-3">
     <% if @channel.artwork.attached? %>
-      <%= image_tag @channel.artwork %>
+      <%= image_tag @channel.artwork, class: 'size-72 max-w-none' %>
     <% else %>
-      アートワーク画像はありません(TODO: デフォルト画像を置く)
+      <%= image_tag 'default-channel.svg', class: 'size-72 max-w-none' %>
     <% end %>
   </div>
   <div class="m-5">
