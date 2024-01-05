@@ -10,7 +10,7 @@ CIRCLECASTはプライベートなポッドキャストサービスです。
 
 CIRCLECASTの利用にはユーザー登録が必要です。リンク先で簡単な登録手続きを行い、すぐに素晴らしいポッドキャストコンテンツを楽しんでください！
 ` }" class="inline-block">
-  <button @click="invitationText=defaultText; dialog.showModal()" class="text-blue-600 hover:text-white border border-blue-600 hover:bg-blue-600 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center">グループに招待</button>
+  <button @click="invitationText=defaultText; dialog.showModal()" class="text-blue-600 hover:text-white border border-blue-600 hover:bg-blue-600 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm p-2.5 text-center w-full">グループに招待</button>
   <dialog
     x-data="{ close() { $el.close() } }"
     @click="$event.target === $el && close"
