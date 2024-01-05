@@ -21,11 +21,11 @@
       </div>
     <% end %>
     <% if group.admin? current_user %>
+      <%= link_to '番組を作る', new_group_channel_path(group), class: 'text-white bg-blue-600 hover:bg-blue-700 focus:ring-4 focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 me-2 mb-2' %>
       <%= link_to 'グループの編集', edit_group_path(group), class: 'text-blue-600 hover:text-white border border-blue-600 hover:bg-blue-600 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center me-2 mb-2' %>
       <div class="inline-block me-2 mb-2">
         <%= button_to 'グループの削除', group, method: :delete, data: { turbo_confirm: "このグループを削除すると、それに関連するデータも失われますが、後で取り消すことはできません。\n\n本当に削除してもよろしいですか？" }, class: 'text-blue-600 hover:text-white border border-blue-600 hover:bg-blue-600 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center' %>
       </div>
-      <%= link_to '番組を作る', new_group_channel_path(group), class: 'text-white bg-blue-600 hover:bg-blue-700 focus:ring-4 focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 me-2 mb-2' %>
       <%= render 'groups/invitation_modal', group: %>
     <% end %>
     <div class="inline-block me-2 mb-2">
