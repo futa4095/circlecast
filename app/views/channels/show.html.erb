@@ -1,26 +1,28 @@
 <% content_for :title, "#{@channel.title}のエピソード - " %>
 <div class="w-full">
   <div>
-    <div class="flex">
-      <div class="m-4">
+    <div class="flex gap-4">
+      <div class="basis-1/5">
         <% if @channel.artwork.attached? %>
-          <%= image_tag @channel.artwork, class: 'size-72 max-w-none' %>
+          <%= image_tag @channel.artwork, class: 'size-48 max-w-none' %>
         <% else %>
-          <%= image_tag 'default-channel.svg', class: 'size-72 max-w-none' %>
+          <%= image_tag 'default-channel.svg', class: 'size-48 max-w-none' %>
         <% end %>
       </div>
-      <div>
+      <div class="basis-3/5 space-y-2">
         <%= link_to @channel.group.name, @channel.group, class: 'bg-blue-50 hover:bg-blue-100 text-blue-700 text-md me-2 px-2.5 py-0.5 rounded border border-blue-400' %>
         <h1 class="font-bold text-4xl"><%= @channel.title %></h1>
-        <%= simple_format h(@channel.description), class: 'my-3' %>
+        <%= simple_format h(@channel.description) %>
+      </div>
+      <div class="basis-1/5 flex flex-col gap-2">
         <% if @channel.group.admin? current_user %>
-          <%= link_to '編集', edit_group_channel_path(@channel.group), class: 'text-blue-600 hover:text-white border border-blue-600 hover:bg-blue-600 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center me-2 mb-2' %>
-          <div class="inline-block ml-2">
-            <%= button_to '削除', [@channel.group, @channel], method: :delete, data: { turbo_confirm: "この番組を削除すると、それに関連するエピソードも失われます。\n\n本当に削除してもよろしいですか？" }, class: 'text-blue-600 hover:text-white border border-blue-600 hover:bg-blue-600 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center me-2 mb-2' %>
+          <%= link_to 'エピソードを作成', new_channel_episode_path(@channel), class: 'text-white bg-blue-600 hover:bg-blue-700 focus:ring-4 focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5' %>
+          <%= link_to '番組を編集', edit_group_channel_path(@channel.group), class: 'text-blue-600 hover:text-white border border-blue-600 hover:bg-blue-600 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center' %>
+          <div class="inline-block">
+            <%= button_to '番組を削除', [@channel.group, @channel], method: :delete, data: { turbo_confirm: "この番組を削除すると、それに関連するエピソードも失われます。\n\n本当に削除してもよろしいですか？" }, class: 'text-blue-600 hover:text-white border border-blue-600 hover:bg-blue-600 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center w-full' %>
           </div>
-          <%= link_to 'エピソードを作成', new_channel_episode_path(@channel), class: 'text-white bg-blue-600 hover:bg-blue-700 focus:ring-4 focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 me-2 mb-2' %>
         <% end %>
-        <%= link_to '戻る', group_channels_path(@channel.group), class: 'text-blue-600 hover:text-white border border-blue-600 hover:bg-blue-600 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center me-2 mb-2' %>
+        <%= link_to '戻る', group_channels_path(@channel.group), class: 'text-blue-600 hover:text-white border border-blue-600 hover:bg-blue-600 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center' %>
       </div>
     </div>
   </div>
