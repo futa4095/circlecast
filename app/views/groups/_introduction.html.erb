@@ -1,9 +1,9 @@
 <div class="flex">
   <div class="basis-1/5 m-4">
     <% if group.icon.attached? %>
-      <%= image_tag group.icon, class: 'size-40 max-w-none object-scale-down' %>
+      <%= image_tag group.icon, class: 'size-40 max-w-none object-scale-down rounded' %>
     <% else %>
-      <%= image_tag 'default-group.svg', class: 'size-40 max-w-none object-scale-down' %>
+      <%= image_tag 'default-group.svg', class: 'size-40 max-w-none object-scale-down rounded' %>
     <% end %>
   </div>
   <div class="basis-3/5">

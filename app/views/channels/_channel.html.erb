@@ -2,9 +2,9 @@
   <%= link_to channel, data: { turbo_frame: '_top' }, class: 'flex flex-row items-start bg-white border border-gray-300 rounded-lg hover:bg-gray-100' do %>
     <div class="object-scale-down md:h-auto md:w-48">
       <% if channel.artwork.attached? %>
-        <%= image_tag channel.artwork, class: 'max-w-none size-40 object-scale-down' %>
+        <%= image_tag channel.artwork, class: 'max-w-none size-40 object-scale-down rounded' %>
       <% else %>
-        <%= image_tag 'default-channel.svg', class: 'max-w-none size-40' %>
+        <%= image_tag 'default-channel.svg', class: 'max-w-none size-40 rounded' %>
       <% end %>
     </div>
     <div class="flex flex-col justify-between p-3 leading-normal">

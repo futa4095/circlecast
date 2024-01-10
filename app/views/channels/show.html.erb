@@ -4,9 +4,9 @@
     <div class="flex gap-4">
       <div class="basis-1/5">
         <% if @channel.artwork.attached? %>
-          <%= image_tag @channel.artwork, class: 'size-48 max-w-none' %>
+          <%= image_tag @channel.artwork, class: 'size-48 max-w-none rounded' %>
         <% else %>
-          <%= image_tag 'default-channel.svg', class: 'size-48 max-w-none' %>
+          <%= image_tag 'default-channel.svg', class: 'size-48 max-w-none rounded' %>
         <% end %>
       </div>
       <div class="basis-3/5 space-y-2">
