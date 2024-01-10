@@ -1,38 +1,39 @@
 <% content_for :title, "#{@episode.title} - " %>
-<article class="w-full flex">
-  <div class="m-3">
+<article class="w-full flex gap-3">
+  <div class="basis-1/5">
     <% if @channel.artwork.attached? %>
-      <%= image_tag @channel.artwork, class: 'size-72 max-w-none' %>
+      <%= image_tag @channel.artwork, class: 'size-48 max-w-none' %>
     <% else %>
-      <%= image_tag 'default-channel.svg', class: 'size-72 max-w-none' %>
+      <%= image_tag 'default-channel.svg', class: 'size-48 max-w-none' %>
     <% end %>
   </div>
-  <div class="m-5">
+  <div class="basis-3/5">
     <%= link_to @channel.title, @channel, class: 'bg-blue-50 hover:bg-blue-100 text-blue-700 text-sm font-medium me-2 px-2.5 py-0.5 rounded border border-blue-400' %>
-    <h1 class="font-bold text-4xl"><%= @episode.title %></h1>
-    <p class="my-5">
+    <h1 class="font-bold text-4xl my-2"><%= @episode.title %></h1>
+    <p class="my-2">
       <%= l @episode.created_at.to_date %>に公開
       <% if @episode.created_at.to_date != @episode.updated_at.to_date %>
         (<%= l @episode.updated_at.to_date %>に更新)
       <% end %>
     </p>
 
-    <%= simple_format h(@episode.description), class: 'my-5' %>
+    <%= simple_format h(@episode.description), class: 'my-3' %>
 
-    <div class="my-5">
+    <div class="my-3">
       <% if @episode.enclosure.attached? %>
         <%= audio_tag polymorphic_path(@episode.enclosure), controls: true, controlsList: [:nodownload] %>
       <% else %>
         添付ファイルはありません
       <% end %>
     </div>
-
+  </div>
+  <div class="basis-1/5 flex flex-col gap-2">
+    <%= link_to '番組に戻る', channel_path(@channel), class: 'text-blue-600 hover:text-white border border-blue-600 hover:bg-blue-600 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm py-2.5 text-center' %>
     <% if @channel.group.admin? current_user %>
-      <%= link_to '編集', edit_channel_episode_path(@channel, @episode), class: 'text-blue-600 hover:text-white border border-blue-600 hover:bg-blue-600 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center me-2 mb-2' %>
+      <%= link_to 'エピソードを編集', edit_channel_episode_path(@channel, @episode), class: 'text-blue-600 hover:text-white border border-blue-600 hover:bg-blue-600 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm py-2.5 text-center' %>
       <div class="inline-block">
-        <%= button_to '削除', [@channel, @episode], method: :delete, data: { turbo_confirm: 'このエピソードを削除します。よろしいですか？' }, class: 'text-blue-600 hover:text-white border border-blue-600 hover:bg-blue-600 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center me-2 mb-2' %>
+        <%= button_to 'エピソードを削除', [@channel, @episode], method: :delete, data: { turbo_confirm: 'このエピソードを削除します。よろしいですか？' }, class: 'text-blue-600 hover:text-white border border-blue-600 hover:bg-blue-600 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm py-2.5 text-center w-full' %>
       </div>
     <% end %>
-    <%= link_to '番組に戻る', channel_path(@channel), class: 'text-blue-600 hover:text-white border border-blue-600 hover:bg-blue-600 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center me-2 mb-2' %>
   </div>
 </article>
