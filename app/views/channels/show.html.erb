@@ -17,10 +17,12 @@
       <div class="basis-1/5 flex flex-col gap-2">
         <% if @channel.group.admin? current_user %>
           <%= link_to 'エピソードを作成', new_channel_episode_path(@channel), class: 'text-white border border-blue-700 bg-blue-600 hover:bg-blue-700 focus:ring-4 focus:ring-blue-300 font-medium rounded-lg text-sm p-2.5 text-center' %>
+          <hr>
           <%= link_to '番組を編集', edit_group_channel_path(@channel.group), class: 'text-blue-600 hover:text-white border border-blue-600 hover:bg-blue-600 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm p-2.5 text-center' %>
           <div class="inline-block">
             <%= button_to '番組を削除', [@channel.group, @channel], method: :delete, data: { turbo_confirm: "この番組を削除すると、それに関連するエピソードも失われます。\n\n本当に削除してもよろしいですか？" }, class: 'text-blue-600 hover:text-white border border-blue-600 hover:bg-blue-600 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm p-2.5 text-center w-full' %>
           </div>
+          <hr>
         <% end %>
         <%= link_to '戻る', group_channels_path(@channel.group), class: 'text-blue-600 hover:text-white border border-blue-600 hover:bg-blue-600 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm p-2.5 text-center' %>
       </div>
