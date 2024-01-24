@@ -10,7 +10,7 @@
         <% end %>
       </div>
       <div class="basis-3/5 space-y-2">
-        <%= link_to @channel.group.name, @channel.group, class: 'bg-blue-50 hover:bg-blue-100 text-blue-700 text-md me-2 px-2.5 py-0.5 rounded border border-blue-400' %>
+        <%= link_to @channel.group.name, @channel.group, class: 'bg-blue-50 hover:bg-blue-100 text-blue-700 text-sm me-2 px-3 py-1 rounded border border-blue-400' %>
         <h1 class="font-bold text-4xl"><%= @channel.title %></h1>
         <%= simple_format h(@channel.description) %>
       </div>
