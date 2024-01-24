@@ -1,5 +1,5 @@
 <% content_for :title, "#{@group.name} - " %>
-<div class="w-full flex flex-col gap-3">
+<div class="w-full flex flex-col gap-2">
   <%= render 'introduction', group: @group %>
 
   <%= turbo_frame_tag 'group-tab', data: { turbo_action: 'advance' } do %>
