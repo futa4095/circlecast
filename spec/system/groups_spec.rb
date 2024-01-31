@@ -37,12 +37,14 @@ RSpec.describe 'Groups' do
     it 'グループを編集が表示されないこと' do
       group = groups(:nbc)
       visit group_path(group)
+      find('.menu-button').click
       expect(page).not_to have_content 'グループの編集'
     end
 
     it 'グループを削除が表示されないこと' do
       group = groups(:nbc)
       visit group_path(group)
+      find('.menu-button').click
       expect(page).not_to have_content 'グループの削除'
     end
 
@@ -55,6 +57,7 @@ RSpec.describe 'Groups' do
     it 'グループに招待が表示されないこと' do
       group = groups(:nbc)
       visit group_path(group)
+      find('.menu-button').click
       expect(page).not_to have_content 'グループに招待'
     end
   end
