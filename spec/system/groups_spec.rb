@@ -23,6 +23,7 @@ RSpec.describe 'Groups' do
     it 'グループを削除すること' do
       group = groups(:group1)
       visit group_path(group)
+      find('.menu-button').click
       accept_confirm { click_on 'グループの削除' }
       expect(page).not_to have_content group.name
     end
@@ -99,8 +100,10 @@ RSpec.describe 'Groups' do
       end
 
       it 'メンバーを脱退させられること'
+
       it '招待モーダルを表示すること' do
         expect(page).not_to have_content 'リンクを共有してグループに招待'
+        find('.menu-button').click
         click_on 'グループに招待'
         expect(page).to have_content 'リンクを共有してグループに招待'
       end

@@ -25,6 +25,7 @@ RSpec.describe 'Episodes' do
 
     it 'エピソードを削除すること' do
       visit channel_episode_path(channels(:nbc_channel2), episodes(:nbc_episode21))
+      find('.menu-button').click
       accept_confirm { click_on '削除' }
 
       expect(page).to have_content 'エピソードを削除しました'
