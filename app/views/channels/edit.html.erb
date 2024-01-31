@@ -4,6 +4,5 @@
 
   <%= render 'form', channel: @channel %>
 
-  <%= link_to '番組に戻る', @channel, class: 'text-blue-600 hover:text-white border border-blue-600 hover:bg-blue-600 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center me-2 mb-2' %>
-  <%= link_to 'グループに戻る', group_channels_path(@channel.group), class: 'text-blue-600 hover:text-white border border-blue-600 hover:bg-blue-600 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center me-2 mb-2' %>
+  <%= link_to '戻る', @channel, class: 'text-blue-600 hover:text-white border border-blue-600 hover:bg-blue-600 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center inline-block w-24' %>
 </div>

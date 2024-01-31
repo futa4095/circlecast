@@ -1,34 +1,32 @@
 <% content_for :title, "#{@group.name} - " %>
-<div class="w-full">
-  <div>
-    <%= render 'introduction', group: @group %>
+<div class="w-full flex flex-col gap-2">
+  <%= render 'introduction', group: @group %>
 
-    <%= turbo_frame_tag 'group-tab', data: { turbo_action: 'advance' } do %>
-      <div class="mb-3 border-b border-gray-200">
-        <ul class="flex flex-wrap -mb-px text-md font-medium text-center text-gray-500">
-          <li class="mr-2">
-            <%= link_to '新着エピソード', @group, class: 'inline-flex items-center justify-center p-4 text-blue-600 border-b-2 border-blue-600 rounded-t-lg active group' %>
+  <%= turbo_frame_tag 'group-tab', data: { turbo_action: 'advance' } do %>
+    <div class="mb-3 border-b border-gray-200">
+      <ul class="flex flex-wrap -mb-px text-md font-medium text-center text-gray-500 space-x-2">
+        <li>
+          <%= link_to '新着エピソード', @group, class: 'inline-flex items-center justify-center p-4 text-blue-600 border-b-2 border-blue-600 rounded-t-lg active group' %>
+        </li>
+        <li>
+          <%= link_to '番組', group_channels_path(@group), class: 'inline-flex items-center justify-center p-4 border-b-2 border-transparent rounded-t-lg hover:text-gray-600 hover:border-gray-300 group' %>
+        </li>
+        <% if @group.admin? current_user %>
+          <li>
+            <%= link_to 'メンバー', group_members_path(@group), class: 'inline-flex items-center justify-center p-4 border-b-2 border-transparent rounded-t-lg hover:text-gray-600 hover:border-gray-300 group' %>
           </li>
-          <li class="mr-2">
-            <%= link_to '番組', group_channels_path(@group), class: 'inline-flex items-center justify-center p-4 border-b-2 border-transparent rounded-t-lg hover:text-gray-600 hover:border-gray-300 group' %>
-          </li>
-          <% if @group.admin? current_user %>
-            <li class="mr-2">
-              <%= link_to 'メンバー', group_members_path(@group), class: 'inline-flex items-center justify-center p-4 border-b-2 border-transparent rounded-t-lg hover:text-gray-600 hover:border-gray-300 group' %>
-            </li>
-          <% end %>
-        </ul>
-      </div>
-      <div class="space-y-2">
-        <% if @episodes.present? %>
-          <%= render @episodes %>
-          <%= paginate @episodes %>
-        <% else %>
-          <div class="p-4 my-4 text-sm text-blue-800 rounded-lg bg-blue-50" role="alert">
-            <span class="font-medium">エピソードが投稿されていません</span>
-          </div>
         <% end %>
-      </div>
-    <% end %>
-  </div>
+      </ul>
+    </div>
+    <div class="space-y-2">
+      <% if @episodes.present? %>
+        <%= render @episodes %>
+        <%= paginate @episodes %>
+      <% else %>
+        <div class="p-4 my-4 text-sm text-blue-800 rounded-lg bg-blue-50" role="alert">
+          <span class="font-medium">エピソードが投稿されていません</span>
+        </div>
+      <% end %>
+    </div>
+  <% end %>
 </div>

@@ -1,38 +1,49 @@
 <% content_for :title, "#{@episode.title} - " %>
-<article class="w-full flex">
-  <div class="m-3">
+<article class="w-full flex gap-3">
+  <div class="basis-1/5">
     <% if @channel.artwork.attached? %>
-      <%= image_tag @channel.artwork %>
+      <%= image_tag @channel.artwork, class: 'size-48 max-w-none rounded' %>
     <% else %>
-      アートワーク画像はありません(TODO: デフォルト画像を置く)
+      <%= image_tag 'default-channel.svg', class: 'size-48 max-w-none rounded' %>
     <% end %>
   </div>
-  <div class="m-5">
-    <%= link_to @channel.title, @channel, class: 'text-xl' %>
+  <div class="basis-3/5 space-y-2">
+    <%= link_to @channel.title, @channel, class: 'bg-blue-50 hover:bg-blue-100 text-blue-700 text-sm font-medium px-3 py-1 rounded border border-blue-400' %>
     <h1 class="font-bold text-4xl"><%= @episode.title %></h1>
-    <p class="my-5">
+    <p class="flex gap-1">
+      <svg class="size-5 text-gray-800" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 20 20">
+        <path fill="currentColor" d="M6 1a1 1 0 0 0-2 0h2ZM4 4a1 1 0 0 0 2 0H4Zm7-3a1 1 0 1 0-2 0h2ZM9 4a1 1 0 1 0 2 0H9Zm7-3a1 1 0 1 0-2 0h2Zm-2 3a1 1 0 1 0 2 0h-2ZM1 6a1 1 0 0 0 0 2V6Zm18 2a1 1 0 1 0 0-2v2ZM5 11v-1H4v1h1Zm0 .01H4v1h1v-1Zm.01 0v1h1v-1h-1Zm0-.01h1v-1h-1v1ZM10 11v-1H9v1h1Zm0 .01H9v1h1v-1Zm.01 0v1h1v-1h-1Zm0-.01h1v-1h-1v1ZM10 15v-1H9v1h1Zm0 .01H9v1h1v-1Zm.01 0v1h1v-1h-1Zm0-.01h1v-1h-1v1ZM15 15v-1h-1v1h1Zm0 .01h-1v1h1v-1Zm.01 0v1h1v-1h-1Zm0-.01h1v-1h-1v1ZM15 11v-1h-1v1h1Zm0 .01h-1v1h1v-1Zm.01 0v1h1v-1h-1Zm0-.01h1v-1h-1v1ZM5 15v-1H4v1h1Zm0 .01H4v1h1v-1Zm.01 0v1h1v-1h-1Zm0-.01h1v-1h-1v1ZM2 4h16V2H2v2Zm16 0h2a2 2 0 0 0-2-2v2Zm0 0v14h2V4h-2Zm0 14v2a2 2 0 0 0 2-2h-2Zm0 0H2v2h16v-2ZM2 18H0a2 2 0 0 0 2 2v-2Zm0 0V4H0v14h2ZM2 4V2a2 2 0 0 0-2 2h2Zm2-3v3h2V1H4Zm5 0v3h2V1H9Zm5 0v3h2V1h-2ZM1 8h18V6H1v2Zm3 3v.01h2V11H4Zm1 1.01h.01v-2H5v2Zm1.01-1V11h-2v.01h2Zm-1-1.01H5v2h.01v-2ZM9 11v.01h2V11H9Zm1 1.01h.01v-2H10v2Zm1.01-1V11h-2v.01h2Zm-1-1.01H10v2h.01v-2ZM9 15v.01h2V15H9Zm1 1.01h.01v-2H10v2Zm1.01-1V15h-2v.01h2Zm-1-1.01H10v2h.01v-2ZM14 15v.01h2V15h-2Zm1 1.01h.01v-2H15v2Zm1.01-1V15h-2v.01h2Zm-1-1.01H15v2h.01v-2ZM14 11v.01h2V11h-2Zm1 1.01h.01v-2H15v2Zm1.01-1V11h-2v.01h2Zm-1-1.01H15v2h.01v-2ZM4 15v.01h2V15H4Zm1 1.01h.01v-2H5v2Zm1.01-1V15h-2v.01h2Zm-1-1.01H5v2h.01v-2Z"/>
+      </svg>
       <%= l @episode.created_at.to_date %>に公開
       <% if @episode.created_at.to_date != @episode.updated_at.to_date %>
         (<%= l @episode.updated_at.to_date %>に更新)
       <% end %>
     </p>
 
-    <%= simple_format h(@episode.description), class: 'my-5' %>
+    <%= simple_format h(@episode.description) %>
 
-    <div class="my-5">
+    <div>
       <% if @episode.enclosure.attached? %>
         <%= audio_tag polymorphic_path(@episode.enclosure), controls: true, controlsList: [:nodownload] %>
       <% else %>
         添付ファイルはありません
       <% end %>
     </div>
-
+  </div>
+  <div class="basis-1/5 flex items-baseline gap-1">
+    <%= link_to '番組に戻る', channel_path(@channel), class: 'text-blue-600 hover:text-white border border-blue-600 hover:bg-blue-600 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm py-2.5 text-center w-full' %>
     <% if @channel.group.admin? current_user %>
-      <%= link_to '編集', edit_channel_episode_path(@channel, @episode), class: 'text-blue-600 hover:text-white border border-blue-600 hover:bg-blue-600 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center me-2 mb-2' %>
-      <div class="inline-block">
-        <%= button_to '削除', [@channel, @episode], method: :delete, data: { turbo_confirm: 'このエピソードを削除します。よろしいですか？' }, class: 'text-blue-600 hover:text-white border border-blue-600 hover:bg-blue-600 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center me-2 mb-2' %>
+      <div x-data="{ open: false }" class="relative">
+        <button @click="open = !open" class="menu-button inline-flex self-center items-center px-1 py-2.5 bg-white rounded-lg hover:bg-gray-100 focus:ring-4 focus:ring-gray-50 focus:outline-none h-fit">
+          <svg class="size-5 text-gray-800" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="currentColor" viewBox="0 0 4 15">
+            <path d="M3.5 1.5a1.5 1.5 0 1 1-3 0 1.5 1.5 0 0 1 3 0Zm0 6.041a1.5 1.5 0 1 1-3 0 1.5 1.5 0 0 1 3 0Zm0 5.959a1.5 1.5 0 1 1-3 0 1.5 1.5 0 0 1 3 0Z"/>
+          </svg>
+        </button>
+        <div x-show="open" @click.away="open = false" x-transition class="absolute right-0 mt-2 w-40 bg-white border border-gray-300 rounded-lg group-hover:block z-10">
+          <%= link_to 'エピソードを編集', edit_channel_episode_path(@channel, @episode), class: 'flex w-full items-center rounded-md px-3 py-2 text-gray-700 hover:bg-gray-100' %>
+          <%= button_to 'エピソードを削除', [@channel, @episode], method: :delete, data: { turbo_confirm: 'このエピソードを削除します。よろしいですか？' }, class: 'flex w-full items-center rounded-md px-3 py-2 text-gray-700 hover:bg-gray-100' %>
+        </div>
       </div>
     <% end %>
-    <%= link_to '番組に戻る', channel_path(@channel), class: 'text-blue-600 hover:text-white border border-blue-600 hover:bg-blue-600 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center me-2 mb-2' %>
   </div>
 </article>

@@ -23,6 +23,7 @@ RSpec.describe 'Groups' do
     it 'グループを削除すること' do
       group = groups(:group1)
       visit group_path(group)
+      find('.menu-button').click
       accept_confirm { click_on 'グループの削除' }
       expect(page).not_to have_content group.name
     end
@@ -36,12 +37,14 @@ RSpec.describe 'Groups' do
     it 'グループを編集が表示されないこと' do
       group = groups(:nbc)
       visit group_path(group)
+      find('.menu-button').click
       expect(page).not_to have_content 'グループの編集'
     end
 
     it 'グループを削除が表示されないこと' do
       group = groups(:nbc)
       visit group_path(group)
+      find('.menu-button').click
       expect(page).not_to have_content 'グループの削除'
     end
 
@@ -54,6 +57,7 @@ RSpec.describe 'Groups' do
     it 'グループに招待が表示されないこと' do
       group = groups(:nbc)
       visit group_path(group)
+      find('.menu-button').click
       expect(page).not_to have_content 'グループに招待'
     end
   end
@@ -99,8 +103,10 @@ RSpec.describe 'Groups' do
       end
 
       it 'メンバーを脱退させられること'
+
       it '招待モーダルを表示すること' do
         expect(page).not_to have_content 'リンクを共有してグループに招待'
+        find('.menu-button').click
         click_on 'グループに招待'
         expect(page).to have_content 'リンクを共有してグループに招待'
       end

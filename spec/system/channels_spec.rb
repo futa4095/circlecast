@@ -24,6 +24,7 @@ RSpec.describe 'Channels' do
 
     it '番組を削除すること' do
       visit channel_path(channels(:group2_ch1))
+      find('.menu-button').click
       accept_confirm { click_on '削除' }
 
       expect(page).to have_content '番組を削除しました'
@@ -42,12 +43,8 @@ RSpec.describe 'Channels' do
       expect(page).to have_content '第1回のエピソード'
     end
 
-    it '編集を表示しないこと' do
-      expect(page).not_to have_content '編集'
-    end
-
-    it '削除を表示しないこと' do
-      expect(page).not_to have_content '削除'
+    it 'メニューボタンを表示しないこと' do
+      expect(page).not_to have_selector '.menu-button'
     end
 
     it 'エピソードの作成を表示しないこと' do
