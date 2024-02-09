@@ -1,17 +1,17 @@
 <div id="<%= dom_id group %>">
   <%= link_to group, class: 'flex flex-row items-center bg-white border border-gray-300 rounded-lg hover:bg-gray-100' do %>
-    <div class="object-cover md:h-auto md:w-48">
+    <div class="object-cover">
       <% if group.icon.attached? %>
-          <%= image_tag group.icon, class: 'size-40 max-w-none w-40 rounded' %>
+          <%= image_tag group.icon, class: 'size-24 md:size-40 max-w-none rounded' %>
       <% else %>
-        <%= image_tag 'default-group.svg', class: 'size-40 max-w-none rounded' %>
+        <%= image_tag 'default-group.svg', class: 'size-24 md:size-40 max-w-none rounded' %>
       <% end %>
     </div>
-    <div class="flex flex-col justify-between p-4 leading-normal w-4/5">
-      <h2 class="mb-2 text-2xl font-bold tracking-tight text-gray-900 truncate hover:underline">
+    <div class="flex flex-col justify-between p-1 md:p-4 leading-normal w-4/5">
+      <h2 class="md:mb-2 text-md md:text-2xl font-bold tracking-tight text-gray-900 truncate hover:underline">
         <%= group.name %>
       </h2>
-      <p class="mb-3 font-normal text-gray-700 line-clamp-3">
+      <p class="md:mb-3 text-sm md:text-base text-gray-700 line-clamp-3">
         <%= group.description %>
       </p>
     </div>
