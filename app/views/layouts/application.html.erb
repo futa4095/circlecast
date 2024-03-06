@@ -20,53 +20,55 @@
   </head>
 
   <body>
-    <header>
-      <% if user_signed_in? %>
-        <nav>
-          <div class="flex justify-between items-center p-4">
-            <div>
-              <%= link_to groups_path do %>
+    <% unless request.path == root_path %>
+      <header>
+        <% if user_signed_in? %>
+          <nav>
+            <div class="flex justify-between items-center p-4">
+              <div>
+                <%= link_to groups_path do %>
+                  <p class="font-logo text-3xl text-blue-600">CIRCLECAST</p>
+                <% end %>
+              </div>
+
+              <div x-data="{ open: false }" class="relative">
+                <button @click="open = !open" class="flex items-center focus:outline-none">
+                  <svg
+                    xmlns="http://www.w3.org/2000/svg"
+                    class="w-5 h-5 ml-2"
+                    fill="none"
+                    stroke="currentColor"
+                    viewBox="0 0 24 24"
+                    stroke-linecap="round"
+                    stroke-linejoin="round"
+                  >
+                    <path
+                      stroke-linecap="round"
+                      stroke-linejoin="round"
+                      stroke-width="2"
+                      d="M19 9l-7 7-7-7"
+                    ></path>
+                  </svg>
+                </button>
+                <div x-show="open" @click.away="open = false" class="absolute right-0 mt-2 w-40 bg-white border border-gray-300 rounded-lg group-hover:block z-10">
+                  <%= link_to '参加グループ', groups_path, class: 'flex w-full items-center rounded-md px-3 py-2 text-gray-700 hover:bg-gray-100' %>
+                  <%= link_to 'ユーザー情報', edit_user_registration_path, class: 'flex w-full items-center rounded-md px-3 py-2 text-gray-700 hover:bg-gray-100' %>
+                  <%= button_to 'ログアウト', destroy_user_session_path, method: :delete, class: 'flex w-full items-center rounded-md px-3 py-2 text-gray-700 hover:bg-gray-100' %>
+                </div>
+              </div>
+            </div>
+          </nav>
+        <% else %>
+          <nav>
+            <div class="p-4">
+              <%= link_to root_path do %>
                 <p class="font-logo text-3xl text-blue-600">CIRCLECAST</p>
               <% end %>
             </div>
-
-            <div x-data="{ open: false }" class="relative">
-              <button @click="open = !open" class="flex items-center focus:outline-none">
-                <svg
-                  xmlns="http://www.w3.org/2000/svg"
-                  class="w-5 h-5 ml-2"
-                  fill="none"
-                  stroke="currentColor"
-                  viewBox="0 0 24 24"
-                  stroke-linecap="round"
-                  stroke-linejoin="round"
-                >
-                  <path
-                    stroke-linecap="round"
-                    stroke-linejoin="round"
-                    stroke-width="2"
-                    d="M19 9l-7 7-7-7"
-                  ></path>
-                </svg>
-              </button>
-              <div x-show="open" @click.away="open = false" class="absolute right-0 mt-2 w-40 bg-white border border-gray-300 rounded-lg group-hover:block z-10">
-                <%= link_to '参加グループ', groups_path, class: 'flex w-full items-center rounded-md px-3 py-2 text-gray-700 hover:bg-gray-100' %>
-                <%= link_to 'ユーザー情報', edit_user_registration_path, class: 'flex w-full items-center rounded-md px-3 py-2 text-gray-700 hover:bg-gray-100' %>
-                <%= button_to 'ログアウト', destroy_user_session_path, method: :delete, class: 'flex w-full items-center rounded-md px-3 py-2 text-gray-700 hover:bg-gray-100' %>
-              </div>
-            </div>
-          </div>
-        </nav>
-      <% else %>
-        <nav>
-          <div class="p-4">
-            <%= link_to root_path do %>
-              <p class="font-logo text-3xl text-blue-600">CIRCLECAST</p>
-            <% end %>
-          </div>
-        </nav>
-      <% end %>
-    </header>
+          </nav>
+        <% end %>
+      </header>
+    <% end %>
     <main class="container mx-auto mt-6 md:mt-20 px-2 md:px-5 flex flex-col max-w-4xl">
       <div id="notice">
         <% if notice.present? %>
