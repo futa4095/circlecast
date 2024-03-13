@@ -1,9 +1,9 @@
 <div class="md:flex gap-3">
   <div class="basis-1/5 m-4">
     <% if group.icon.attached? %>
-      <%= image_tag group.icon, class: 'size-48 md:size-40 max-w-full md:max-w-none object-scale-down rounded mx-auto' %>
+      <%= image_tag group.icon, alt: "#{group.name}のアイコン", class: 'size-48 md:size-40 max-w-full md:max-w-none object-scale-down rounded mx-auto' %>
     <% else %>
-      <%= image_tag 'default-group.svg', class: 'size-40 max-w-none object-scale-down rounded mx-auto' %>
+      <%= image_tag 'default-group.svg', alt: 'グループのアイコン', class: 'size-40 max-w-none object-scale-down rounded mx-auto' %>
     <% end %>
   </div>
   <div class="basis-3/5">
