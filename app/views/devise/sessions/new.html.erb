@@ -1,6 +1,6 @@
 <% content_for :title, "#{t('.sign_in')} - " %>
 <div class="flex-col">
-  <h2 class="font-bold text-4xl"><%= t('.sign_in') %></h2>
+  <h1 class="font-bold text-4xl"><%= t('.sign_in') %></h1>
 
   <%= form_for(resource, as: resource_name, url: session_path(resource_name)) do |f| %>
     <div class="my-5">

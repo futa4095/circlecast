@@ -1,6 +1,6 @@
 <% content_for :title, "#{t('.resend_confirmation_instructions')} - " %>
 <div class="flex-col">
-  <h2 class="font-bold text-4xl"><%= t('.resend_confirmation_instructions') %></h2>
+  <h1 class="font-bold text-4xl"><%= t('.resend_confirmation_instructions') %></h1>
 
   <%= form_for(resource, as: resource_name, url: confirmation_path(resource_name), html: { method: :post }) do |f| %>
     <%= render 'devise/shared/error_messages', resource: %>
