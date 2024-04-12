@@ -1,12 +1,13 @@
+<% content_for :title, "#{t('.resend_confirmation_instructions')} - " %>
 <div class="flex-col">
-  <h2 class="font-bold text-4xl"><%= t('.resend_confirmation_instructions') %></h2>
+  <h1 class="font-bold text-4xl"><%= t('.resend_confirmation_instructions') %></h1>
 
   <%= form_for(resource, as: resource_name, url: confirmation_path(resource_name), html: { method: :post }) do |f| %>
     <%= render 'devise/shared/error_messages', resource: %>
 
     <div class="my-5">
       <%= f.label :email, class: 'mb-1 block font-medium text-gray-800' %>
-      <%= f.email_field :email, autofocus: true, autocomplete: 'email', value: (resource.pending_reconfirmation? ? resource.unconfirmed_email : resource.email),
+      <%= f.email_field :email, autofocus: true, autocomplete: 'email', value: (resource.pending_reconfirmation? ? resource.unconfirmed_email : resource.email), placeholder: 'email@example.com',
         class: 'bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5' %>
     </div>
 

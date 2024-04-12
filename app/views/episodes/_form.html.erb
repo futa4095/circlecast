@@ -11,12 +11,12 @@
 
   <div class="my-5">
     <%= form.label :title, class: 'mb-1 block font-medium text-gray-800' %>
-    <%= form.text_field :title, maxlength: 100, class: 'block rounded-md border border-gray-400 outline-none px-3 py-2 mt-2 w-full' %>
+    <%= form.text_field :title, maxlength: 100, placeholder: 'タイトルを入力', class: 'block rounded-md border border-gray-400 outline-none px-3 py-2 mt-2 w-full' %>
   </div>
 
   <div class="my-5">
     <%= form.label :description, class: 'mb-1 block font-medium text-gray-800' %>
-    <%= form.text_area :description, rows: 8, class: 'block rounded-md border border-gray-400 outline-none px-3 py-2 mt-2 w-full' %>
+    <%= form.text_area :description, rows: 8, placeholder: '説明を入力', class: 'block rounded-md border border-gray-400 outline-none px-3 py-2 mt-2 w-full' %>
   </div>
 
   <div class="my-5">
