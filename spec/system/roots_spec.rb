@@ -14,5 +14,9 @@ RSpec.describe 'Roots' do
     expect(page).to have_title '利用規約'
   end
 
-  it 'プライバシーポリシーを表示すること'
+  it 'プライバシーポリシーを表示すること' do
+    visit root_path
+    click_on 'プライバシーポリシー'
+    expect(page).to have_title 'プライバシーポリシー'
+  end
 end
