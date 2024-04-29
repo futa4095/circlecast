@@ -91,15 +91,13 @@ RSpec.describe 'Groups' do
         expect(page).to have_content 'nbc_student1'
       end
 
-      it 'メンバーを管理者にできること', pending: '書き方がわかわないので後回し' do
+      it 'メンバーを管理者にできること' do
         click_on 'メンバー'
-        within ".#{dom_id memberships(:nbc_student4)}" do
-          first('button').click
-        end
-        within ".#{dom_id memberships(:nbc_student4)}" do
-          first('button').click
-          expect(page).to have_content 'nbc_student1'
-        end
+        expect(page).to have_content 'nbc_student4'
+        find("##{ActionView::RecordIdentifier.dom_id memberships(:nbc_student4)}").first('button').click
+        sleep 1
+        admin_form = find("##{ActionView::RecordIdentifier.dom_id memberships(:nbc_student4)}").first('form')
+        expect(admin_form).to have_selector('button[aria-checked="true"]')
       end
 
       it 'メンバーを脱退させられること'
