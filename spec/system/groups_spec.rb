@@ -96,12 +96,20 @@ RSpec.describe 'Groups' do
         expect(page).to have_content 'nbc_student4'
         student_id = ActionView::RecordIdentifier.dom_id(memberships(:nbc_student4))
         find_by_id(student_id).first('button').click
-        sleep 1
+        sleep 0.5
         admin_form = find_by_id(student_id).first('form')
         expect(admin_form).to have_selector('button[aria-checked="true"]')
       end
 
-      it 'メンバーを脱退させられること'
+      it 'メンバーを脱退させられること' do
+        click_on 'メンバー'
+        expect(page).to have_content 'nbc_student4'
+        student_id = ActionView::RecordIdentifier.dom_id(memberships(:nbc_student4))
+        find_by_id(student_id).all('button').last.click
+        sleep 0.5
+        admin_form = find_by_id(student_id).all('form').last
+        expect(admin_form).to have_selector('button[aria-checked="true"]')
+      end
 
       it '招待モーダルを表示すること' do
         expect(page).not_to have_content 'リンクを共有してグループに招待'
