@@ -94,9 +94,10 @@ RSpec.describe 'Groups' do
       it 'メンバーを管理者にできること' do
         click_on 'メンバー'
         expect(page).to have_content 'nbc_student4'
-        find("##{ActionView::RecordIdentifier.dom_id memberships(:nbc_student4)}").first('button').click
+        student_id = ActionView::RecordIdentifier.dom_id(memberships(:nbc_student4))
+        find_by_id(student_id).first('button').click
         sleep 1
-        admin_form = find("##{ActionView::RecordIdentifier.dom_id memberships(:nbc_student4)}").first('form')
+        admin_form = find_by_id(student_id).first('form')
         expect(admin_form).to have_selector('button[aria-checked="true"]')
       end
 
