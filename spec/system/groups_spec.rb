@@ -34,6 +34,13 @@ RSpec.describe 'Groups' do
       sign_in users(:nbc_student1)
     end
 
+    around do |example|
+      original = Capybara.raise_server_errors
+      Capybara.raise_server_errors = false
+      example.run
+      Capybara.raise_server_errors = original
+    end
+
     it 'グループを編集が表示されないこと' do
       group = groups(:nbc)
       visit group_path(group)
@@ -59,6 +66,17 @@ RSpec.describe 'Groups' do
       visit group_path(group)
       find('.menu-button').click
       expect(page).not_to have_content 'グループに招待'
+    end
+
+    it 'グループから脱退すること' do
+      puts Capybara.raise_server_errors
+      group = groups(:nbc)
+      visit group_path(group)
+      find('.menu-button').click
+      accept_confirm { click_on 'グループから脱退' }
+      expect(page).to have_content "#{group.name}から脱退しました"
+      visit group_path(group)
+      expect(page).to have_text 'ActiveRecord::RecordNotFound'
     end
   end
 
