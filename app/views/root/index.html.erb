@@ -1,48 +1,65 @@
-<section>
-  <div class="py-8 px-4 mx-auto max-w-screen-xl lg:py-16">
-    <h1 class="font-logo text-blue-600 text-5xl md:text-6xl text-center">CIRCLECAST</h1>
-    <p class="my-4 text-xl font-bold tracking-tight text-center text-gray-900 md:text-2xl lg:text-2xl">
+<section class="text-center">
+  <div class="py-8 px-4 mx-auto lg:py-14 space-y-10">
+    <h1 class="font-logo text-blue-600 text-5xl md:text-6xl">CIRCLECAST</h1>
+    <p class="text-xl font-bold tracking-tight text-gray-800 md:text-2xl lg:text-2xl">
       プライベートなグループ向け<br>ポッドキャストサービス
     </p>
-    <div class="m-8 text-center">
-      <%= link_to '新規登録', new_user_registration_path, class: 'text-blue-600 hover:text-white border border-blue-600 hover:bg-blue-600 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center me-2 mb-2' %>
-      <%= link_to 'ログイン', new_user_session_path, class: 'text-white bg-blue-600 hover:bg-blue-700 focus:ring-4 focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 me-2 mb-2' %>
+    <div>
+      <%= link_to '新規登録', new_user_registration_path, class: 'text-blue-600 hover:text-white border border-blue-600 hover:bg-blue-600 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm px-8 py-3.5 text-center me-2 mb-2' %>
+      <%= link_to 'ログイン', new_user_session_path, class: 'text-white bg-blue-600 hover:bg-blue-700 focus:ring-4 focus:ring-blue-300 font-medium rounded-lg text-sm px-8 py-3.5 me-2 mb-2' %>
     </div>
-    <%= image_tag 'team-building-monochromatic.svg', alt: 'チームビルディングする人たち', class: 'h-auto max-w-xs mx-auto' %>
-    <p class="mb-8 text-md font-normal text-gray-500 lg:text-xl sm:px-16 lg:px-48">
-      CIRCLECASTはプライベートなグループ向けのポッドキャストサービスです。
-    </p>
-    <p class="mb-8 text-md font-normal text-gray-500 lg:text-xl sm:px-16 lg:px-48">
-      企業、プログラミングスクール、趣味のサークルなど、さまざまなコミュニティで活用可能です。
-    </p>
-    <p class="mb-8 text-md font-normal text-gray-500 lg:text-xl sm:px-16 lg:px-48">
-      メッセージを効果的に伝え、コミュニケーションを活性化する新しい方法です。
-    </p>
-  </div>
-  <%= image_tag 'team-building-isometric.svg', alt: 'チームで協力する人', class: 'h-auto max-w-xs mx-auto' %>
-</section>
-<section>
-  <div class="py-8 px-4 mx-auto max-w-screen-xl lg:py-16 text-pretty">
-    <h1 class="mb-4 text-2xl font-extrabold tracking-tight leading-none text-center text-gray-900 md:text-3xl lg:text-4xl">
-      特徴と使い方
-    </h1>
-    <h2 class="mb-4 text-xl font-bold tracking-tight leading-none text-center text-gray-900 md:text-2xl lg:text-3xl">
-      特徴
-    </h2>
-    <p class="mb-8 text-md font-normal text-gray-500 lg:text-xl sm:px-16 lg:px-48">
-      企業では社員へのメッセージ、学校やサークルでは趣味やプロジェクトに関するコンテンツを共有できます。
-    </p>
-    <p class="mb-8 text-md font-normal text-gray-500 lg:text-xl sm:px-16 lg:px-48">
-      番組やエピソードを作成し、メンバーを簡単に招待可能です。
-    </p>
-    <h2 class="mb-4 text-xl font-bold tracking-tight leading-none text-center text-gray-900 md:text-2xl lg:text-3xl">
-      使い方
-    </h2>
-    <p class="mb-8 text-md font-normal text-gray-500 lg:text-xl sm:px-16 lg:px-48">
-      グループを作成し、番組とエピソードを追加します。
-    </p>
-    <p class="mb-8 text-md font-normal text-gray-500 lg:text-xl sm:px-16 lg:px-48">
-      グループにメンバーを招待して、ポッドキャストを共有します。
-    </p>
   </div>
 </section>
+<div class="flex flex-col gap-16 lg:text-lg max-w-screen-md mx-auto">
+  <section class="flex gap-8">
+    <%= image_tag 'team-building-monochromatic.svg', alt: 'チームビルディングする人たち', class: 'h-auto max-w-64 mx-auto' %>
+    <div class="space-y-4">
+      <h2 class="text-xl font-bold tracking-tight leading-none text-gray-800 md:text-2xl">
+        CIRCLECASTとは？
+      </h2>
+      <div class="space-y-4">
+        <p>
+          プライベートなグループ向けのポッドキャストサービスです。
+        </p>
+        <p>
+          企業、プログラミングスクール、趣味のサークルなど、さまざまなコミュニティで活用可能です。
+        </p>
+        <p>
+          メッセージを効果的に伝え、コミュニケーションを活性化する新しい方法です。
+        </p>
+        </div>
+    </div>
+  </section>
+  <section class="flex gap-8">
+    <div class="space-y-4">
+      <h2 class="text-xl font-bold tracking-tight leading-none text-gray-800 md:text-2xl">
+        特徴
+      </h2>
+      <div class="space-y-4">
+        <p>
+          企業では社員へのメッセージ、学校やサークルでは趣味やプロジェクトに関するコンテンツを共有できます。
+        </p>
+        <p>
+          番組やエピソードを作成し、メンバーを簡単に招待可能です。
+        </p>
+      </div>
+    </div>
+    <%= image_tag 'team-building-isometric.svg', alt: 'チームで協力する人', class: 'h-auto max-w-64 mx-auto' %>
+  </section>
+  <section class="flex gap-8">
+    <%= image_tag 'team-building-isometric.svg', alt: 'チームで協力する人', class: 'h-auto max-w-64 mx-auto' %>
+    <div class="space-y-4">
+      <h2 class="text-xl font-bold tracking-tight leading-none text-gray-800 md:text-2xl">
+        使い方
+      </h2>
+      <div class="space-y-4">
+        <p>
+          グループを作成し、番組とエピソードを追加します。
+        </p>
+        <p>
+          グループにメンバーを招待して、ポッドキャストを共有します。
+        </p>
+    </div>
+    </div>
+  </section>
+</div>
