@@ -18,15 +18,16 @@
 
     <div class="my-5">
       <%= f.label :password, class: 'mb-1 font-medium text-gray-800' %>
-      <% if @minimum_password_length %>
-      <em class="mb-1 font-medium text-gray-800"><%= t('devise.shared.minimum_password_length', count: @minimum_password_length) %></em>
-      <% end %>
       <%= f.password_field :password, autocomplete: 'new-password', class: 'bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5' %>
+      <% if @minimum_password_length %>
+        <p class="mt-2 text-sm text-gray-500"><%= t('devise.shared.minimum_password_length', count: @minimum_password_length) %></p>
+      <% end %>
     </div>
 
     <div class="my-5">
       <%= f.label :password_confirmation, class: 'mb-1 block font-medium text-gray-800' %>
       <%= f.password_field :password_confirmation, autocomplete: 'new-password', class: 'bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5' %>
+      <p class="mt-2 text-sm text-gray-500">確認のため、再度パスワードを入力してください。</p>
     </div>
 
     <div class="my-3">
