@@ -22,7 +22,7 @@
   </head>
 
   <body class="flex flex-col min-h-screen text-gray-600">
-    <% unless request.path == root_path %>
+    <% if display_header? %>
       <header>
         <% if user_signed_in? %>
           <nav>
