@@ -52,8 +52,8 @@ RSpec.describe 'Invitations' do
       expect(page).to have_current_path new_user_registration_path, ignore_query: true
       fill_in 'ユーザー名', with: 'グループ加入希望者'
       fill_in 'メールアドレス', with: 'kanyuu_shitaiyo@example.com'
-      fill_in 'パスワード', with: 'password'
-      fill_in 'パスワード（確認用）', with: 'password'
+      fill_in :user_password, with: 'password'
+      fill_in :user_password_confirmation, with: 'password'
       click_on 'アカウント登録'
 
       expect(page).to have_content '本人確認用のメールを送信しました。'
