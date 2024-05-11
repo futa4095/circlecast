@@ -31,7 +31,7 @@
     </div>
   </div>
   <div class="basis-1/5 flex items-baseline gap-1">
-    <%= link_to '番組に戻る', channel_path(@channel), class: 'text-blue-600 hover:text-white border border-blue-600 hover:bg-blue-600 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm py-2.5 text-center w-full' %>
+    <%= link_to '番組に戻る', channel_path(@channel), class: 'text-gray-600 hover:text-white border border-gray-600 hover:bg-gray-600 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm py-3 text-center w-full' %>
     <% if @channel.group.admin? current_user %>
       <div x-data="{ open: false }" class="relative">
         <button @click="open = !open" class="menu-button inline-flex self-center items-center px-1 py-2.5 bg-white rounded-lg hover:bg-gray-100 focus:ring-4 focus:ring-gray-50 focus:outline-none h-fit">
