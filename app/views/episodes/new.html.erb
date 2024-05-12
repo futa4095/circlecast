@@ -1,6 +1,8 @@
 <% content_for :title, "新しいエピソードの作成 - " %>
 <div class="mx-auto md:w-2/3 w-full">
-  <%= link_to @channel.title, @channel, class: 'text-xl' %>
+  <div class="mb-3">
+    <%= link_to @channel.title, @channel, class: 'text-xl' %>
+  </div>
   <h1 class="font-bold text-4xl">新しいエピソードの作成</h1>
 
   <%= render 'form', episode: @episode %>
