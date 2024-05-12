@@ -39,10 +39,11 @@
       </div>
     </div>
   </div>
-  <section class="space-y-2">
+  <section>
     <% if @channel.episodes.present? %>
       <h5 class="text-xl">この番組のエピソード</h5>
-      <%= render @episodes %>
+      <div class="space-y-2 divide-y divide-blue-300">
+      <%= render @episodes %></div>
       <%= paginate @episodes %>
     <% else %>
       <div class="p-4 text-sm text-blue-800 rounded-lg bg-blue-50" role="alert">

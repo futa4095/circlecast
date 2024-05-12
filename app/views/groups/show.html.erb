@@ -18,9 +18,11 @@
         <% end %>
       </ul>
     </div>
-    <div class="space-y-2">
+    <div>
       <% if @episodes.present? %>
-        <%= render @episodes %>
+        <div class="space-y-2 divide-y divide-blue-300">
+          <%= render @episodes %>
+        </div>
         <%= paginate @episodes %>
       <% else %>
         <div class="p-4 my-4 text-sm text-blue-800 rounded-lg bg-blue-50" role="alert">
