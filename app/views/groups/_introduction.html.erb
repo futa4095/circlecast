@@ -1,22 +1,22 @@
 <div class="md:flex gap-3">
   <div class="basis-1/5">
     <% if group.icon.attached? %>
-      <%= image_tag group.icon, alt: "#{group.name}のアイコン", class: 'size-48 md:size-40 max-w-full md:max-w-none object-scale-down rounded mx-auto' %>
+      <%= image_tag group.icon, alt: "#{group.name}のアイコン", class: 'size-28 max-w-full md:max-w-none object-scale-down rounded mx-auto' %>
     <% else %>
-      <%= image_tag 'default-group.svg', alt: 'グループのアイコン', class: 'size-40 max-w-none object-scale-down rounded mx-auto' %>
+      <%= image_tag 'default-group.svg', alt: 'グループのアイコン', class: 'size-28 max-w-none object-scale-down rounded mx-auto' %>
     <% end %>
   </div>
   <div class="basis-3/5">
     <h1 class="font-bold text-xl md:text-4xl"><%= group.name %></h1>
     <% if description_too_long? group.description %>
       <input type="checkbox" id="toggle_show_hidden" class="peer invisible absolute">
-      <div class="mt-2 max-h-24 overflow-hidden transition-all ease-out peer-checked:max-h-[100rem] peer-checked:overflow-visible">
+      <div class="mt-2 max-h-24 text-sm text-gray-500 overflow-hidden transition-all ease-out peer-checked:max-h-[100rem] peer-checked:overflow-visible">
         <%= simple_format h(group.description) %>
       </div>
-      <label for="toggle_show_hidden" class="block text-blue-700 cursor-pointer peer-checked:hidden">続きを見る</label>
-      <label for="toggle_show_hidden" class="text-blue-700 cursor-pointer hidden peer-checked:block">閉じる</label>
+      <label for="toggle_show_hidden" class="block text-sm text-blue-700 cursor-pointer peer-checked:hidden">続きを見る</label>
+      <label for="toggle_show_hidden" class="text-sm text-blue-700 cursor-pointer hidden peer-checked:block">閉じる</label>
     <% else %>
-      <div class="mt-2">
+      <div class="mt-2 text-sm text-gray-500">
         <%= simple_format h(group.description) %>
       </div>
     <% end %>

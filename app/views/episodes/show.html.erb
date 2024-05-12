@@ -19,9 +19,9 @@
         (<%= l @episode.updated_at.to_date %>に更新)
       <% end %>
     </p>
-
-    <%= simple_format h(@episode.description) %>
-
+    <div class="text-sm text-gray-500">
+      <%= simple_format h(@episode.description) %>
+    </div>
     <div>
       <% if @episode.enclosure.attached? %>
         <%= audio_tag polymorphic_path(@episode.enclosure), controls: true, controlsList: [:nodownload] %>
