@@ -1,5 +1,5 @@
 <% content_for :title, "#{@episode.title} - " %>
-<article class="w-full md:flex gap-3 space-y-3">
+<article class="w-full md:flex gap-3">
   <div class="basis-1/5">
     <% if @channel.artwork.attached? %>
       <%= image_tag @channel.artwork, alt: "#{@channel.title}のアートワーク", class: 'size-28 max-w-none rounded mx-auto' %>
