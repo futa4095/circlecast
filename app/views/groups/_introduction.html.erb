@@ -41,5 +41,30 @@
         </div>
       </div>
     </div>
+    <% if group.channels.empty? %>
+      <% if group.admin? current_user %>
+        <div class="max-w-lg p-4 my-4 mx-auto text-blue-800 border border-blue-300 rounded-lg bg-blue-50" role="alert">
+          <div class="text-center">
+            <h3 class="text-2xl font-bold">新しい番組を始めよう！</h3>
+          </div>
+          <div class="my-4 space-y-4">
+            <p>番組とは特定のテーマやトピックに焦点を当てたポッドキャストのエピソードの集まりです。</p>
+            <p>このグループで新しい番組を立ち上げて、メンバーにポッドキャストを共有しましょう。</p>
+          </div>
+          <div class="mt-8 mb-4 text-center">
+            <%= link_to '番組を作る', new_group_channel_path(group), class: 'text-white font-semibold bg-blue-600 hover:bg-blue-700 focus:ring-4 focus:ring-blue-300 rounded-lg px-10 py-4' %>
+          </div>
+        </div>
+      <% else %>
+        <div class="max-w-lg p-4 my-4 mx-auto text-blue-800 border border-blue-300 rounded-lg bg-blue-50" role="alert">
+          <div class="text-center">
+            <h3 class="text-2xl font-bold">準備中です</h3>
+          </div>
+          <div class="my-4">
+            <p>グループの管理者による番組作成とエピソードの投稿をお待ちください。</p>
+          </div>
+        </div>
+        <% end %>
+    <% end %>
   </div>
 </div>
