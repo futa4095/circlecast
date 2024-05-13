@@ -1,4 +1,9 @@
 <% content_for :title, "#{@episode.title} - " %>
+<% content_for :top_bar do %>
+  <div class="bg-blue-50 border-y border-blue-200 py-0.5 px-4">
+    <%= link_to @channel.title, @channel, class: 'hover:bg-blue-100 text-blue-700 text-md font-medium' %>
+  </div>
+<% end %>
 <article class="w-full md:flex gap-3">
   <div class="basis-1/5">
     <% if @channel.artwork.attached? %>
@@ -8,7 +13,6 @@
     <% end %>
   </div>
   <div class="basis-3/5 space-y-1 md:space-y-2">
-    <%= link_to @channel.title, @channel, class: 'bg-blue-50 hover:bg-blue-100 text-blue-700 text-sm font-medium px-3 py-1 rounded border border-blue-400' %>
     <h1 class="font-bold text-xl md:text-4xl"><%= @episode.title %></h1>
     <p class="flex gap-1">
       <svg class="size-5 text-gray-800" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 20 20">

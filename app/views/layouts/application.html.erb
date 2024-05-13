@@ -58,6 +58,7 @@
         <% end %>
       </header>
     <% end %>
+    <%= yield :top_bar %>
     <main class="container mx-auto mt-6 md:mt-20 px-2 md:px-5 flex flex-col flex-1 max-w-4xl">
       <div id="notice">
         <% if notice.present? %>
