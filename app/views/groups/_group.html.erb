@@ -1,10 +1,10 @@
 <div id="<%= dom_id group %>">
-  <%= link_to group, class: 'flex flex-row items-center bg-white border border-gray-300 rounded-lg hover:bg-gray-100' do %>
+  <%= link_to group, class: 'flex flex-row items-center overflow-hidden bg-white border border-gray-300 rounded-lg hover:bg-gray-100' do %>
     <div class="object-cover">
       <% if group.icon.attached? %>
-          <%= image_tag group.icon, alt: "#{group.name}のアイコン", class: 'size-24 md:size-40 max-w-none rounded' %>
+          <%= image_tag group.icon, alt: "#{group.name}のアイコン", class: 'size-24 md:size-40 max-w-none rounded-l' %>
       <% else %>
-        <%= image_tag 'default-group.svg', alt: 'グループのアイコン', class: 'size-24 md:size-40 max-w-none rounded' %>
+        <%= image_tag 'default-group.svg', alt: 'グループのアイコン', class: 'size-24 md:size-40 max-w-none rounded-l' %>
       <% end %>
     </div>
     <div class="flex flex-col justify-between p-1 md:p-4 leading-normal w-4/5 min-w-0">
