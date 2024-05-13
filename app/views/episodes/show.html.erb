@@ -24,7 +24,7 @@
     </div>
     <div>
       <% if @episode.enclosure.attached? %>
-        <%= audio_tag polymorphic_path(@episode.enclosure), controls: true, controlsList: [:nodownload] %>
+        <%= audio_tag polymorphic_path(@episode.enclosure), controls: true, controlsList: [:nodownload], class: 'w-full' %>
       <% else %>
         添付ファイルはありません
       <% end %>
