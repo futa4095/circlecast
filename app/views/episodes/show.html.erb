@@ -1,6 +1,6 @@
 <% content_for :title, "#{@episode.title} - " %>
 <% content_for :top_bar do %>
-  <div class="bg-blue-50 border-y border-blue-200 py-0.5 px-4">
+  <div class="bg-blue-50 border-y border-blue-200 py-0.5 px-4 truncate">
     <%= link_to @channel.title, @channel, class: 'hover:bg-blue-100 text-blue-700 text-md font-medium' %>
   </div>
 <% end %>
