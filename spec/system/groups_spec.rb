@@ -69,7 +69,6 @@ RSpec.describe 'Groups' do
     end
 
     it 'グループから脱退すること' do
-      puts Capybara.raise_server_errors
       group = groups(:nbc)
       visit group_path(group)
       find('.menu-button').click
@@ -84,7 +83,7 @@ RSpec.describe 'Groups' do
     it '作成を促すメッセージを表示すること' do
       sign_in users(:no_groups_user)
       visit groups_path
-      expect(page).to have_content 'グループに参加していません！'
+      expect(page).to have_content 'まずは、グループに所属しよう！'
     end
   end
 
