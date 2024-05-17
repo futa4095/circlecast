@@ -5,7 +5,7 @@
         <%= episode.channel.title %>
       </span>
     <% end %>
-    <h2 class="my-1 md:mb-2 text-md md:text-2xl font-bold tracking-tight text-gray-900 hover:underline line-clamp-2">
+    <h2 class="my-1 md:mb-2 text-md md:text-xl font-semibold tracking-tight text-gray-700 hover:underline line-clamp-2">
       <%= episode.title %>
     </h2>
     <p class="mb-1 md:mb-2 text-sm md:text-base font-normal text-gray-700 flex gap-1">
@@ -14,7 +14,7 @@
       </svg>
       <%= publication_and_update_dates(episode) %>
     </p>
-    <p class="font-normal text-sm md:text-base text-gray-700 line-clamp-3">
+    <p class="font-normal text-sm md:text-base line-clamp-3">
       <%= episode.description %>
     </p>
   <% end %>

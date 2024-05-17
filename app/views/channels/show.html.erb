@@ -4,7 +4,7 @@
     <%= link_to @channel.group.name, @channel.group, class: 'hover:bg-blue-100 text-blue-700 text-md font-medium' %>
   </div>
 <% end %>
-<div class="w-full space-y-4">
+<div class="w-full space-y-6">
   <div>
     <div class="md:flex gap-4">
       <div>
@@ -44,7 +44,7 @@
   </div>
   <section>
     <% if @channel.episodes.present? %>
-      <h5 class="text-xl">この番組のエピソード</h5>
+      <h5 class="pl-1 border-s-4 border-blue-600 text-xl md:text-2xl font-semibold">この番組のエピソード</h5>
       <% if @channel.group.admin? current_user %>
         <div class="m-8 text-center">
           <%= link_to 'エピソードを作成', new_channel_episode_path(@channel), class: 'text-white border border-blue-700 bg-blue-600 hover:bg-blue-700 focus:ring-4 focus:ring-blue-300 font-bold rounded-lg text-sm px-12 py-4' %>
