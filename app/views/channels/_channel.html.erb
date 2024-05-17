@@ -2,9 +2,9 @@
   <%= link_to channel, data: { turbo_frame: '_top' }, class: 'flex flex-row items-center overflow-hidden bg-white border border-gray-300 rounded-lg hover:bg-gray-100' do %>
     <div class="object-scale-down">
       <% if channel.artwork.attached? %>
-        <%= image_tag channel.artwork, alt: "#{channel.title}のアートワーク", class: 'max-w-none size-24 md:size-32 object-scale-down rounded-l' %>
+        <%= image_tag channel.artwork, alt: "#{channel.title}のアートワーク", class: 'max-w-none size-24 md:size-28 object-scale-down rounded-l' %>
       <% else %>
-        <%= image_tag 'default-channel.svg', alt: '番組のアートワーク', class: 'max-w-none size-24 md:size-32 rounded-l' %>
+        <%= image_tag 'default-channel.svg', alt: '番組のアートワーク', class: 'max-w-none size-24 md:size-28 rounded-l' %>
       <% end %>
     </div>
     <div class="flex-1 flex flex-col gap-1 p-1 md:p-2 leading-normal min-w-0">

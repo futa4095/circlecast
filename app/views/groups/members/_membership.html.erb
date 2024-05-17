@@ -1,11 +1,11 @@
 <tr id="<%= dom_id membership %>" class="bg-white border-b even:bg-gray-50">
-  <th scope="row" class="px-6 py-4 font-medium whitespace-nowrap">
+  <th scope="row" class="px-4 py-4 font-medium whitespace-nowrap">
     <%= membership.user.name %>
   </th>
-  <td class="px-6 py-4">
+  <td class="px-4 py-4">
     <%= membership.user.email %>
   </td>
-  <td class="px-6 py-4">
+  <td class="px-4 py-4">
     <% unless current_user == membership.user %>
       <%= button_to(
             group_member_path(
@@ -33,7 +33,7 @@
       <% end %>
     <% end %>
   </td>
-  <td class="px-6 py-4">
+  <td class="px-4 py-4">
     <% unless current_user == membership.user %>
       <%= button_to(
             group_member_path(
