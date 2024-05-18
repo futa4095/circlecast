@@ -37,7 +37,9 @@
         <input type="checkbox" id="cp01" name="cp01" class="peer hidden">
         <label x-show="isTextLong" for="cp01" class="absolute z-10 bottom-0 w-full h-32 cursor-pointer text-center bg-gradient-to-b from-gray-50/0 from-0% to-gray-50/95 to-90% peer-checked:from-inherit peer-checked:to-inherit after:leading-10 after:absolute after:z-20 after:bottom-5 after:left-1/2 after:w-64 after:content-['続きを読む'] after:-translate-x-1/2 after:tracking-wider after:text-white after:border after:rounded-3xl after:bg-gray-400 peer-checked:after:content-['閉じる']"></label>
         <div :class="isTextLong ? 'overflow-hidden transition-all ease-out duration-500 h-48 peer-checked:h-auto peer-checked:pb-20' : ''">
-          <%= simple_format h(group.description), 'x-ref': 'description' %>
+          <div x-ref="description">
+            <%= simple_format h(group.description) %>
+          </div>
         </div>
       </div>
     </div>
