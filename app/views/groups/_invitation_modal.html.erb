@@ -31,7 +31,7 @@ CIRCLECASTの利用にはユーザー登録が必要です。リンク先で簡�
         <p class="text-base leading-relaxed text-gray-900">
           テキストをコピーして共有しよう！
         </p>
-        <textarea x-model="invitationText" rows="10" class="block p-2.5 w-full text-sm text-gray-900 bg-gray-50 rounded-lg border border-gray-300 focus:ring-blue-500 focus:border-blue-500">
+        <textarea x-model="invitationText" name="invitationText" rows="10" class="block p-2.5 w-full text-sm text-gray-900 bg-gray-50 rounded-lg border border-gray-300 focus:ring-blue-500 focus:border-blue-500">
         </textarea>
       </div>
       <div x-data="{ copyToClipboard(text) { navigator.clipboard.writeText(text) } }" class="flex items-center p-6 gap-3 border-t border-gray-200 rounded-b">
