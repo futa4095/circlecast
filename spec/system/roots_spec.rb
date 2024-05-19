@@ -6,6 +6,7 @@ RSpec.describe 'Roots' do
   it 'トップページを表示すること' do
     visit root_path
     expect(page).to have_content 'CIRCLECAST'
+    expect(page).to have_none_of_selectors 'body header'
   end
 
   it '利用規約を表示すること' do

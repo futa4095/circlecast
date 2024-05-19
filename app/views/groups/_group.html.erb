@@ -1,17 +1,17 @@
 <div id="<%= dom_id group %>">
-  <%= link_to group, class: 'flex flex-row items-center bg-white border border-gray-300 rounded-lg hover:bg-gray-100' do %>
+  <%= link_to group, class: 'flex flex-row items-center overflow-hidden bg-white border border-gray-300 rounded-lg hover:bg-gray-100' do %>
     <div class="object-cover">
       <% if group.icon.attached? %>
-          <%= image_tag group.icon, alt: "#{group.name}のアイコン", class: 'size-24 md:size-40 max-w-none rounded' %>
+        <%= image_tag group.icon, alt: "#{group.name}のアイコン", class: 'size-24 md:size-28 max-w-none rounded-l' %>
       <% else %>
-        <%= image_tag 'default-group.svg', alt: 'グループのアイコン', class: 'size-24 md:size-40 max-w-none rounded' %>
+        <%= image_tag 'default-group.svg', alt: 'グループのアイコン', class: 'size-24 md:size-28 max-w-none rounded-l' %>
       <% end %>
     </div>
-    <div class="flex flex-col justify-between p-1 md:p-4 leading-normal w-4/5 min-w-0">
-      <h2 class="md:mb-2 text-md md:text-2xl font-bold tracking-tight text-gray-900 truncate hover:underline">
+    <div class="flex-1 flex flex-col gap-1 px-2 py-1 md:px-3 md:py-2 leading-normal min-w-0">
+      <h2 class="text-md md:text-xl font-semibold tracking-tight text-gray-700 truncate hover:underline">
         <%= group.name %>
       </h2>
-      <p class="md:mb-3 text-sm md:text-base text-gray-700 line-clamp-3">
+      <p class="text-sm line-clamp-3">
         <%= group.description %>
       </p>
     </div>

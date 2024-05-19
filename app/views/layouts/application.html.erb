@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="ja" prefix="og:http://ogp.me/ms#">
   <head>
-    <title><%= yield :title %>CIRCLE CAST</title>
+    <title><%= yield :title %>CIRCLECAST</title>
     <meta name="viewport" content="width=device-width,initial-scale=1">
     <meta name="description" content="プライベートな空間でポッドキャストを共有。グループ内のコミュニケーションを最適化しましょう。">
     <meta property="og:title" content="<%= yield :title %>CIRCLE CAST">
@@ -21,8 +21,8 @@
     <%= javascript_importmap_tags %>
   </head>
 
-  <body>
-    <% unless request.path == root_path %>
+  <body class="flex flex-col min-h-screen text-gray-600">
+    <% if display_header? %>
       <header>
         <% if user_signed_in? %>
           <nav>
@@ -34,25 +34,12 @@
               </div>
 
               <div x-data="{ open: false }" class="relative">
-                <button @click="open = !open" class="flex items-center focus:outline-none">
-                  <svg
-                    xmlns="http://www.w3.org/2000/svg"
-                    class="w-5 h-5 ml-2"
-                    fill="none"
-                    stroke="currentColor"
-                    viewBox="0 0 24 24"
-                    stroke-linecap="round"
-                    stroke-linejoin="round"
-                  >
-                    <path
-                      stroke-linecap="round"
-                      stroke-linejoin="round"
-                      stroke-width="2"
-                      d="M19 9l-7 7-7-7"
-                    ></path>
+                <button @click="$refs.header_menu.removeAttribute('x-cloak'); open = !open;" class="flex items-center focus:outline-none" type="button" aria-label="メニュー">
+                  <svg class="size-8 text-gray-800" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="none" viewBox="0 0 24 24">
+                    <path stroke="currentColor" stroke-linecap="round" stroke-width="1.5" d="M5 7h14M5 12h14M5 17h14"/>
                   </svg>
                 </button>
-                <div x-show="open" @click.away="open = false" x-cloak class="absolute right-0 mt-2 w-40 bg-white border border-gray-300 rounded-lg group-hover:block z-10">
+                <div x-ref="header_menu" x-show="open" @click.away="open = false" x-cloak x-transition class="absolute right-0 mt-2 w-40 bg-white border border-gray-300 rounded-lg group-hover:block z-10">
                   <%= link_to '参加グループ', groups_path, class: 'flex w-full items-center rounded-md px-3 py-2 text-gray-700 hover:bg-gray-100' %>
                   <%= link_to 'ユーザー情報', edit_user_registration_path, class: 'flex w-full items-center rounded-md px-3 py-2 text-gray-700 hover:bg-gray-100' %>
                   <%= button_to 'ログアウト', destroy_user_session_path, method: :delete, class: 'flex w-full items-center rounded-md px-3 py-2 text-gray-700 hover:bg-gray-100' %>
@@ -71,16 +58,19 @@
         <% end %>
       </header>
     <% end %>
-    <main class="container mx-auto mt-6 md:mt-20 px-2 md:px-5 flex flex-col max-w-4xl">
-      <div id="notice">
-        <% if notice.present? %>
-          <p class="p-4 mb-4 text-sm text-green-800 rounded-lg bg-green-50"><%= notice %></p>
-        <% end %>
-      </div>
-      <div id="alert">
-        <% if alert.present? %>
-          <p class="p-4 mb-4 text-sm text-red-800 rounded-lg bg-red-50" role="alert"><%= alert %></p>
-        <% end %>
+    <%= yield :top_bar %>
+    <main class="container mx-auto px-2 md:px-5 flex flex-col flex-1 max-w-4xl">
+      <div class="h-16 my-1 md:my-4 p-1">
+        <div id="notice" data-turbo-temporary>
+          <% if notice.present? %>
+            <p class="p-4 text-sm text-green-800 rounded-lg bg-green-50"><%= notice %></p>
+          <% end %>
+        </div>
+        <div id="alert" data-turbo-temporary>
+          <% if alert.present? %>
+            <p class="p-4 text-sm text-red-800 rounded-lg bg-red-50" role="alert"><%= alert %></p>
+          <% end %>
+        </div>
       </div>
       <%= yield %>
     </main>

@@ -3,8 +3,8 @@
   <%= render 'groups/introduction', group: @group %>
 
   <%= turbo_frame_tag 'group-tab', data: { turbo_action: 'advance' } do %>
-    <div class="mb-3 border-b border-gray-200">
-      <ul class="flex flex-wrap -mb-px text-sm md:text-md font-medium text-center text-gray-500 space-x-1 md:space-x-2">
+    <div class="mb-1.5 border-b border-gray-200">
+      <ul class="flex flex-wrap -mb-px text-sm md:text-base font-semibold text-center text-gray-500 space-x-2">
         <li>
           <%= link_to '新着エピソード', @group, class: 'inline-flex items-center justify-center p-2.5 md:p-4 border-b-2 border-transparent rounded-t-lg hover:text-gray-600 hover:border-gray-300 group' %>
         </li>
@@ -18,7 +18,12 @@
         <% end %>
       </ul>
     </div>
-    <div id="channels" class="min-w-full space-y-2">
+    <% if @group.admin? current_user && @group.channels.empty? %>
+      <div class="m-8 text-center">
+        <%= link_to '番組を作る', new_group_channel_path(@group), data: { turbo_frame: '_top' }, class: 'text-white border border-blue-700 bg-blue-600 hover:bg-blue-700 focus:ring-4 focus:ring-blue-300 font-bold rounded-lg px-12 py-4 text-center h-fit w-full' %>
+      </div>
+    <% end %>
+    <div id="channels" class="min-w-full min-h-32 space-y-2">
       <% if @channels.present? %>
         <%= render partial: 'channels/channel', collection: @channels %>
         <%= paginate @channels %>

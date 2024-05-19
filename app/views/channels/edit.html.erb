@@ -1,9 +1,11 @@
 <% content_for :title, "番組を編集 - " %>
 <div class="mx-auto md:w-2/3 w-full">
-  <%= link_to @channel.group.name, @channel.group, class: 'text-xl' %>
-  <h1 class="font-bold text-4xl">番組を編集</h1>
+  <div class="mb-2">
+    <%= link_to @channel.group.name, @channel.group, class: 'text-xl' %>
+  </div>
+  <h1 class="font-bold text-3xl">番組を編集</h1>
 
   <%= render 'form', channel: @channel %>
 
-  <%= link_to '戻る', @channel, class: 'text-blue-600 hover:text-white border border-blue-600 hover:bg-blue-600 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center inline-block w-24' %>
+  <%= link_to '戻る', @channel, class: 'text-gray-600 hover:text-white border border-gray-600 hover:bg-gray-600 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm py-3 text-center inline-block w-28' %>
 </div>

@@ -11,12 +11,14 @@
 
   <div class="my-5">
     <%= form.label :name, class: 'mb-1 block font-medium text-gray-800' %>
-    <%= form.text_field :name, maxlength: 100, placeholder: 'グループの名前を入力', class: 'block rounded-md border border-gray-400 outline-none px-3 py-2 mt-2 w-full' %>
+    <%= form.text_field :name, maxlength: 100, placeholder: '例: 会社の部署名、趣味のグループ名', class: 'block rounded-md border border-gray-400 outline-none px-3 py-2 mt-2 w-full' %>
+    <p class="mt-2 text-sm text-gray-500">入力必須です。</p>
   </div>
 
   <div class="my-5">
     <%= form.label :description, class: 'mb-1 block font-medium text-gray-800' %>
-    <%= form.text_area :description, rows: 8, placeholder: 'グループの説明を入力', class: 'block rounded-md border border-gray-400 outline-none px-3 py-2 mt-2 w-full' %>
+    <%= form.text_area :description, rows: 8, class: 'block rounded-md border border-gray-400 outline-none px-3 py-2 mt-2 w-full' %>
+    <p class="mt-2 text-sm text-gray-500">省略可能です。</p>
   </div>
 
   <div class="my-5">
@@ -24,9 +26,10 @@
     <%= form.file_field :icon,
                         accept: 'image/jpeg, image/png, image/webp',
                         class: 'block w-full file:mr-4 file:px-4 file:rounded-l-md file:border-0 file:bg-gray-300 file:py-2.5 file:text-sm file:text-gray-900 hover:file:bg-gray-400 file:cursor-pointer border border-gray-400 rounded-md cursor-pointer focus:outline-none' %>
+    <p class="mt-2 text-sm text-gray-500">省略可能です。設定すると区別しやすくなります。</p>
   </div>
 
   <div class="inline">
-    <%= form.submit class: 'text-white bg-blue-600 border border-blue-600 hover:bg-blue-700 focus:ring-4 focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 me-2 mb-2 cursor-pointer w-24' %>
+    <%= form.submit class: 'text-white bg-blue-600 border border-blue-600 hover:bg-blue-700 focus:ring-4 focus:ring-blue-300 font-medium rounded-lg text-sm py-3 me-2 mb-2 cursor-pointer w-28' %>
   </div>
 <% end %>

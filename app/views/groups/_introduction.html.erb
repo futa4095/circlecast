@@ -1,52 +1,72 @@
-<div class="md:flex gap-3">
-  <div class="basis-1/5 m-4">
+<div class="space-y-3 md:space-y-0 md:flex md:gap-3">
+  <div>
     <% if group.icon.attached? %>
-      <%= image_tag group.icon, alt: "#{group.name}のアイコン", class: 'size-48 md:size-40 max-w-full md:max-w-none object-scale-down rounded mx-auto' %>
+      <%= image_tag group.icon, alt: "#{group.name}のアイコン", class: 'size-28 max-w-full md:max-w-none object-scale-down rounded mx-auto' %>
     <% else %>
-      <%= image_tag 'default-group.svg', alt: 'グループのアイコン', class: 'size-40 max-w-none object-scale-down rounded mx-auto' %>
+      <%= image_tag 'default-group.svg', alt: 'グループのアイコン', class: 'size-28 max-w-none object-scale-down rounded mx-auto' %>
     <% end %>
   </div>
-  <div class="basis-3/5">
-    <h1 class="font-bold text-xl md:text-4xl"><%= group.name %></h1>
-    <% if description_too_long? group.description %>
-      <input type="checkbox" id="toggle_show_hidden" class="peer invisible absolute">
-      <div class="mt-2 max-h-24 overflow-hidden transition-all ease-out peer-checked:max-h-[100rem] peer-checked:overflow-visible">
-        <%= simple_format h(group.description) %>
-      </div>
-      <label for="toggle_show_hidden" class="block text-blue-700 cursor-pointer peer-checked:hidden">続きを見る</label>
-      <label for="toggle_show_hidden" class="text-blue-700 cursor-pointer hidden peer-checked:block">閉じる</label>
-    <% else %>
-      <div class="mt-2">
-        <%= simple_format h(group.description) %>
-      </div>
-    <% end %>
-  </div>
-  <div class="basis-1/5 flex items-baseline gap-1 justify-end">
-    <% if group.admin? current_user %>
-      <%= link_to '番組を作る', new_group_channel_path(group), class: 'text-white border border-blue-700 bg-blue-600 hover:bg-blue-700 focus:ring-4 focus:ring-blue-300 font-medium rounded-lg text-sm p-2.5 text-center h-fit w-full' %>
-    <% end %>
-
-    <div x-data="{ open: false }" class="relative">
-      <button @click="open = !open" class="menu-button inline-flex self-center items-center px-1 py-2.5 bg-white rounded-lg hover:bg-gray-100 focus:ring-4 focus:ring-gray-50 focus:outline-none h-fit">
-        <svg class="size-5 text-gray-800" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="currentColor" viewBox="0 0 4 15">
-          <path d="M3.5 1.5a1.5 1.5 0 1 1-3 0 1.5 1.5 0 0 1 3 0Zm0 6.041a1.5 1.5 0 1 1-3 0 1.5 1.5 0 0 1 3 0Zm0 5.959a1.5 1.5 0 1 1-3 0 1.5 1.5 0 0 1 3 0Z"/>
-        </svg>
-      </button>
-      <div x-show="open" @click.away="open = false" x-transition x-cloak class="absolute right-0 mt-2 w-40 bg-white border border-gray-300 rounded-lg group-hover:block z-10">
-        <% if group.admin? current_user %>
-          <%= link_to 'グループの編集', edit_group_path(group), class: 'flex w-full items-center rounded-md px-3 py-2 text-gray-700 hover:bg-gray-100' %>
-          <%= button_to 'グループの削除', group, method: :delete, data: { turbo_confirm: "このグループを削除すると、それに関連するデータも失われますが、後で取り消すことはできません。\n\n本当に削除してもよろしいですか？" }, class: 'flex w-full items-center rounded-md px-3 py-2 text-gray-700 hover:bg-gray-100' %>
-          <%= render 'groups/invitation_modal', group: %>
-        <% end %>
-        <%= button_to(
-          'グループから脱退',
-          group_member_path(group, current_user),
-          method: :patch,
-          params: { membership: { withdrawal: true } },
-          data: { turbo_confirm: '脱退すると、グループの番組を利用できなくなります。よろしいですか？' },
-          class: 'flex w-full items-center rounded-md px-3 py-2 text-gray-700 hover:bg-gray-100'
-        ) %>
+  <div class="flex-1">
+    <div class="flex justify-between w-full">
+      <h1 class="font-bold text-xl md:text-3xl"><%= group.name %></h1>
+      <div x-data="{ open: false }" class="relative">
+        <button type="button" @click="$refs.group_menu.removeAttribute('x-cloak'); open = !open;" class="menu-button inline-flex self-center items-center px-1 py-2.5 bg-white rounded-lg hover:bg-gray-100 focus:ring-4 focus:ring-gray-50 focus:outline-none h-fit">
+          <svg class="size-5 text-gray-800" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="currentColor" viewBox="0 0 4 15">
+            <path d="M3.5 1.5a1.5 1.5 0 1 1-3 0 1.5 1.5 0 0 1 3 0Zm0 6.041a1.5 1.5 0 1 1-3 0 1.5 1.5 0 0 1 3 0Zm0 5.959a1.5 1.5 0 1 1-3 0 1.5 1.5 0 0 1 3 0Z"/>
+          </svg>
+        </button>
+        <div x-ref="group_menu" x-show="open" @click.away="open = false" x-transition x-cloak class="absolute right-0 mt-2 w-40 bg-white border border-gray-300 rounded-lg group-hover:block z-20">
+          <% if group.admin? current_user %>
+            <%= link_to 'グループの編集', edit_group_path(group), class: 'flex w-full items-center rounded-md px-3 py-2 text-gray-700 hover:bg-gray-100' %>
+            <%= button_to 'グループの削除', group, method: :delete, data: { turbo_confirm: "このグループを削除すると、それに関連するデータも失われますが、後で取り消すことはできません。\n\n本当に削除してもよろしいですか？" }, class: 'flex w-full items-center rounded-md px-3 py-2 text-gray-700 hover:bg-gray-100' %>
+            <%= render 'groups/invitation_modal', group: %>
+          <% end %>
+          <%= button_to(
+            'グループから脱退',
+            group_member_path(group, current_user),
+            method: :patch,
+            params: { membership: { withdrawal: true } },
+            data: { turbo_confirm: '脱退すると、グループの番組を利用できなくなります。よろしいですか？' },
+            class: 'flex w-full items-center rounded-md px-3 py-2 text-gray-700 hover:bg-gray-100'
+          ) %>
+        </div>
       </div>
     </div>
+    <div class="mt-2 text-sm text-gray-500">
+      <div x-data x-init="isTextLong = $refs.description.clientHeight > 192" class="relative">
+        <input type="checkbox" id="cp01" name="cp01" class="peer hidden">
+        <label x-show="isTextLong" for="cp01" class="absolute z-10 bottom-0 w-full h-32 cursor-pointer text-center bg-gradient-to-b from-gray-50/0 from-0% to-gray-50/95 to-90% peer-checked:from-inherit peer-checked:to-inherit after:leading-10 after:absolute after:z-20 after:bottom-5 after:left-1/2 after:w-64 after:content-['続きを読む'] after:-translate-x-1/2 after:tracking-wider after:text-white after:border after:rounded-3xl after:bg-gray-400 peer-checked:after:content-['閉じる']"></label>
+        <div :class="isTextLong ? 'overflow-hidden transition-all ease-out duration-500 h-48 peer-checked:h-auto peer-checked:pb-20' : ''">
+          <div x-ref="description">
+            <%= simple_format h(group.description) %>
+          </div>
+        </div>
+      </div>
+    </div>
+    <% if group.channels.empty? %>
+      <% if group.admin? current_user %>
+        <div class="max-w-lg p-4 my-4 mx-auto text-blue-800 border border-blue-300 rounded-lg bg-blue-50" role="alert">
+          <div class="text-center">
+            <h3 class="text-2xl font-bold">新しい番組を始めよう！</h3>
+          </div>
+          <div class="my-4 space-y-4">
+            <p>番組とは特定のテーマやトピックに焦点を当てたポッドキャストのエピソードの集まりです。</p>
+            <p>このグループで新しい番組を立ち上げて、メンバーにポッドキャストを共有しましょう。</p>
+          </div>
+          <div class="mt-8 mb-4 text-center">
+            <%= link_to '番組を作る', new_group_channel_path(group), class: 'text-white font-semibold bg-blue-600 hover:bg-blue-700 focus:ring-4 focus:ring-blue-300 rounded-lg px-10 py-4' %>
+          </div>
+        </div>
+      <% else %>
+        <div class="max-w-lg p-4 my-4 mx-auto text-blue-800 border border-blue-300 rounded-lg bg-blue-50" role="alert">
+          <div class="text-center">
+            <h3 class="text-2xl font-bold">準備中です</h3>
+          </div>
+          <div class="my-4">
+            <p>グループの管理者による番組作成とエピソードの投稿をお待ちください。</p>
+          </div>
+        </div>
+        <% end %>
+    <% end %>
   </div>
 </div>

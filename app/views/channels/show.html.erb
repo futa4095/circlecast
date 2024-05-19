@@ -1,53 +1,82 @@
 <% content_for :title, "#{@channel.title}のエピソード - " %>
-<div class="w-full space-y-4">
+<% content_for :top_bar do %>
+  <div class="bg-blue-50 border-y border-blue-200 py-0.5 px-4 truncate">
+    <%= link_to @channel.group.name, @channel.group, class: 'hover:bg-blue-100 text-blue-700 text-md font-medium' %>
+  </div>
+<% end %>
+<div class="w-full space-y-6">
   <div>
-    <div class="md:flex gap-4 space-y-2">
-      <div class="basis-1/5">
+    <div class="space-y-3 md:space-y-0 md:flex md:gap-4">
+      <div>
         <% if @channel.artwork.attached? %>
-          <%= image_tag @channel.artwork, alt: "#{@channel.title}のアートワーク", class: 'size-48 max-w-none rounded mx-auto' %>
+          <%= image_tag @channel.artwork, alt: "#{@channel.title}のアートワーク", class: 'size-28 max-w-none rounded mx-auto' %>
         <% else %>
-          <%= image_tag 'default-channel.svg', alt: '番組のアートワーク', class: 'size-48 max-w-none rounded mx-auto' %>
+          <%= image_tag 'default-channel.svg', alt: '番組のアートワーク', class: 'size-28 max-w-none rounded mx-auto' %>
         <% end %>
       </div>
-      <div class="basis-3/5 space-y-2">
-        <%= link_to @channel.group.name, @channel.group, class: 'bg-blue-50 hover:bg-blue-100 text-blue-700 text-sm me-2 px-3 py-1 rounded border border-blue-400' %>
-        <h1 class="font-bold text-xl md:text-4xl"><%= @channel.title %></h1>
-        <%= simple_format h(@channel.description) %>
-      </div>
-      <div class="basis-1/5 flex gap-1">
-        <div class="flex flex-col gap-2 grow">
-          <% if @channel.group.admin? current_user %>
-            <div class="flex gap-1">
-              <%= link_to 'エピソードを作成', new_channel_episode_path(@channel), class: 'w-full text-white border border-blue-700 bg-blue-600 hover:bg-blue-700 focus:ring-4 focus:ring-blue-300 font-medium rounded-lg text-sm px-2 py-2.5 text-center' %>
+      <div class="flex-1 space-y-2">
+        <div class="flex justify-between">
+          <h1 class="font-bold text-xl md:text-3xl"><%= @channel.title %></h1>
+          <div class="flex gap-2">
+            <div class="flex flex-col w-28">
+              <%= link_to '戻る', group_channels_path(@channel.group), class: 'text-gray-600 hover:text-white border border-gray-600 hover:bg-gray-600 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm p-3 text-center' %>
             </div>
-          <% end %>
-        <%= link_to '戻る', group_channels_path(@channel.group), class: 'w-full text-blue-600 hover:text-white border border-blue-600 hover:bg-blue-600 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm p-2.5 text-center' %>
-        </div>
-        <% if @channel.group.admin? current_user %>
-          <div x-data="{ open: false }" class="relative">
-            <button @click="open = !open" class="menu-button inline-flex self-center items-center px-0.5 py-2.5 bg-white rounded-lg hover:bg-gray-100 focus:ring-4 focus:ring-gray-50 focus:outline-none h-fit">
-              <svg class="size-5 text-gray-800" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="currentColor" viewBox="0 0 4 15">
-                <path d="M3.5 1.5a1.5 1.5 0 1 1-3 0 1.5 1.5 0 0 1 3 0Zm0 6.041a1.5 1.5 0 1 1-3 0 1.5 1.5 0 0 1 3 0Zm0 5.959a1.5 1.5 0 1 1-3 0 1.5 1.5 0 0 1 3 0Z"/>
-              </svg>
-            </button>
-            <div x-show="open" @click.away="open = false" x-transition x-cloak class="absolute right-0 mt-2 w-40 bg-white border border-gray-300 rounded-lg group-hover:block z-10">
-              <%= link_to '番組を編集', edit_group_channel_path(@channel.group), class: 'flex w-full items-center rounded-md px-3 py-2 text-gray-700 hover:bg-gray-100' %>
-              <%= button_to '番組を削除', [@channel.group, @channel], method: :delete, data: { turbo_confirm: "この番組を削除すると、それに関連するエピソードも失われます。\n\n本当に削除してもよろしいですか？" }, class: 'flex w-full items-center rounded-md px-3 py-2 text-gray-700 hover:bg-gray-100' %>
-            </div>
+            <% if @channel.group.admin? current_user %>
+              <div x-data="{ open: false }" class="relative">
+                <button @click="open = !open" class="menu-button inline-flex self-center items-center px-0.5 py-2.5 bg-white rounded-lg hover:bg-gray-100 focus:ring-4 focus:ring-gray-50 focus:outline-none h-fit">
+                  <svg class="size-5 text-gray-800" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="currentColor" viewBox="0 0 4 15">
+                    <path d="M3.5 1.5a1.5 1.5 0 1 1-3 0 1.5 1.5 0 0 1 3 0Zm0 6.041a1.5 1.5 0 1 1-3 0 1.5 1.5 0 0 1 3 0Zm0 5.959a1.5 1.5 0 1 1-3 0 1.5 1.5 0 0 1 3 0Z"/>
+                  </svg>
+                </button>
+                <div x-show="open" @click.away="open = false" x-transition x-cloak class="absolute right-0 mt-2 w-40 bg-white border border-gray-300 rounded-lg group-hover:block z-10">
+                  <%= link_to '番組を編集', edit_group_channel_path(@channel.group), class: 'flex w-full items-center rounded-md px-3 py-2 text-gray-700 hover:bg-gray-100' %>
+                  <%= button_to '番組を削除', [@channel.group, @channel], method: :delete, data: { turbo_confirm: "この番組を削除すると、それに関連するエピソードも失われます。\n\n本当に削除してもよろしいですか？" }, class: 'flex w-full items-center rounded-md px-3 py-2 text-gray-700 hover:bg-gray-100' %>
+                </div>
+              </div>
+            <% end %>
           </div>
-        <% end %>
+        </div>
+        <div class="text-sm text-gray-500">
+          <%= simple_format h(@channel.description) %>
+        </div>
       </div>
     </div>
   </div>
-  <section class="space-y-2">
+  <section>
     <% if @channel.episodes.present? %>
-      <h5 class="text-xl">この番組のエピソード</h5>
-      <%= render @episodes %>
+      <h5 class="pl-1 border-s-4 border-blue-600 text-xl md:text-2xl font-semibold">この番組のエピソード</h5>
+      <% if @channel.group.admin? current_user %>
+        <div class="m-8 text-center">
+          <%= link_to 'エピソードを作成', new_channel_episode_path(@channel), class: 'text-white border border-blue-700 bg-blue-600 hover:bg-blue-700 focus:ring-4 focus:ring-blue-300 font-bold rounded-lg text-sm px-12 py-4' %>
+        </div>
+      <% end %>
+      <div class="divide-y divide-blue-100">
+        <%= render @episodes %>
+      </div>
       <%= paginate @episodes %>
     <% else %>
-      <div class="p-4 my-4 text-sm text-blue-800 rounded-lg bg-blue-50" role="alert">
-        <span class="font-medium">エピソードが投稿されていません</span>
-      </div>
+      <% if @channel.group.admin? current_user %>
+        <div class="max-w-lg p-4 my-4 mx-auto text-blue-800 border border-blue-300 rounded-lg bg-blue-50" role="alert">
+          <div class="text-center">
+            <h3 class="text-2xl font-bold">ポッドキャストをみんなに届けよう！</h3>
+          </div>
+          <div class="my-4 space-y-4">
+            <p>ポッドキャストのエピソードを投稿して、あなたのアイディアやストーリーを共有しませんか？特定のテーマやトピックに焦点を当てたエピソードで、リスナーに新しい視点や知識を提供しましょう。</p>
+          </div>
+          <div class="mt-8 mb-4 text-center">
+            <%= link_to 'エピソードを作成', new_channel_episode_path(@channel), class: 'text-white font-semibold bg-blue-600 hover:bg-blue-700 focus:ring-4 focus:ring-blue-300 rounded-lg px-10 py-4' %>
+          </div>
+        </div>
+      <% else %>
+        <div class="max-w-lg p-4 my-4 mx-auto text-blue-800 border border-blue-300 rounded-lg bg-blue-50" role="alert">
+          <div class="text-center">
+            <h3 class="text-2xl font-bold">この番組は準備中です</h3>
+          </div>
+          <div class="my-4">
+            <p>グループの管理者によるエピソードの投稿をお待ちください。</p>
+          </div>
+        </div>
+        <% end %>
     <% end %>
   </section>
 </div>

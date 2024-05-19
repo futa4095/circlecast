@@ -16,4 +16,9 @@ RSpec.describe 'Users' do
     expect(page).to have_content 'ログアウトしました。'
     expect(page).to have_current_path root_path, ignore_query: true
   end
+
+  it 'アカウント登録ページにヘッダーを表示しないこと' do
+    visit new_user_registration_path
+    expect(page).to have_none_of_selectors 'body header'
+  end
 end

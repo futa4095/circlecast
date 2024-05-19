@@ -53,10 +53,16 @@ RSpec.describe 'Channels' do
   end
 
   describe 'エピソードが投稿されていない場合' do
-    it '未投稿メッセージを表示すること' do
+    it '投稿を促すメッセージを表示すること' do
       sign_in users(:nakajima)
       visit channel_path(channels(:group2_ch1))
-      expect(page).to have_content 'エピソードが投稿されていません'
+      expect(page).to have_content 'ポッドキャストをみんなに届けよう'
+    end
+
+    it '準備中メッセージを表示すること' do
+      sign_in users(:nbc_student1)
+      visit channel_path(channels(:nbc_channel4))
+      expect(page).to have_content 'この番組は準備中です'
     end
   end
 end
