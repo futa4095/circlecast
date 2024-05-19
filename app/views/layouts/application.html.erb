@@ -60,7 +60,7 @@
     <% end %>
     <%= yield :top_bar %>
     <main class="container mx-auto px-2 md:px-5 flex flex-col flex-1 max-w-4xl">
-      <div class="h-16 my-4 p-1">
+      <div class="h-16 my-1 md:my-4 p-1">
         <div id="notice" data-turbo-temporary>
           <% if notice.present? %>
             <p class="p-4 text-sm text-green-800 rounded-lg bg-green-50"><%= notice %></p>

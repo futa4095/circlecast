@@ -4,7 +4,7 @@
     <%= link_to @channel.title, @channel, class: 'hover:bg-blue-100 text-blue-700 text-md font-medium' %>
   </div>
 <% end %>
-<article class="w-full md:flex gap-3">
+<article class="w-full space-y-3 md:space-y-0 md:flex md:gap-3">
   <div>
     <% if @channel.artwork.attached? %>
       <%= image_tag @channel.artwork, alt: "#{@channel.title}のアートワーク", class: 'size-28 max-w-none rounded mx-auto' %>
