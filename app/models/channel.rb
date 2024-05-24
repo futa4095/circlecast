@@ -10,4 +10,20 @@ class Channel < ApplicationRecord
   validates :artwork, content_type: ['image/jpeg', 'image/png', 'image/webp'],
                       dimension: { width: { in: 300..3000 }, height: { in: 300..3000 } },
                       size: { between: (1.kilobyte)..(3.megabyte) }
+
+  def artwork_url
+    if artwork.attached?
+      artwork
+    else
+      'default-channel.svg'
+    end
+  end
+
+  def artwork_alt
+    if artwork.attached?
+      "#{title}のアートワーク"
+    else
+      '番組のアートワーク'
+    end
+  end
 end

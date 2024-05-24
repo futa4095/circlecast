@@ -1,12 +1,6 @@
 <div id="<%= dom_id channel %>">
   <%= link_to channel, data: { turbo_frame: '_top' }, class: 'flex flex-row items-center overflow-hidden bg-white border border-gray-300 rounded-lg hover:bg-gray-100' do %>
-    <div class="object-scale-down">
-      <% if channel.artwork.attached? %>
-        <%= image_tag channel.artwork, alt: "#{channel.title}のアートワーク", class: 'max-w-none size-24 md:size-28 object-scale-down rounded-l' %>
-      <% else %>
-        <%= image_tag 'default-channel.svg', alt: '番組のアートワーク', class: 'max-w-none size-24 md:size-28 rounded-l' %>
-      <% end %>
-    </div>
+    <%= image_tag channel.artwork_url, alt: channel.artwork_alt, class: 'max-w-none size-24 md:size-28 object-scale-down rounded-l' %>
     <div class="flex-1 flex flex-col gap-1 px-2 py-1 md:px-3 md:py-2 leading-normal min-w-0">
       <h2 class="text-md md:text-xl font-semibold tracking-tight text-gray-700 truncate hover:underline">
         <%= channel.title %>

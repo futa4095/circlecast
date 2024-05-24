@@ -4,13 +4,7 @@
 <% end %>
 <div class="w-full space-y-6">
   <div class="space-y-3 md:space-y-0 md:flex md:gap-4">
-    <div>
-      <% if @channel.artwork.attached? %>
-        <%= image_tag @channel.artwork, alt: "#{@channel.title}のアートワーク", class: 'size-28 max-w-none rounded mx-auto' %>
-      <% else %>
-        <%= image_tag 'default-channel.svg', alt: '番組のアートワーク', class: 'size-28 max-w-none rounded mx-auto' %>
-      <% end %>
-    </div>
+    <%= image_tag @channel.artwork_url, alt: @channel.artwork_alt, class: 'size-28 max-w-none rounded mx-auto' %>
     <div class="flex-1 space-y-2">
       <div class="flex justify-between">
         <h1 class="font-bold text-xl md:text-3xl"><%= @channel.title %></h1>
