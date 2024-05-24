@@ -1,6 +1,6 @@
 <% content_for :title, "#{@group.name}の番組 - " %>
 <div class="w-full flex flex-col gap-2">
-  <%= render 'groups/introduction', group: @group %>
+  <%= render 'groups/detail_view', group: @group %>
 
   <%= turbo_frame_tag 'group-tab', data: { turbo_action: 'advance' } do %>
     <div class="mb-1.5 border-b border-gray-200">
