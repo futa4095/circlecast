@@ -1,6 +1,6 @@
 <div id="<%= dom_id episode %>">
   <div class="p-2 md:px-4 md:py-3 rounded-lg hover:bg-gray-100 space-y-1">
-    <h2 class="text-md md:text-xl font-semibold tracking-tight text-gray-700 hover:underline line-clamp-2">
+    <h2 class="md:text-xl font-semibold tracking-tight text-gray-700 hover:underline line-clamp-2">
       <%= link_to episode.title, [episode.channel, episode], data: { turbo_frame: '_top' } %>
     </h2>
     <% if controller_name != 'channels' %>
