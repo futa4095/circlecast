@@ -55,28 +55,7 @@
       </div>
       <%= paginate @episodes %>
     <% else %>
-      <% if @channel.group.admin? current_user %>
-        <div class="max-w-lg p-4 my-4 mx-auto text-blue-800 border border-blue-300 rounded-lg bg-blue-50" role="alert">
-          <div class="text-center">
-            <h3 class="text-2xl font-bold">ポッドキャストをみんなに届けよう！</h3>
-          </div>
-          <div class="my-4 space-y-4">
-            <p>ポッドキャストのエピソードを投稿して、あなたのアイディアやストーリーを共有しませんか？特定のテーマやトピックに焦点を当てたエピソードで、リスナーに新しい視点や知識を提供しましょう。</p>
-          </div>
-          <div class="mt-8 mb-4 text-center">
-            <%= link_to 'エピソードを作成', new_channel_episode_path(@channel), class: 'text-white font-semibold bg-blue-600 hover:bg-blue-700 focus:ring-4 focus:ring-blue-300 rounded-lg px-10 py-4' %>
-          </div>
-        </div>
-      <% else %>
-        <div class="max-w-lg p-4 my-4 mx-auto text-blue-800 border border-blue-300 rounded-lg bg-blue-50" role="alert">
-          <div class="text-center">
-            <h3 class="text-2xl font-bold">この番組は準備中です</h3>
-          </div>
-          <div class="my-4">
-            <p>グループの管理者によるエピソードの投稿をお待ちください。</p>
-          </div>
-        </div>
-        <% end %>
+      <%= render 'no_episodes', channel: @channel %>
     <% end %>
   </section>
 </div>
