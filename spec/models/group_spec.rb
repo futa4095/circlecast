@@ -102,4 +102,42 @@ RSpec.describe Group do
       expect(group.recent_episodes.last.channel.title).to eq 'test channel 0'
     end
   end
+
+  describe '#icon_url' do
+    let(:group) { described_class.create(name: 'test group') }
+
+    context 'when icon is attached' do
+      it 'returns the icon' do
+        group.icon.attach(io: Rails.root.join('spec/fixtures/files/icon1.png').open,
+                          filename: 'icon1.png', content_type: 'image/png')
+
+        expect(group.icon_url).to eq(group.icon)
+      end
+    end
+
+    context 'when icon is not attached' do
+      it 'returns the default icon URL' do
+        expect(group.icon_url).to eq('default-group.svg')
+      end
+    end
+  end
+
+  describe '#icon_alt' do
+    let(:group) { described_class.create(name: 'test group') }
+
+    context 'when icon is attached' do
+      it 'returns the icon alt text with the name' do
+        group.icon.attach(io: Rails.root.join('spec/fixtures/files/icon1.png').open,
+                          filename: 'icon1.png', content_type: 'image/png')
+
+        expect(group.icon_alt).to eq('test groupのアイコン')
+      end
+    end
+
+    context 'when icon is not attached' do
+      it 'returns the default icon alt text' do
+        expect(group.icon_alt).to eq('グループのアイコン')
+      end
+    end
+  end
 end

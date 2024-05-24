@@ -1,11 +1,5 @@
 <div class="space-y-3 md:space-y-0 md:flex md:gap-3">
-  <div>
-    <% if group.icon.attached? %>
-      <%= image_tag group.icon, alt: "#{group.name}のアイコン", class: 'size-28 max-w-full md:max-w-none object-scale-down rounded mx-auto' %>
-    <% else %>
-      <%= image_tag 'default-group.svg', alt: 'グループのアイコン', class: 'size-28 max-w-none object-scale-down rounded mx-auto' %>
-    <% end %>
-  </div>
+  <%= image_tag group.icon_url, alt: group.icon_alt, class: 'size-28 max-w-full md:max-w-none object-scale-down rounded mx-auto' %>
   <div class="flex-1">
     <div class="flex justify-between w-full">
       <h1 class="font-bold text-xl md:text-3xl"><%= group.name %></h1>

@@ -35,4 +35,20 @@ class Group < ApplicationRecord
   def recent_episodes
     Episode.eager_load(:channel).where(channel: { group: self }).order(created_at: :desc)
   end
+
+  def icon_url
+    if icon.attached?
+      icon
+    else
+      'default-group.svg'
+    end
+  end
+
+  def icon_alt
+    if icon.attached?
+      "#{name}のアイコン"
+    else
+      'グループのアイコン'
+    end
+  end
 end
