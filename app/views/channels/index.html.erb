@@ -4,20 +4,11 @@
 
   <%= turbo_frame_tag 'group-tab', data: { turbo_action: 'advance' } do %>
     <%= render 'groups/tabs', group: @group, active_tab: 'channels' %>
-    <% if @group.admin? current_user && @group.channels.empty? %>
+    <% if @group.admin?(current_user) && @group.channels.present? %>
       <div class="m-8 text-center">
         <%= link_to '番組を作る', new_group_channel_path(@group), data: { turbo_frame: '_top' }, class: 'text-white border border-blue-700 bg-blue-600 hover:bg-blue-700 focus:ring-4 focus:ring-blue-300 font-bold rounded-lg px-12 py-4 text-center h-fit w-full' %>
       </div>
     <% end %>
-    <div id="channels" class="min-w-full min-h-32 space-y-2">
-      <% if @channels.present? %>
-        <%= render partial: 'channels/channel', collection: @channels %>
-        <%= paginate @channels %>
-      <% else %>
-        <div class="p-4 my-4 text-sm text-blue-800 rounded-lg bg-blue-50" role="alert">
-          <span class="font-medium">番組がありません</span>
-        </div>
-      <% end %>
-    </div>
+    <%= render 'channel_list', channels: @channels %>
   <% end %>
 </div>
