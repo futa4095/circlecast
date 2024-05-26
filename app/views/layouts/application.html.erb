@@ -4,7 +4,7 @@
     <title><%= yield :title %>CIRCLECAST</title>
     <meta name="viewport" content="width=device-width,initial-scale=1">
     <meta name="description" content="プライベートな空間でポッドキャストを共有。グループ内のコミュニケーションを最適化しましょう。">
-    <meta property="og:title" content="<%= yield :title %>CIRCLE CAST">
+    <meta property="og:title" content="<%= yield :title %>CIRCLECAST">
     <meta property="og:type" content="website">
     <meta property="og:url" content="<%= request.url %>">
     <meta property="og:image" content="<%= image_url 'ogp.png' %>">
@@ -24,15 +24,15 @@
   <body class="flex flex-col min-h-screen text-gray-600">
     <% if display_header? %>
       <header>
-        <% if user_signed_in? %>
-          <nav>
-            <div class="flex justify-between items-center p-4">
-              <div>
-                <%= link_to groups_path do %>
-                  <p class="font-logo text-3xl text-blue-600">CIRCLECAST</p>
-                <% end %>
-              </div>
+        <nav class="p-4">
+          <div class="flex justify-between items-center">
+            <div>
+              <%= link_to (user_signed_in? ? groups_path : root_path) do %>
+                <p class="font-logo text-3xl text-blue-600">CIRCLECAST</p>
+              <% end %>
+            </div>
 
+            <% if user_signed_in? %>
               <div x-data="{ open: false }" class="relative">
                 <button @click="$refs.header_menu.removeAttribute('x-cloak'); open = !open;" class="flex items-center focus:outline-none" type="button" aria-label="メニュー">
                   <svg class="size-8 text-gray-800" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="none" viewBox="0 0 24 24">
@@ -45,32 +45,20 @@
                   <%= button_to 'ログアウト', destroy_user_session_path, method: :delete, class: 'flex w-full items-center rounded-md px-3 py-2 text-gray-700 hover:bg-gray-100' %>
                 </div>
               </div>
-            </div>
-          </nav>
-        <% else %>
-          <nav>
-            <div class="p-4">
-              <%= link_to root_path do %>
-                <p class="font-logo text-3xl text-blue-600">CIRCLECAST</p>
-              <% end %>
-            </div>
-          </nav>
-        <% end %>
+            <% end %>
+          </div>
+        </nav>
       </header>
     <% end %>
     <%= yield :top_bar %>
     <main class="container mx-auto px-2 md:px-5 flex flex-col flex-1 max-w-4xl">
       <div class="h-16 my-1 md:my-4 p-1">
-        <div id="notice" data-turbo-temporary>
-          <% if notice.present? %>
-            <p class="p-4 text-sm text-green-800 rounded-lg bg-green-50"><%= notice %></p>
-          <% end %>
-        </div>
-        <div id="alert" data-turbo-temporary>
-          <% if alert.present? %>
-            <p class="p-4 text-sm text-red-800 rounded-lg bg-red-50" role="alert"><%= alert %></p>
-          <% end %>
-        </div>
+        <% if notice.present? %>
+          <div id="notice" data-turbo-temporary class="p-4 text-sm text-green-800 rounded-lg bg-green-50"><%= notice %></div>
+        <% end %>
+        <% if alert.present? %>
+          <div id="alert" data-turbo-temporary class="p-4 text-sm text-red-800 rounded-lg bg-red-50" role="alert"><%= alert %></div>
+        <% end %>
       </div>
       <%= yield %>
     </main>
