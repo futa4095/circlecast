@@ -1,10 +1,11 @@
 <!DOCTYPE html>
 <html lang="ja" prefix="og:http://ogp.me/ms#">
   <head>
-    <title><%= content_for?(:title) ? yield(:title) + " | CIRCLECAST" : "CIRCLECAST" %></title>
+    <% title = content_for?(:title) ? yield(:title) + " | CIRCLECAST" : "CIRCLECAST" %>
+    <title><%= title %></title>
     <meta name="viewport" content="width=device-width,initial-scale=1">
     <meta name="description" content="プライベートな空間でポッドキャストを共有。グループ内のコミュニケーションを最適化しましょう。">
-    <meta property="og:title" content="<%= content_for?(:title) ? yield(:title) + " | CIRCLECAST" : "CIRCLECAST" %>">
+    <meta property="og:title" content="<%= title %>">
     <meta property="og:type" content="website">
     <meta property="og:url" content="<%= request.url %>">
     <meta property="og:image" content="<%= image_url 'ogp.png' %>">
@@ -26,11 +27,9 @@
       <header>
         <nav class="p-4">
           <div class="flex justify-between items-center">
-            <div>
-              <%= link_to (user_signed_in? ? groups_path : root_path) do %>
-                <p class="font-logo text-3xl text-blue-600">CIRCLECAST</p>
-              <% end %>
-            </div>
+            <%= link_to (user_signed_in? ? groups_path : root_path) do %>
+              <p class="font-logo text-3xl text-blue-600">CIRCLECAST</p>
+            <% end %>
 
             <% if user_signed_in? %>
               <div x-data="{ open: false }" class="relative">
@@ -64,18 +63,11 @@
     </main>
     <footer class="bg-white rounded-lg m-4">
       <div class="w-full mx-auto max-w-screen-xl p-4 md:flex md:items-center md:justify-between">
-        <a href="https://twitter.com/futa4095" target="_blank" class="text-sm text-gray-500 sm:text-center">© 2024 futa4095
-        </a>
+        <a href="https://twitter.com/futa4095" target="_blank" class="text-sm text-gray-500 sm:text-center">© 2024 futa4095</a>
         <ul class="flex flex-wrap items-center mt-3 text-sm font-medium text-gray-500 sm:mt-0">
-          <li>
-            <%= link_to 'プライバシーポリシー', privacy_path, class: "mr-4 hover:underline md:mr-6" %>
-          </li>
-          <li>
-            <%= link_to '利用規約', terms_path, class: "mr-4 hover:underline md:mr-6" %>
-          </li>
-          <li>
-            <a href="https://github.com/futa4095/private-podcast" target="_blank" class="hover:underline">GitHub</a>
-          </li>
+          <li><%= link_to 'プライバシーポリシー', privacy_path, class: "mr-4 hover:underline md:mr-6" %></li>
+          <li><%= link_to '利用規約', terms_path, class: "mr-4 hover:underline md:mr-6" %></li>
+          <li><a href="https://github.com/futa4095/private-podcast" target="_blank" class="hover:underline">GitHub</a></li>
         </ul>
       </div>
     </footer>
