@@ -1,10 +1,10 @@
-<% 10.times do |n| %>
+<% 50.times do |n| %>
 nbc_episode1<%= n %>:
   channel: nbc_channel1
   title: 第<%= n %>回のエピソード
-  description: 必聴です
-  created_at: <%= Time.now - 12.days + n.days %>
-  updated_at: <%= Time.now - 10.days + n.days %>
+  description: また自由がはこういう人心の重宝具合に今にするた頃が見るからどうしても道楽云っからならすべてを越せのた。また何はこのためが食わせ通り越しのごとく、表裏の順序を反対分りです仕方をもできですたのにないはありべきた。同時に何はその必要ます自分になりまでです、使用の人格に至極切り開いうで起って行っだのあっ。毫もじっと五二一時間のありたて、壁がは権力をは何を坊ちゃんを上っでしてしだものを飛びなくう。しかし先刻全く校長がきまらからおきたでて、損害がとこう記憶のようです。
+  created_at: <%= Time.now - 52.days + n.days %>
+  updated_at: <%= Time.now - 50.days + n.days %>
 <% end %>
 
 <% 10.times do |n| %>

@@ -14,6 +14,14 @@ nbc_channel4:
   group: nbc
   title: 中島準備中
   description: 1/4から開始予定です。
+<% 50.times do |n| %>
+nbc_ch<%= n %>:
+  group: nbc
+  title: ザ・番組<%= n %>
+  description: |-
+    ページネーションの確認に使います
+    Id venenatis a condimentum vitae. Viverra aliquet eget sit amet tellus cras. Tempus urna et pharetra pharetra massa massa ultricies mi quis. Imperdiet dui accumsan sit amet. Lectus quam id leo in vitae turpis massa sed. Phasellus egestas tellus rutrum tellus. Amet dictum sit amet justo donec enim. Tellus elementum sagittis vitae et leo duis ut. Pellentesque habitant morbi tristique senectus. Orci dapibus ultrices in iaculis nunc sed augue lacus. Nunc aliquet bibendum enim facilisis gravida neque convallis a. Lacus sed viverra tellus in hac habitasse. Quis enim lobortis scelerisque fermentum dui. Nullam eget felis eget nunc lobortis mattis. Rutrum tellus pellentesque eu tincidunt. Ut lectus arcu bibendum at varius vel pharetra vel turpis. Phasellus egestas tellus rutrum tellus pellentesque eu. Nunc lobortis mattis aliquam faucibus purus in. Non sodales neque sodales ut etiam sit amet nisl purus. In fermentum et sollicitudin ac orci phasellus egestas tellus.
+<% end %>
 
 <% 10.times do |n| %>
 group2_ch<%= n %>:

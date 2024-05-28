@@ -1,9 +1,20 @@
 nbc:
   name: 中島ブートキャンプ
-  description: 中島県中島市のプログラミングスクールです。
+  description: |-
+    中島県中島市のプログラミングスクールです。
+    それほどお馳走で思わようたお話はなるしまっんて、その事にお霧受合でしませ。その一般はここ末がなりと次第でも思うとくれるのかあるですましから、その以上皆がうてあなたの秩序でしばいと、濫用をなりれるのは、個人の諸君においてせっかく必要たなてそこはしているものまして、だからためをあっと、さらに私方の意見構わようでない圧迫は、おっつけ私をその道がするていらっしゃるては面倒に関しれる事なけれはただとは出れのな。あなた麦飯がはそうしてそれの一つに敵まし知れのたはなれますましか。
 group1:
   name: 上尾パワー
   description: 上尾にある会社です。番組はありません
 group2:
   name: 越谷スポットライト通勤急行煮卵観光アコースティック現代アートバウンティハンター
-  description: 越谷にある会社です。番組はありますがエピソードはありません。
+  description: |-
+    越谷にある会社です。番組はありますがエピソードはありません。
+    Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Diam sollicitudin tempor id eu nisl nunc. Nibh ipsum consequat nisl vel pret
+    ium lectus quam id leo. Nec feugiat nisl pretium fusce id. Odio facilisis mauris sit amet massa. Blandit libero volutpat sed cras. Etiam dignissim diam quis enim. Mi eget mauris pharetra et ultrices. Et m
+    alesuada fames ac turpis egestas sed. Maecenas pharetra convallis posuere morbi leo urna molestie at. Ultricies mi quis hendrerit dolor magna. Tellus cras adipiscing enim eu turpis egestas pretium. Commodo quis imperdiet massa tincidunt nunc pulvinar sapien. Cras semper auctor neque vitae. Faucibus vitae aliquet nec ullamcorper sit amet risus nullam eget. Massa enim nec dui nunc mattis enim. Id eu nisl nunc mi ipsum faucibus.
+<% 50.times do |n| %>
+group_<%= n %>:
+  name: 第<%= n %>グループ
+  description: ページネーションの確認に使います
+<% end %>

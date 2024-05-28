@@ -16,7 +16,7 @@ RSpec.describe 'Invitations' do
       visit invitations_path(group.invitation.token)
 
       expect(page).to have_content "#{group.name}に加入しました"
-      expect(page).to have_content group.description
+      expect(page).to have_content group.description.tr("\n", ' ')
     end
 
     describe '既加入の場合' do
@@ -25,7 +25,7 @@ RSpec.describe 'Invitations' do
         visit invitations_path(group.invitation.token)
 
         expect(page).not_to have_content "#{group.name}に加入しました"
-        expect(page).to have_content group.description
+        expect(page).to have_content group.description.tr("\n", ' ')
       end
     end
   end
@@ -40,7 +40,7 @@ RSpec.describe 'Invitations' do
       click_on 'ログイン'
 
       expect(page).not_to have_content "#{group.name}に加入しました"
-      expect(page).to have_content group.description
+      expect(page).to have_content group.description.tr("\n", ' ')
     end
 
     it '新規登録後にグループ加入すること' do
@@ -67,7 +67,7 @@ RSpec.describe 'Invitations' do
       click_on 'ログイン'
 
       expect(page).to have_content "#{group.name}に加入しました"
-      expect(page).to have_content group.description
+      expect(page).to have_content group.description.tr("\n", ' ')
     end
   end
 end
