@@ -36,7 +36,7 @@ RSpec.describe 'Invitations' do
       expect(page).to have_current_path new_user_session_path, ignore_query: true
 
       fill_in 'メールアドレス', with: 'nogroups@example.com'
-      fill_in 'パスワード', with: 'password'
+      fill_in 'パスワード', with: 'passpass'
       click_on 'ログイン'
 
       expect(page).not_to have_content "#{group.name}に加入しました"
