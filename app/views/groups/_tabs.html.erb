@@ -1,0 +1,18 @@
+<div class="mb-1.5 border-b border-gray-200">
+  <ul class="flex flex-wrap -mb-px text-sm md:text-base font-semibold text-center text-gray-500 space-x-2">
+    <% tabs = [
+      {name: '新着エピソード', path: group, key: 'new_episodes'},
+      {name: '番組', path: group_channels_path(group), key: 'channels'}
+    ] %>
+    <% if group.admin? current_user %>
+      <% tabs << {name: 'メンバー', path: group_members_path(group), key: 'members'} %>
+    <% end %>
+
+    <% tabs.each do |tab| %>
+      <li>
+        <%= link_to tab[:name], tab[:path],
+          class: "inline-flex items-center justify-center p-2.5 md:p-4 border-b-2 #{active_tab == tab[:key] ? 'text-blue-600 border-blue-600' : 'border-transparent hover:text-gray-600 hover:border-gray-300'} rounded-t-lg" %>
+      </li>
+    <% end %>
+  </ul>
+</div>

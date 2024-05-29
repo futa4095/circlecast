@@ -16,6 +16,6 @@ module EpisodesHelper
   end
 
   def updated_date(episode)
-    " (#{l episode.updated_at.to_date} に更新)"
+    " (#{l episode.updated_at.to_date}に更新)"
   end
 end

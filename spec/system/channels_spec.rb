@@ -39,8 +39,8 @@ RSpec.describe 'Channels' do
     end
 
     it 'エピソードを一覧表示すること' do
-      expect(page).to have_content '第9回のエピソード'
-      expect(page).to have_content '第1回のエピソード'
+      expect(page).to have_content '第49回のエピソード'
+      expect(page).to have_content '第30回のエピソード'
     end
 
     it 'メニューボタンを表示しないこと' do

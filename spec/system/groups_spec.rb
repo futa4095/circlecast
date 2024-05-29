@@ -94,7 +94,7 @@ RSpec.describe 'Groups' do
     end
 
     it '新着エピソードを表示すること' do
-      expect(page).to have_content '第9回のエピソード'
+      expect(page).to have_content '第49回のエピソード'
     end
 
     it '番組一覧を表示すること' do

@@ -10,7 +10,9 @@ CIRCLECASTはプライベートなポッドキャストサービスです。
 
 CIRCLECASTの利用にはユーザー登録が必要です。リンク先で簡単な登録手続きを行い、すぐに素晴らしいポッドキャストコンテンツを楽しんでください！
 ` }">
-  <button @click="invitationText=defaultText; dialog.showModal()" class="flex w-full items-center rounded-md px-3 py-2 text-gray-700 hover:bg-gray-100">グループに招待</button>
+  <button @click="invitationText=defaultText; dialog.showModal()" class="flex w-full items-center rounded-md px-3 py-2 text-gray-700 hover:bg-gray-100">
+    グループに招待
+  </button>
   <dialog
     x-data="{ close() { $el.close() } }"
     @click="$event.target === $el && close"
@@ -20,8 +22,8 @@ CIRCLECASTの利用にはユーザー登録が必要です。リンク先で簡�
         <h3 class="text-xl font-semibold text-gray-900">
           リンクを共有してグループに招待できます
         </h3>
-        <button type="button" @click="close" class="text-gray-400 bg-transparent hover:bg-gray-200 hover:text-gray-900 rounded-lg text-sm w-8 h-8 ml-auto inline-flex justify-center items-center">
-          <svg class="w-3 h-3" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 14 14">
+        <button type="button" @click="close()" class="text-gray-400 bg-transparent hover:bg-gray-200 hover:text-gray-900 rounded-lg text-sm w-8 h-8 ml-auto inline-flex justify-center items-center">
+          <svg class="size-3" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 14 14">
             <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="m1 1 6 6m0 0 6 6M7 7l6-6M7 7l-6 6"/>
           </svg>
           <span class="sr-only">閉じる</span>
@@ -35,9 +37,15 @@ CIRCLECASTの利用にはユーザー登録が必要です。リンク先で簡�
         </textarea>
       </div>
       <div x-data="{ copyToClipboard(text) { navigator.clipboard.writeText(text) } }" class="flex items-center p-6 gap-3 border-t border-gray-200 rounded-b">
-        <button type="button" @click="copyToClipboard(invitationURL)" class="text-white bg-blue-600 border border-blue-600 hover:bg-blue-700 focus:ring-4 focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-3">リンクのみコピー</button>
-        <button type="button" @click="copyToClipboard(invitationText)" class="text-white bg-blue-600 border border-blue-600 hover:bg-blue-700 focus:ring-4 focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-3">クリップボードにコピー</button>
-        <button type="button" @click="close" class="text-gray-600 hover:text-white border border-gray-600 hover:bg-gray-600 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm px-8 py-3 text-center focus:z-10">閉じる</button>
+        <button type="button" @click="copyToClipboard(invitationURL)" class="text-white bg-blue-600 border border-blue-600 hover:bg-blue-700 focus:ring-4 focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-3">
+          リンクのみコピー
+        </button>
+        <button type="button" @click="copyToClipboard(invitationText)" class="text-white bg-blue-600 border border-blue-600 hover:bg-blue-700 focus:ring-4 focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-3">
+          クリップボードにコピー
+        </button>
+        <button type="button" @click="close()" class="text-gray-600 hover:text-white border border-gray-600 hover:bg-gray-600 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm px-8 py-3 text-center focus:z-10">
+          閉じる
+        </button>
       </div>
     </div>
   </dialog>

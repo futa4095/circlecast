@@ -1,4 +1,4 @@
-<% content_for :title, '参加しているグループ - ' %>
+<% content_for :title, '参加しているグループ' %>
 <div class="w-full space-y-4">
   <% if @groups.present? %>
     <div class="flex justify-between items-center">
@@ -10,17 +10,6 @@
         <%= paginate @groups %>
     </div>
   <% else %>
-    <div class="max-w-lg p-4 my-4 mx-auto text-blue-800 border border-blue-300 rounded-lg bg-blue-50" role="alert">
-      <div class="flex items-center">
-        <h3 class="text-2xl font-bold mx-auto">まずは、グループに所属しよう！</h3>
-      </div>
-      <div class="my-4 space-y-4">
-        <p>グループに所属するには、グループをご自身で作る、もしくはグループをすでに作成している方からの招待を受け取ることが必要です。</p>
-        <p>グループを作ると、グループ内のメンバーだけが聞くことができるクローズドなポッドキャストを公開することができます。</p>
-      </div>
-      <div class="mt-8 mb-4 text-center">
-        <%= link_to 'グループを作る', new_group_path, class: 'text-white font-semibold bg-blue-600 hover:bg-blue-700 focus:ring-4 focus:ring-blue-300 rounded-lg px-10 py-4' %>
-      </div>
-    </div>
+    <%= render 'no_groups' %>
   <% end %>
 </div>

@@ -1,34 +1,9 @@
-<% content_for :title, "#{@group.name} - " %>
+<% content_for :title, "#{@group.name}" %>
 <div class="w-full flex flex-col gap-2">
-  <%= render 'introduction', group: @group %>
+  <%= render 'detail_view', group: @group %>
 
   <%= turbo_frame_tag 'group-tab', data: { turbo_action: 'advance' } do %>
-    <div class="mb-1.5 border-b border-gray-200">
-      <ul class="flex flex-wrap -mb-px text-sm md:text-base font-semibold text-center text-gray-500 space-x-2">
-        <li>
-          <%= link_to '新着エピソード', @group, class: 'inline-flex items-center justify-center p-2.5 md:p-4 text-blue-600 border-b-2 border-blue-600 rounded-t-lg active group' %>
-        </li>
-        <li>
-          <%= link_to '番組', group_channels_path(@group), class: 'inline-flex items-center justify-center p-2.5 md:p-4 border-b-2 border-transparent rounded-t-lg hover:text-gray-600 hover:border-gray-300 group' %>
-        </li>
-        <% if @group.admin? current_user %>
-          <li>
-            <%= link_to 'メンバー', group_members_path(@group), class: 'inline-flex items-center justify-center p-2.5 md:p-4 border-b-2 border-transparent rounded-t-lg hover:text-gray-600 hover:border-gray-300 group' %>
-          </li>
-        <% end %>
-      </ul>
-    </div>
-    <div class="min-h-32">
-      <% if @episodes.present? %>
-        <div class="divide-y divide-blue-100">
-          <%= render @episodes %>
-        </div>
-        <%= paginate @episodes %>
-      <% else %>
-        <div class="p-4 my-4 text-sm text-blue-800 rounded-lg bg-blue-50" role="alert">
-          <span class="font-medium">エピソードが投稿されていません</span>
-        </div>
-      <% end %>
-    </div>
+    <%= render 'tabs', group: @group, active_tab: 'new_episodes' %>
+    <%= render 'recent_episode_list', episodes: @episodes %>
   <% end %>
 </div>

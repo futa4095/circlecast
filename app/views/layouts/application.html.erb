@@ -1,10 +1,11 @@
 <!DOCTYPE html>
 <html lang="ja" prefix="og:http://ogp.me/ms#">
   <head>
-    <title><%= yield :title %>CIRCLECAST</title>
+    <% title = content_for?(:title) ? yield(:title) + " | CIRCLECAST" : "CIRCLECAST" %>
+    <title><%= title %></title>
     <meta name="viewport" content="width=device-width,initial-scale=1">
     <meta name="description" content="プライベートな空間でポッドキャストを共有。グループ内のコミュニケーションを最適化しましょう。">
-    <meta property="og:title" content="<%= yield :title %>CIRCLE CAST">
+    <meta property="og:title" content="<%= title %>">
     <meta property="og:type" content="website">
     <meta property="og:url" content="<%= request.url %>">
     <meta property="og:image" content="<%= image_url 'ogp.png' %>">
@@ -24,15 +25,13 @@
   <body class="flex flex-col min-h-screen text-gray-600">
     <% if display_header? %>
       <header>
-        <% if user_signed_in? %>
-          <nav>
-            <div class="flex justify-between items-center p-4">
-              <div>
-                <%= link_to groups_path do %>
-                  <p class="font-logo text-3xl text-blue-600">CIRCLECAST</p>
-                <% end %>
-              </div>
+        <nav class="p-4">
+          <div class="flex justify-between items-center">
+            <%= link_to (user_signed_in? ? groups_path : root_path) do %>
+              <p class="font-logo text-3xl text-blue-600">CIRCLECAST</p>
+            <% end %>
 
+            <% if user_signed_in? %>
               <div x-data="{ open: false }" class="relative">
                 <button @click="$refs.header_menu.removeAttribute('x-cloak'); open = !open;" class="flex items-center focus:outline-none" type="button" aria-label="メニュー">
                   <svg class="size-8 text-gray-800" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="none" viewBox="0 0 24 24">
@@ -45,49 +44,30 @@
                   <%= button_to 'ログアウト', destroy_user_session_path, method: :delete, class: 'flex w-full items-center rounded-md px-3 py-2 text-gray-700 hover:bg-gray-100' %>
                 </div>
               </div>
-            </div>
-          </nav>
-        <% else %>
-          <nav>
-            <div class="p-4">
-              <%= link_to root_path do %>
-                <p class="font-logo text-3xl text-blue-600">CIRCLECAST</p>
-              <% end %>
-            </div>
-          </nav>
-        <% end %>
+            <% end %>
+          </div>
+        </nav>
       </header>
     <% end %>
     <%= yield :top_bar %>
     <main class="container mx-auto px-2 md:px-5 flex flex-col flex-1 max-w-4xl">
       <div class="h-16 my-1 md:my-4 p-1">
-        <div id="notice" data-turbo-temporary>
-          <% if notice.present? %>
-            <p class="p-4 text-sm text-green-800 rounded-lg bg-green-50"><%= notice %></p>
-          <% end %>
-        </div>
-        <div id="alert" data-turbo-temporary>
-          <% if alert.present? %>
-            <p class="p-4 text-sm text-red-800 rounded-lg bg-red-50" role="alert"><%= alert %></p>
-          <% end %>
-        </div>
+        <% if notice.present? %>
+          <div id="notice" data-turbo-temporary class="p-4 text-sm text-green-800 rounded-lg bg-green-50"><%= notice %></div>
+        <% end %>
+        <% if alert.present? %>
+          <div id="alert" data-turbo-temporary class="p-4 text-sm text-red-800 rounded-lg bg-red-50" role="alert"><%= alert %></div>
+        <% end %>
       </div>
       <%= yield %>
     </main>
     <footer class="bg-white rounded-lg m-4">
       <div class="w-full mx-auto max-w-screen-xl p-4 md:flex md:items-center md:justify-between">
-        <a href="https://twitter.com/futa4095" target="_blank" class="text-sm text-gray-500 sm:text-center">© 2024 futa4095
-        </a>
+        <a href="https://twitter.com/futa4095" target="_blank" class="text-sm text-gray-500 sm:text-center">© 2024 futa4095</a>
         <ul class="flex flex-wrap items-center mt-3 text-sm font-medium text-gray-500 sm:mt-0">
-          <li>
-            <%= link_to 'プライバシーポリシー', privacy_path, class: "mr-4 hover:underline md:mr-6" %>
-          </li>
-          <li>
-            <%= link_to '利用規約', terms_path, class: "mr-4 hover:underline md:mr-6" %>
-          </li>
-          <li>
-            <a href="https://github.com/futa4095/private-podcast" target="_blank" class="hover:underline">GitHub</a>
-          </li>
+          <li><%= link_to 'プライバシーポリシー', privacy_path, class: "mr-4 hover:underline md:mr-6" %></li>
+          <li><%= link_to '利用規約', terms_path, class: "mr-4 hover:underline md:mr-6" %></li>
+          <li><a href="https://github.com/futa4095/private-podcast" target="_blank" class="hover:underline">GitHub</a></li>
         </ul>
       </div>
     </footer>
