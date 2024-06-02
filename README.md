@@ -17,7 +17,8 @@ CIRCLECASTはプライベートグループ向けのポッドキャストサー�
 - Ruby 3.2
 - Rails 7.0
 - データベース: PostgreSQL
-- その他の必要なツールやライブラリ
+- 認証: Devise
+- ファイルアップロード: Active Storage
 
 ## セットアップ
 
