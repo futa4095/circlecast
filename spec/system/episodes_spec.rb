@@ -5,7 +5,7 @@ require 'rails_helper'
 RSpec.describe 'Episodes' do
   fixtures :all
 
-  describe '管理者の場合' do
+  context '管理者の場合' do
     before do
       sign_in users(:nakajima)
     end
@@ -33,7 +33,7 @@ RSpec.describe 'Episodes' do
     end
   end
 
-  describe 'メンバーの場合' do
+  context 'メンバーの場合' do
     before do
       sign_in users(:nbc_student1)
       visit channel_path(channels(:nbc_channel2))

@@ -5,7 +5,7 @@ require 'rails_helper'
 RSpec.describe 'Groups' do
   fixtures :all
 
-  describe '管理者の場合' do
+  context '管理者の場合' do
     before do
       sign_in users(:nakajima)
     end
@@ -29,7 +29,7 @@ RSpec.describe 'Groups' do
     end
   end
 
-  describe 'メンバーの場合' do
+  context 'メンバーの場合' do
     before do
       sign_in users(:nbc_student1)
     end
@@ -79,7 +79,7 @@ RSpec.describe 'Groups' do
     end
   end
 
-  describe 'グループに所属していない場合' do
+  context 'グループに所属していない場合' do
     it '作成を促すメッセージを表示すること' do
       sign_in users(:no_groups_user)
       visit groups_path
@@ -102,7 +102,7 @@ RSpec.describe 'Groups' do
       expect(page).to have_content '中島ブートキャンプへようこそ'
     end
 
-    describe 'グループ管理者の場合' do
+    context 'グループ管理者の場合' do
       it 'メンバー一覧を表示すること' do
         click_on 'メンバー'
         expect(page).to have_content 'nbc_student1'
