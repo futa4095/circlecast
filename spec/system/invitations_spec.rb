@@ -6,7 +6,7 @@ RSpec.describe 'Invitations' do
   fixtures :all
   let(:group) { groups(:nbc) }
 
-  context 'ログインしている場合' do
+  context 'when the user is logged in' do
     before do
       sign_in users(:no_groups_user)
     end
@@ -19,7 +19,7 @@ RSpec.describe 'Invitations' do
       expect(page).to have_content group.description.tr("\n", ' ')
     end
 
-    context '既加入の場合' do
+    context 'when the user is already a member of the group' do
       it '重複加入にならないこと' do
         sign_in users(:nakajima)
         visit invitations_path(group.invitation.token)
@@ -30,7 +30,7 @@ RSpec.describe 'Invitations' do
     end
   end
 
-  context 'ログインしていない場合' do
+  context 'when the user is not logged in' do
     it 'ログイン後にグループに加入すること' do
       visit invitations_path(group.invitation.token)
       expect(page).to have_current_path new_user_session_path, ignore_query: true

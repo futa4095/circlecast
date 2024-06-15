@@ -5,7 +5,7 @@ require 'rails_helper'
 RSpec.describe 'Channels' do
   fixtures :all
 
-  context '管理者の場合' do
+  context 'when the user is an admin' do
     before do
       sign_in users(:nakajima)
     end
@@ -32,7 +32,7 @@ RSpec.describe 'Channels' do
     end
   end
 
-  context 'メンバーの場合' do
+  context 'when the user is a member' do
     before do
       sign_in users(:nbc_student1)
       visit channel_path(channels(:nbc_channel1))
@@ -52,7 +52,7 @@ RSpec.describe 'Channels' do
     end
   end
 
-  context 'エピソードが投稿されていない場合' do
+  context 'when there are no episodes' do
     it '投稿を促すメッセージを表示すること' do
       sign_in users(:nakajima)
       visit channel_path(channels(:group2_ch1))
