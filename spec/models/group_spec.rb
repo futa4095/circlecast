@@ -53,7 +53,29 @@ RSpec.describe Group do
     end
   end
 
-  describe '#admin?'
+  describe '#admin?' do
+    let(:group) { described_class.create(name: 'test group') }
+
+    context 'when the user is an admin' do
+      it 'trueになること' do
+        group.memberships.create(user:, admin: true)
+        expect(group.admin?(user)).to be true
+      end
+    end
+
+    context 'when the user is not an admin' do
+      it 'falseになること' do
+        group.memberships.create(user:, admin: false)
+        expect(group.admin?(user)).to be false
+      end
+    end
+
+    context 'when the user is not a member of the group' do
+      it 'nilを返すこと' do
+        expect(group.admin?(user)).to be_nil
+      end
+    end
+  end
 
   describe '#only_one_admin?' do
     it '管理者が1人の場合, trueになること' do
