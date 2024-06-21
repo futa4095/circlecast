@@ -4,7 +4,7 @@ require 'rails_helper'
 
 RSpec.describe Channel do
   describe 'title' do
-    it '空文字の場合、無効であること' do
+    it 'is invalid when it is empty' do
       channel = described_class.new(title: '')
       expect(channel.valid?).to be(false)
       expect(channel.errors[:title]).to include('を入力してください')
