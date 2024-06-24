@@ -4,10 +4,12 @@ require 'rails_helper'
 
 RSpec.describe User do
   describe 'name' do
-    it 'is invalid when it is empty' do
-      user = described_class.new(name: '', email: 'test@example.com', password: 'password')
-      expect(user.valid?).to be(false)
-      expect(user.errors[:name]).to include('を入力してください')
+    context 'when it is empty' do
+      it 'is invalid' do
+        user = described_class.new(name: '', email: 'test@example.com', password: 'password')
+        expect(user.valid?).to be(false)
+        expect(user.errors[:name]).to include('を入力してください')
+      end
     end
   end
 

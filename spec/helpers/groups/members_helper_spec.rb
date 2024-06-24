@@ -27,22 +27,30 @@ RSpec.describe Groups::MembersHelper do
   end
 
   describe '#toggle_button_class' do
-    it 'returns the appropriate class when active is true' do
-      expect(helper.toggle_button_class(true)).to include('bg-blue-700')
+    context 'when active is true' do
+      it 'returns the appropriate class' do
+        expect(helper.toggle_button_class(true)).to include('bg-blue-700')
+      end
     end
 
-    it 'returns the appropriate class when active is false' do
-      expect(helper.toggle_button_class(false)).to include('bg-gray-200')
+    context 'when active is false' do
+      it 'returns the appropriate class' do
+        expect(helper.toggle_button_class(false)).to include('bg-gray-200')
+      end
     end
   end
 
   describe '#toggle_span_class' do
-    it 'returns the appropriate class when active is true' do
-      expect(helper.toggle_span_class(true)).to include('translate-x-3')
+    context 'when active is true' do
+      it 'returns the appropriate class' do
+        expect(helper.toggle_span_class(true)).to include('translate-x-3')
+      end
     end
 
-    it 'returns the appropriate class when active is false' do
-      expect(helper.toggle_span_class(false)).to include('translate-x-0')
+    context 'when active is false' do
+      it 'returns the appropriate class' do
+        expect(helper.toggle_span_class(false)).to include('translate-x-0')
+      end
     end
   end
 end
