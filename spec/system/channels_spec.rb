@@ -5,12 +5,12 @@ require 'rails_helper'
 RSpec.describe 'Channels' do
   fixtures :all
 
-  describe '管理者の場合' do
+  context 'when the user is an admin' do
     before do
       sign_in users(:nakajima)
     end
 
-    it '番組を作成すること' do
+    it 'creates a new channel' do
       visit group_path(groups(:group1))
       click_on '番組を作る'
       fill_in 'タイトル', with: 'テスト番組のタイトル'
@@ -22,7 +22,7 @@ RSpec.describe 'Channels' do
       expect(page).to have_content 'テスト番組の説明文です。'
     end
 
-    it '番組を削除すること' do
+    it 'deletes the channel' do
       visit channel_path(channels(:group2_ch1))
       find('.menu-button').click
       accept_confirm { click_on '削除' }
@@ -32,34 +32,34 @@ RSpec.describe 'Channels' do
     end
   end
 
-  describe 'メンバーの場合' do
+  context 'when the user is a member' do
     before do
       sign_in users(:nbc_student1)
       visit channel_path(channels(:nbc_channel1))
     end
 
-    it 'エピソードを一覧表示すること' do
+    it 'displays the list of episodes' do
       expect(page).to have_content '第49回のエピソード'
       expect(page).to have_content '第30回のエピソード'
     end
 
-    it 'メニューボタンを表示しないこと' do
+    it 'does not show the menu button' do
       expect(page).not_to have_selector '.menu-button'
     end
 
-    it 'エピソードの作成を表示しないこと' do
+    it 'does not show the option to create a new episode' do
       expect(page).not_to have_content 'エピソードを作成'
     end
   end
 
-  describe 'エピソードが投稿されていない場合' do
-    it '投稿を促すメッセージを表示すること' do
+  context 'when there are no episodes' do
+    it 'shows a message encouraging to create a new post' do
       sign_in users(:nakajima)
       visit channel_path(channels(:group2_ch1))
       expect(page).to have_content 'ポッドキャストをみんなに届けよう'
     end
 
-    it '準備中メッセージを表示すること' do
+    it 'shows a message that the channel is under preparation' do
       sign_in users(:nbc_student1)
       visit channel_path(channels(:nbc_channel4))
       expect(page).to have_content 'この番組は準備中です'

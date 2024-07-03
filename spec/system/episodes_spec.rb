@@ -5,12 +5,12 @@ require 'rails_helper'
 RSpec.describe 'Episodes' do
   fixtures :all
 
-  describe '管理者の場合' do
+  context 'when the user is an admin' do
     before do
       sign_in users(:nakajima)
     end
 
-    it 'エピソードを作成すること' do
+    it 'creates a new episode' do
       visit channel_path(channels(:group2_ch1))
       click_on 'エピソードを作成'
       fill_in 'タイトル', with: '新しいエピソードのタイトル！'
@@ -23,7 +23,7 @@ RSpec.describe 'Episodes' do
       expect(page).to have_content '新しいエピソードの説明です。'
     end
 
-    it 'エピソードを削除すること' do
+    it 'deletes the episode' do
       visit channel_episode_path(channels(:nbc_channel2), episodes(:nbc_episode21))
       find('.menu-button').click
       accept_confirm { click_on '削除' }
@@ -33,13 +33,13 @@ RSpec.describe 'Episodes' do
     end
   end
 
-  describe 'メンバーの場合' do
+  context 'when the user is a member' do
     before do
       sign_in users(:nbc_student1)
       visit channel_path(channels(:nbc_channel2))
     end
 
-    it 'エピソードを表示すること' do
+    it 'displays the episode' do
       click_on 'ep.1 2月2日'
 
       expect(page).to have_content 'ep.1 2月2日'
@@ -48,7 +48,7 @@ RSpec.describe 'Episodes' do
       expect(audio.size).to eq 1
     end
 
-    it 'メニューボタンを表示しないこと' do
+    it 'does not show the menu button' do
       expect(page).not_to have_selector '.menu-button'
     end
   end

@@ -6,15 +6,17 @@ RSpec.describe Group do
   let(:user) { User.create(email: 'test@example.com', password: 'password', name: 'test user') }
 
   describe 'name' do
-    it '空文字の場合、無効であること' do
-      group = described_class.new(name: '')
-      expect(group.valid?).to be(false)
-      expect(group.errors[:name]).to include('を入力してください')
+    context 'when it is empty' do
+      it 'is invalid' do
+        group = described_class.new(name: '')
+        expect(group.valid?).to be(false)
+        expect(group.errors[:name]).to include('を入力してください')
+      end
     end
   end
 
   describe '#add_member' do
-    it 'グループにメンバーを追加すること' do
+    it 'adds a member to the group' do
       group = described_class.create(name: 'test group')
       group.add_member user
 
@@ -24,7 +26,7 @@ RSpec.describe Group do
   end
 
   describe '#withdraw_member' do
-    it 'withdrawalをtrueに更新すること' do
+    it 'updates withdrawal to true' do
       group = described_class.create(name: 'test group')
       group.users << user
       group.withdraw_member user
@@ -37,46 +39,74 @@ RSpec.describe Group do
   describe 'associations' do
     let(:group) { described_class.create(name: 'test group') }
 
-    it 'destroys associated memberships when destroyed' do
-      group.users << user
-      expect { group.destroy }.to change(Membership, :count).by(-1)
-    end
+    context 'when destroyed' do
+      it 'destroys associated memberships' do
+        group.users << user
+        expect { group.destroy }.to change(Membership, :count).by(-1)
+      end
 
-    it 'destroys associated channels when destroyed' do
-      Channel.create(title: 'test channel', group:)
-      expect { group.destroy }.to change(Channel, :count).by(-1)
-    end
+      it 'destroys associated channels' do
+        Channel.create(title: 'test channel', group:)
+        expect { group.destroy }.to change(Channel, :count).by(-1)
+      end
 
-    it 'destroys associated invitation when destroyed' do
-      Invitation.create(group:, token: 'abcdef')
-      expect { group.destroy }.to change(Invitation, :count).by(-1)
+      it 'destroys associated invitation' do
+        Invitation.create(group:, token: 'abcdef')
+        expect { group.destroy }.to change(Invitation, :count).by(-1)
+      end
     end
   end
 
-  describe '#admin?'
+  describe '#admin?' do
+    let(:group) { described_class.create(name: 'test group') }
 
-  describe '#only_one_admin?' do
-    it '管理者が1人の場合, trueになること' do
-      group = described_class.create(name: 'test group')
-      group.memberships.create(user:, admin: true)
-      withdrawn_user = User.create(email: 'withdrawn@example.com', password: 'password', name: 'withdrawn user')
-      group.memberships.create(user: withdrawn_user, admin: true, withdrawal: true)
-
-      expect(group).to be_only_one_admin
+    context 'when the user is an admin' do
+      it 'returns true' do
+        group.memberships.create(user:, admin: true)
+        expect(group.admin?(user)).to be true
+      end
     end
 
-    it '管理者が2人の場合, falseになること' do
-      group = described_class.create(name: 'test group')
-      group.memberships.create(user:, admin: true)
-      second_user = User.create(email: 'second@example.com', password: 'password', name: 'second user')
-      group.memberships.create(user: second_user, admin: true)
+    context 'when the user is not an admin' do
+      it 'returns false' do
+        group.memberships.create(user:, admin: false)
+        expect(group.admin?(user)).to be false
+      end
+    end
 
-      expect(group).not_to be_only_one_admin
+    context 'when the user is not a member of the group' do
+      it 'returns nil' do
+        expect(group.admin?(user)).to be_nil
+      end
+    end
+  end
+
+  describe '#only_one_admin?' do
+    context 'when there is only one admin' do
+      it 'returns true' do
+        group = described_class.create(name: 'test group')
+        group.memberships.create(user:, admin: true)
+        withdrawn_user = User.create(email: 'withdrawn@example.com', password: 'password', name: 'withdrawn user')
+        group.memberships.create(user: withdrawn_user, admin: true, withdrawal: true)
+
+        expect(group).to be_only_one_admin
+      end
+    end
+
+    context 'when there are two admins' do
+      it 'returns false' do
+        group = described_class.create(name: 'test group')
+        group.memberships.create(user:, admin: true)
+        second_user = User.create(email: 'second@example.com', password: 'password', name: 'second user')
+        group.memberships.create(user: second_user, admin: true)
+
+        expect(group).not_to be_only_one_admin
+      end
     end
   end
 
   describe '#recent_episodes' do
-    it 'グループのエピソードが作成日時の降順になること' do
+    it 'orders group episodes by creation date in descending order' do
       group = described_class.create(name: 'test group')
       group.memberships.create(user:, admin: true)
       channel = group.channels.create(title: 'test channel')
@@ -89,7 +119,7 @@ RSpec.describe Group do
       expect(group.recent_episodes.last.title).to eq 'episode 0'
     end
 
-    it 'グループの複数番組のエピソードが取得できること' do
+    it 'retrieves episodes from multiple channels in the group' do
       group = described_class.create(name: 'test group')
       group.memberships.create(user:, admin: true)
       2.times do |i|

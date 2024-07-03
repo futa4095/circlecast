@@ -4,15 +4,17 @@ require 'rails_helper'
 
 RSpec.describe User do
   describe 'name' do
-    it '空文字の場合、無効であること' do
-      user = described_class.new(name: '', email: 'test@example.com', password: 'password')
-      expect(user.valid?).to be(false)
-      expect(user.errors[:name]).to include('を入力してください')
+    context 'when it is empty' do
+      it 'is invalid' do
+        user = described_class.new(name: '', email: 'test@example.com', password: 'password')
+        expect(user.valid?).to be(false)
+        expect(user.errors[:name]).to include('を入力してください')
+      end
     end
   end
 
   describe '#groups' do
-    it '参加しているグループを取得すること' do
+    it 'retrieves the groups the user is participating in' do
       user = described_class.create(name: 'test', email: 'test@example.com', password: 'password')
       active_group = Group.create(name: 'active group')
       active_group.add_member user
@@ -28,7 +30,7 @@ RSpec.describe User do
   end
 
   describe '#channels' do
-    it '参加しているグループの番組を取得すること' do
+    it 'etrieves the channels from the groups the user is participating in' do
       user = described_class.create(name: 'test', email: 'test@example.com', password: 'password')
       active_group = Group.create(name: 'active group')
       active_group.add_member user

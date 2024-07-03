@@ -8,14 +8,8 @@ class User < ApplicationRecord
          :confirmable
 
   has_many :memberships, dependent: :destroy
+  has_many :groups, -> { where(memberships: { withdrawal: false }) }, through: :memberships
+  has_many :channels, -> { where(memberships: { withdrawal: false }) }, through: :groups
 
   validates :name, presence: true
-
-  def groups
-    Group.joins(:memberships).where(memberships: { user: self, withdrawal: false })
-  end
-
-  def channels
-    Channel.joins(group: :memberships).where(memberships: { user: self, withdrawal: false })
-  end
 end
