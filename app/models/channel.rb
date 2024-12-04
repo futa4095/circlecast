@@ -9,7 +9,7 @@ class Channel < ApplicationRecord
   validates :description, length: { maximum: 1000 }
   validates :artwork, content_type: ['image/jpeg', 'image/png', 'image/webp'],
                       dimension: { width: { in: 300..3000 }, height: { in: 300..3000 } },
-                      size: { between: (1.kilobyte)..(3.megabyte) }
+                      size: { between: (1.kilobyte)..(3.megabytes) }
 
   def artwork_url
     if artwork.attached?

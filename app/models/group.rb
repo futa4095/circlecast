@@ -12,7 +12,7 @@ class Group < ApplicationRecord
   validates :description, length: { maximum: 1000 }
   validates :icon, content_type: ['image/jpeg', 'image/png', 'image/webp'],
                    dimension: { width: { in: 300..3000 }, height: { in: 300..3000 } },
-                   size: { between: (1.kilobyte)..(3.megabyte) }
+                   size: { between: (1.kilobyte)..(3.megabytes) }
 
   def add_member(user)
     users << user

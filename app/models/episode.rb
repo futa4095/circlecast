@@ -8,7 +8,7 @@ class Episode < ApplicationRecord
   validates :description, length: { maximum: 1000 }
   validates :enclosure, attached: true,
                         content_type: ['audio/mpeg', 'audio/mp4', 'audio/x-m4a', 'video/mp4', 'video/quicktime'],
-                        size: { between: (1.kilobyte)..(100.megabyte) }
+                        size: { between: (1.kilobyte)..(100.megabytes) }
 
   def updated?
     created_at.to_date < updated_at.to_date

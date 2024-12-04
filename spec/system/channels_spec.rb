@@ -28,7 +28,7 @@ RSpec.describe 'Channels' do
       accept_confirm { click_on '削除' }
 
       expect(page).to have_content '番組を削除しました'
-      expect(page).not_to have_content 'ばんぐみ1'
+      expect(page).to have_no_content 'ばんぐみ1'
     end
   end
 
@@ -44,11 +44,11 @@ RSpec.describe 'Channels' do
     end
 
     it 'does not show the menu button' do
-      expect(page).not_to have_selector '.menu-button'
+      expect(page).to have_no_css '.menu-button'
     end
 
     it 'does not show the option to create a new episode' do
-      expect(page).not_to have_content 'エピソードを作成'
+      expect(page).to have_no_content 'エピソードを作成'
     end
   end
 

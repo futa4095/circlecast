@@ -25,7 +25,7 @@ RSpec.describe 'Groups' do
       visit group_path(group)
       find('.menu-button').click
       accept_confirm { click_on 'グループの削除' }
-      expect(page).not_to have_content group.name
+      expect(page).to have_no_content group.name
     end
   end
 
@@ -45,27 +45,27 @@ RSpec.describe 'Groups' do
       group = groups(:nbc)
       visit group_path(group)
       find('.menu-button').click
-      expect(page).not_to have_content 'グループの編集'
+      expect(page).to have_no_content 'グループの編集'
     end
 
     it 'does not show the option to delete the group' do
       group = groups(:nbc)
       visit group_path(group)
       find('.menu-button').click
-      expect(page).not_to have_content 'グループの削除'
+      expect(page).to have_no_content 'グループの削除'
     end
 
     it 'does not show the option to create a new channel' do
       group = groups(:nbc)
       visit group_path(group)
-      expect(page).not_to have_content '番組を作る'
+      expect(page).to have_no_content '番組を作る'
     end
 
     it 'does not show the option to invite to the group' do
       group = groups(:nbc)
       visit group_path(group)
       find('.menu-button').click
-      expect(page).not_to have_content 'グループに招待'
+      expect(page).to have_no_content 'グループに招待'
     end
 
     it 'withdraws from the group' do
@@ -115,7 +115,7 @@ RSpec.describe 'Groups' do
         find_by_id(student_id).first('button').click
         sleep 0.5
         admin_form = find_by_id(student_id).first('form')
-        expect(admin_form).to have_selector('button[aria-checked="true"]')
+        expect(admin_form).to have_css('button[aria-checked="true"]')
       end
 
       it 'allows removing a member from the group' do
@@ -125,11 +125,11 @@ RSpec.describe 'Groups' do
         find_by_id(student_id).all('button').last.click
         sleep 0.5
         admin_form = find_by_id(student_id).all('form').last
-        expect(admin_form).to have_selector('button[aria-checked="true"]')
+        expect(admin_form).to have_css('button[aria-checked="true"]')
       end
 
       it 'displays the invite modal' do
-        expect(page).not_to have_content 'リンクを共有してグループに招待'
+        expect(page).to have_no_content 'リンクを共有してグループに招待'
         find('.menu-button').click
         click_on 'グループに招待'
         expect(page).to have_content 'リンクを共有してグループに招待'

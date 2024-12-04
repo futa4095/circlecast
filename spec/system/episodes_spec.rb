@@ -29,7 +29,7 @@ RSpec.describe 'Episodes' do
       accept_confirm { click_on '削除' }
 
       expect(page).to have_content 'エピソードを削除しました'
-      expect(page).not_to have_content 'ep.1 2月2日'
+      expect(page).to have_no_content 'ep.1 2月2日'
     end
   end
 
@@ -49,7 +49,7 @@ RSpec.describe 'Episodes' do
     end
 
     it 'does not show the menu button' do
-      expect(page).not_to have_selector '.menu-button'
+      expect(page).to have_no_css '.menu-button'
     end
   end
 end

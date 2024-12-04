@@ -82,6 +82,7 @@ group :development do
   gem 'i18n_generators'
   gem 'letter_opener_web', '~> 2.0'
   gem 'rubocop', require: false
+  gem 'rubocop-capybara', require: false
   gem 'rubocop-performance', require: false
   gem 'rubocop-rails', require: false
   gem 'rubocop-rspec'
