@@ -24,7 +24,7 @@ RSpec.describe 'Invitations' do
         sign_in users(:nakajima)
         visit invitations_path(group.invitation.token)
 
-        expect(page).not_to have_content "#{group.name}に加入しました"
+        expect(page).to have_no_content "#{group.name}に加入しました"
         expect(page).to have_content group.description.tr("\n", ' ')
       end
     end
@@ -39,7 +39,7 @@ RSpec.describe 'Invitations' do
       fill_in 'パスワード', with: 'passpass'
       click_on 'ログイン'
 
-      expect(page).not_to have_content "#{group.name}に加入しました"
+      expect(page).to have_no_content "#{group.name}に加入しました"
       expect(page).to have_content group.description.tr("\n", ' ')
     end
 
