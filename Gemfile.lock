@@ -76,7 +76,7 @@ GEM
       public_suffix (>= 2.0.2, < 7.0)
     ast (2.4.2)
     aws-eventstream (1.3.0)
-    aws-partitions (1.1017.0)
+    aws-partitions (1.1018.0)
     aws-sdk-core (3.214.0)
       aws-eventstream (~> 1, >= 1.3.0)
       aws-partitions (~> 1, >= 1.992.0)
@@ -194,10 +194,10 @@ GEM
       childprocess (~> 5.0)
     letter_opener (1.10.0)
       launchy (>= 2.2, < 4)
-    letter_opener_web (2.0.0)
-      actionmailer (>= 5.2)
-      letter_opener (~> 1.7)
-      railties (>= 5.2)
+    letter_opener_web (3.0.0)
+      actionmailer (>= 6.1)
+      letter_opener (~> 1.9)
+      railties (>= 6.1)
       rexml
     logger (1.6.2)
     loofah (2.23.1)
@@ -241,7 +241,7 @@ GEM
       date
       stringio
     public_suffix (6.0.1)
-    puma (5.6.9)
+    puma (6.5.0)
       nio4r (~> 2.0)
     racc (1.8.1)
     rack (2.2.10)
@@ -296,14 +296,14 @@ GEM
     rspec-mocks (3.13.2)
       diff-lcs (>= 1.2.0, < 2.0)
       rspec-support (~> 3.13.0)
-    rspec-rails (6.0.4)
-      actionpack (>= 6.1)
-      activesupport (>= 6.1)
-      railties (>= 6.1)
-      rspec-core (~> 3.12)
-      rspec-expectations (~> 3.12)
-      rspec-mocks (~> 3.12)
-      rspec-support (~> 3.12)
+    rspec-rails (7.1.0)
+      actionpack (>= 7.0)
+      activesupport (>= 7.0)
+      railties (>= 7.0)
+      rspec-core (~> 3.13)
+      rspec-expectations (~> 3.13)
+      rspec-mocks (~> 3.13)
+      rspec-support (~> 3.13)
     rspec-support (3.13.2)
     rubocop (1.69.1)
       json (~> 2.3)
@@ -340,10 +340,10 @@ GEM
       rexml (~> 3.2, >= 3.2.5)
       rubyzip (>= 1.2.2, < 3.0)
       websocket (~> 1.0)
-    sentry-rails (5.21.0)
+    sentry-rails (5.22.0)
       railties (>= 5.0)
-      sentry-ruby (~> 5.21.0)
-    sentry-ruby (5.21.0)
+      sentry-ruby (~> 5.22.0)
+    sentry-ruby (5.22.0)
       bigdecimal
       concurrent-ruby (~> 1.0, >= 1.0.2)
     smart_properties (1.17.0)
@@ -360,8 +360,8 @@ GEM
     tailwindcss-rails (3.0.0)
       railties (>= 7.0.0)
       tailwindcss-ruby
-    tailwindcss-ruby (3.4.15-x86_64-darwin)
-    tailwindcss-ruby (3.4.15-x86_64-linux)
+    tailwindcss-ruby (3.4.16-x86_64-darwin)
+    tailwindcss-ruby (3.4.16-x86_64-linux)
     thor (1.3.2)
     timeout (0.4.2)
     turbo-rails (2.0.11)
@@ -410,12 +410,12 @@ DEPENDENCIES
   importmap-rails
   jbuilder
   kaminari
-  letter_opener_web (~> 2.0)
+  letter_opener_web
   pg (~> 1.1)
-  puma (~> 5.0)
+  puma
   rails (~> 7.0.4, >= 7.0.4.3)
   resend
-  rspec-rails (~> 6.0.0)
+  rspec-rails
   rubocop
   rubocop-capybara
   rubocop-performance
