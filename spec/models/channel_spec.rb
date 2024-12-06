@@ -26,8 +26,12 @@ RSpec.describe Channel do
   end
 
   describe '#artwork_url' do
-    let(:group) { Group.create(name: 'test group') }
-    let(:channel) { described_class.create(title: 'test channel', group:) }
+    let(:group) do
+      Group.create(name: 'test group')
+    end
+    let(:channel) do
+      described_class.create(title: 'test channel', group:)
+    end
 
     context 'when artwork is attached' do
       it 'returns the artwork' do
