@@ -14,7 +14,7 @@
 
 ## 環境
 
-- Ruby 3.2
+- Ruby 3.4
 - Rails 7.0
 - データベース: PostgreSQL
 - 認証: Devise
