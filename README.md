@@ -15,7 +15,7 @@
 ## 環境
 
 - Ruby 3.4
-- Rails 7.0
+- Rails 7.2
 - データベース: PostgreSQL
 - 認証: Devise
 - ファイルアップロード: Active Storage
@@ -29,19 +29,19 @@ git clone https://github.com/futa4095/private-podcast
 cd private-podcast
 ```
 
-1. Gemをインストール、データベースの作成を実行します。
+2. Gemをインストール、データベースの作成を実行します。
 
 ```sh
 bin/setup
 ```
 
-1. 必要に応じて、データベースに初期データを投入します。
+3. 必要に応じて、データベースに初期データを投入します。
 
 ```sh
 rails db:seed
 ```
 
-1. サーバーを起動します。
+4. サーバーを起動します。
 
 ```sh
 bin/dev
