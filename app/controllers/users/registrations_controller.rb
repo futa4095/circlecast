@@ -2,6 +2,7 @@
 
 module Users
   class RegistrationsController < Devise::RegistrationsController
+    prepend_before_action :check_captcha, only: [:create] if Rails.env.production?
     before_action :configure_sign_up_params, only: [:create] # rubocop:disable Rails/LexicallyScopedActionFilter
     before_action :configure_account_update_params, only: [:update] # rubocop:disable Rails/LexicallyScopedActionFilter
 
@@ -63,6 +64,17 @@ module Users
 
     def after_update_path_for(_resource)
       groups_path
+    end
+
+    private
+
+    def check_captcha
+      score = verify_recaptcha(action: 'registration', minimum_score: 0.5)
+      return if score
+
+      self.resource = resource_class.new sign_up_params
+      flash.now[:recaptcha_error] = 'reCAPTCHAの検証に失敗しました。もう一度お試しください。'
+      respond_with_navigational(resource) { render :new }
     end
   end
 end

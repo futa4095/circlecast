@@ -27,8 +27,12 @@
     <div class="my-5">
       <%= f.label :password_confirmation, class: 'mb-1 block font-medium text-gray-800' %>
       <%= f.password_field :password_confirmation, autocomplete: 'new-password', class: 'bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5' %>
-      <p class="mt-2 text-sm text-gray-500">確認のため、再度パスワードを入力してください。</p>
+      <p class="mt-2 text-sm text-gray-500">確認のため、再度パスワードを入力してください</p>
     </div>
+
+    <% if Rails.env.production? %>
+      <%= recaptcha_v3(action: 'registration') %>
+    <% end %>
 
     <div class="my-3">
       <%= f.submit t('.sign_up'), class: 'text-white bg-blue-600 hover:bg-blue-700 focus:ring-4 focus:ring-blue-300 font-medium rounded-lg text-sm px-8 py-3.5 me-2 mb-2 cursor-pointer' %>

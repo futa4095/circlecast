@@ -147,6 +147,10 @@ GEM
     diff-lcs (1.5.1)
     dockerfile-rails (1.7.0)
       rails (>= 3.0.0)
+    dotenv (3.1.7)
+    dotenv-rails (3.1.7)
+      dotenv (= 3.1.7)
+      railties (>= 6.1)
     drb (2.2.1)
     erb_lint (0.8.0)
       activesupport
@@ -293,6 +297,7 @@ GEM
     rake (13.2.1)
     rdoc (6.10.0)
       psych (>= 4.0.0)
+    recaptcha (5.19.0)
     regexp_parser (2.10.0)
     reline (0.6.0)
       io-console (~> 0.5)
@@ -421,6 +426,7 @@ DEPENDENCIES
   devise
   devise-i18n
   dockerfile-rails (>= 1.5)
+  dotenv-rails
   erb_lint
   i18n_generators
   image_processing (~> 1.2)
@@ -431,6 +437,7 @@ DEPENDENCIES
   pg (~> 1.1)
   puma
   rails (= 7.2.2)
+  recaptcha (~> 5.15)
   resend
   rspec-rails
   rubocop
