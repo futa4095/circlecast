@@ -16,6 +16,7 @@ module Users
         self.resource = resource_class.new sign_up_params
         flash.now[:recaptcha_error] = 'reCAPTCHAの検証に失敗しました。もう一度お試しください。'
         respond_with_navigational(resource) { render :new }
+        return
       end
       super
     end
