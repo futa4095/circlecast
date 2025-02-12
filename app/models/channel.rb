@@ -5,7 +5,7 @@ class Channel < ApplicationRecord
   has_many :episodes, dependent: :destroy
   has_one_attached :artwork
 
-  validates :title, presence: true, length: { maximum: 100 }
+  validates :title, presence: true, length: { maximum: 100 }, uniqueness: { scope: :group_id }
   validates :description, length: { maximum: 1000 }
   validates :artwork, content_type: ['image/jpeg', 'image/png', 'image/webp'],
                       dimension: { width: { in: 300..3000 }, height: { in: 300..3000 } },
