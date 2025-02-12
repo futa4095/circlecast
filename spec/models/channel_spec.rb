@@ -11,6 +11,28 @@ RSpec.describe Channel do
         expect(channel.errors[:title]).to include('を入力してください')
       end
     end
+
+    context 'when it is duplicated within the same group' do
+      let(:group) { Group.create(name: 'test group') }
+      let!(:existing_channel) { described_class.create(title: 'test channel', group: group) }
+
+      it 'is invalid' do
+        channel = described_class.new(title: 'test channel', group: group)
+        expect(channel.valid?).to be(false)
+        expect(channel.errors[:title]).to include('はすでに存在します')
+      end
+    end
+
+    context 'when it is duplicated in different groups' do
+      let(:group1) { Group.create(name: 'test group 1') }
+      let(:group2) { Group.create(name: 'test group 2') }
+      let!(:existing_channel) { described_class.create(title: 'test channel', group: group1) }
+
+      it 'is valid' do
+        channel = described_class.new(title: 'test channel', group: group2)
+        expect(channel.valid?).to be(true)
+      end
+    end
   end
 
   describe 'associations' do
