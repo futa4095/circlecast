@@ -14,9 +14,9 @@ RSpec.describe Channel do
 
     context 'when it is duplicated within the same group' do
       let(:group) { Group.create(name: 'test group') }
-      let!(:existing_channel) { described_class.create(title: 'test channel', group: group) }
 
       it 'is invalid' do
+        described_class.create(title: 'test channel', group: group)
         channel = described_class.new(title: 'test channel', group: group)
         expect(channel.valid?).to be(false)
         expect(channel.errors[:title]).to include('はすでに存在します')
@@ -24,12 +24,12 @@ RSpec.describe Channel do
     end
 
     context 'when it is duplicated in different groups' do
-      let(:group1) { Group.create(name: 'test group 1') }
-      let(:group2) { Group.create(name: 'test group 2') }
-      let!(:existing_channel) { described_class.create(title: 'test channel', group: group1) }
+      let(:source_group) { Group.create(name: 'source group') }
+      let(:target_group) { Group.create(name: 'target group') }
 
       it 'is valid' do
-        channel = described_class.new(title: 'test channel', group: group2)
+        described_class.create(title: 'test channel', group: source_group)
+        channel = described_class.new(title: 'test channel', group: target_group)
         expect(channel.valid?).to be(true)
       end
     end
