@@ -3,10 +3,14 @@
 source 'https://rubygems.org'
 git_source(:github) { |repo| "https://github.com/#{repo}.git" }
 
-ruby '3.4.1'
+ruby '4.0.9'
 
 # Bundle edge Rails instead: gem "rails", github: "rails/rails", branch: "main"
 gem 'rails', '8.1.4'
+
+# mini_magick (via image_processing) requires benchmark, which is no longer a
+# default gem since Ruby 4.0
+gem 'benchmark'
 
 # The original asset pipeline for Rails [https://github.com/rails/sprockets-rails]
 gem 'sprockets-rails'
