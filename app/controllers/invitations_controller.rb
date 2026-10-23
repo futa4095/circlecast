@@ -2,7 +2,7 @@
 
 class InvitationsController < ApplicationController
   def show
-    invitation = Invitation.find_by!(token: params[:token])
+    invitation = Invitation.find_by!(token: params.expect(:token))
     session[:group_to_join] = invitation.group_id
     redirect_to groups_path
   end
