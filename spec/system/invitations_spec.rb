@@ -15,8 +15,8 @@ RSpec.describe 'Invitations' do
       sign_in users(:no_groups_user)
       visit invitations_path(group.invitation.token)
 
-      expect(page).to have_content "#{group.name}に加入しました"
-      expect(page).to have_content group.description.tr("\n", ' ')
+      expect(page).to have_text "#{group.name}に加入しました"
+      expect(page).to have_text group.description.tr("\n", ' ')
     end
 
     context 'when the user is already a member of the group' do
@@ -24,8 +24,8 @@ RSpec.describe 'Invitations' do
         sign_in users(:nakajima)
         visit invitations_path(group.invitation.token)
 
-        expect(page).to have_no_content "#{group.name}に加入しました"
-        expect(page).to have_content group.description.tr("\n", ' ')
+        expect(page).to have_no_text "#{group.name}に加入しました"
+        expect(page).to have_text group.description.tr("\n", ' ')
       end
     end
   end
@@ -39,7 +39,7 @@ RSpec.describe 'Invitations' do
       fill_in 'パスワード', with: 'passpass'
       click_on 'ログイン'
 
-      expect(page).to have_content group.description.tr("\n", ' ')
+      expect(page).to have_text group.description.tr("\n", ' ')
     end
 
     it 'joins the group after signing up' do
@@ -47,7 +47,7 @@ RSpec.describe 'Invitations' do
       expect(page).to have_current_path new_user_session_path, ignore_query: true
 
       click_on 'アカウント登録'
-      expect(page).to have_content 'ユーザー名'
+      expect(page).to have_text 'ユーザー名'
       expect(page).to have_current_path new_user_registration_path, ignore_query: true
       fill_in 'ユーザー名', with: 'グループ加入希望者'
       fill_in 'メールアドレス', with: 'kanyuu_shitaiyo@example.com'
@@ -55,18 +55,18 @@ RSpec.describe 'Invitations' do
       fill_in :user_password_confirmation, with: 'password'
       click_on 'アカウント登録'
 
-      expect(page).to have_content '本人確認用のメールを送信しました。'
+      expect(page).to have_text '本人確認用のメールを送信しました。'
 
       user = User.find_by!(email: 'kanyuu_shitaiyo@example.com')
       visit user_confirmation_path(confirmation_token: user.confirmation_token)
-      expect(page).to have_content 'メールアドレスが確認できました。'
+      expect(page).to have_text 'メールアドレスが確認できました。'
 
       fill_in 'メールアドレス', with: 'kanyuu_shitaiyo@example.com'
       fill_in 'パスワード', with: 'password'
       click_on 'ログイン'
 
-      expect(page).to have_content "#{group.name}に加入しました"
-      expect(page).to have_content group.description.tr("\n", ' ')
+      expect(page).to have_text "#{group.name}に加入しました"
+      expect(page).to have_text group.description.tr("\n", ' ')
     end
   end
 end
