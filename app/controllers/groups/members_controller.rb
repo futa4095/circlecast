@@ -20,7 +20,7 @@ module Groups
         redirect_to groups_path, notice: "#{@group.name}から脱退しました"
       else
         require_group_admin
-        @membership = @group.memberships.find_by!(user_id: params[:id])
+        @membership = @group.memberships.find_by!(user_id: params.expect(:id))
         @membership.update!(membership_params)
       end
     end
@@ -28,11 +28,11 @@ module Groups
     private
 
     def set_group
-      @group = current_user.groups.find(params[:group_id])
+      @group = current_user.groups.find(params.expect(:group_id))
     end
 
     def membership_params
-      params.require(:membership).permit(:id, :admin, :withdrawal)
+      params.expect(membership: %i[id admin withdrawal])
     end
 
     def self_leave?
@@ -42,7 +42,7 @@ module Groups
     def require_group_admin
       return if @group.admin? current_user
 
-      redirect_back fallback_location: @group, alert: 'この操作を行うには、グループ管理者である必要があります'
+      redirect_back_or_to(@group, alert: 'この操作を行うには、グループ管理者である必要があります')
     end
   end
 end
