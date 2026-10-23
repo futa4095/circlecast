@@ -16,8 +16,8 @@ RSpec.describe 'Groups' do
       fill_in '名前', with: '新しいグループ'
       fill_in '説明', with: 'グループの説明です'
       click_on '登録する'
-      expect(page).to have_content 'グループを作成しました'
-      expect(page).to have_content '新しいグループ'
+      expect(page).to have_text 'グループを作成しました'
+      expect(page).to have_text '新しいグループ'
     end
 
     it 'deletes the group' do
@@ -25,7 +25,7 @@ RSpec.describe 'Groups' do
       visit group_path(group)
       find('.menu-button').click
       accept_confirm { click_on 'グループの削除' }
-      expect(page).to have_no_content group.name
+      expect(page).to have_no_text group.name
     end
   end
 
@@ -45,27 +45,27 @@ RSpec.describe 'Groups' do
       group = groups(:nbc)
       visit group_path(group)
       find('.menu-button').click
-      expect(page).to have_no_content 'グループの編集'
+      expect(page).to have_no_text 'グループの編集'
     end
 
     it 'does not show the option to delete the group' do
       group = groups(:nbc)
       visit group_path(group)
       find('.menu-button').click
-      expect(page).to have_no_content 'グループの削除'
+      expect(page).to have_no_text 'グループの削除'
     end
 
     it 'does not show the option to create a new channel' do
       group = groups(:nbc)
       visit group_path(group)
-      expect(page).to have_no_content '番組を作る'
+      expect(page).to have_no_text '番組を作る'
     end
 
     it 'does not show the option to invite to the group' do
       group = groups(:nbc)
       visit group_path(group)
       find('.menu-button').click
-      expect(page).to have_no_content 'グループに招待'
+      expect(page).to have_no_text 'グループに招待'
     end
 
     it 'withdraws from the group' do
@@ -73,7 +73,7 @@ RSpec.describe 'Groups' do
       visit group_path(group)
       find('.menu-button').click
       accept_confirm { click_on 'グループから脱退' }
-      expect(page).to have_content "#{group.name}から脱退しました"
+      expect(page).to have_text "#{group.name}から脱退しました"
       visit group_path(group)
       expect(page).to have_text 'ActiveRecord::RecordNotFound'
     end
@@ -83,7 +83,7 @@ RSpec.describe 'Groups' do
     it 'shows a message encouraging to join or create a group' do
       sign_in users(:no_groups_user)
       visit groups_path
-      expect(page).to have_content 'まずは、グループに所属しよう！'
+      expect(page).to have_text 'まずは、グループに所属しよう！'
     end
   end
 
@@ -94,23 +94,23 @@ RSpec.describe 'Groups' do
     end
 
     it 'displays recent episodes' do
-      expect(page).to have_content '第49回のエピソード'
+      expect(page).to have_text '第49回のエピソード'
     end
 
     it 'displays the list of channels' do
       click_on '番組'
-      expect(page).to have_content '中島ブートキャンプへようこそ'
+      expect(page).to have_text '中島ブートキャンプへようこそ'
     end
 
     context 'when the user is an admin' do
       it 'displays the list of members' do
         click_on 'メンバー'
-        expect(page).to have_content 'nbc_student1'
+        expect(page).to have_text 'nbc_student1'
       end
 
       it 'allows promoting a member to admin' do
         click_on 'メンバー'
-        expect(page).to have_content 'nbc_student4'
+        expect(page).to have_text 'nbc_student4'
         student_id = ActionView::RecordIdentifier.dom_id(memberships(:nbc_student4))
         find_by_id(student_id).first('button').click
         sleep 0.5
@@ -120,7 +120,7 @@ RSpec.describe 'Groups' do
 
       it 'allows removing a member from the group' do
         click_on 'メンバー'
-        expect(page).to have_content 'nbc_student4'
+        expect(page).to have_text 'nbc_student4'
         student_id = ActionView::RecordIdentifier.dom_id(memberships(:nbc_student4))
         find_by_id(student_id).all('button').last.click
         sleep 0.5
@@ -129,10 +129,10 @@ RSpec.describe 'Groups' do
       end
 
       it 'displays the invite modal' do
-        expect(page).to have_no_content 'リンクを共有してグループに招待'
+        expect(page).to have_no_text 'リンクを共有してグループに招待'
         find('.menu-button').click
         click_on 'グループに招待'
-        expect(page).to have_content 'リンクを共有してグループに招待'
+        expect(page).to have_text 'リンクを共有してグループに招待'
       end
     end
   end
