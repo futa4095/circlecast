@@ -18,9 +18,9 @@ RSpec.describe 'Episodes' do
       attach_file '音声ファイル', 'spec/fixtures/files/audio1.m4a'
       click_on '登録する'
 
-      expect(page).to have_content 'エピソードを作成しました'
-      expect(page).to have_content '新しいエピソードのタイトル！'
-      expect(page).to have_content '新しいエピソードの説明です。'
+      expect(page).to have_text 'エピソードを作成しました'
+      expect(page).to have_text '新しいエピソードのタイトル！'
+      expect(page).to have_text '新しいエピソードの説明です。'
     end
 
     it 'deletes the episode' do
@@ -28,8 +28,8 @@ RSpec.describe 'Episodes' do
       find('.menu-button').click
       accept_confirm { click_on '削除' }
 
-      expect(page).to have_content 'エピソードを削除しました'
-      expect(page).to have_no_content 'ep.1 2月2日'
+      expect(page).to have_text 'エピソードを削除しました'
+      expect(page).to have_no_text 'ep.1 2月2日'
     end
   end
 
@@ -42,8 +42,8 @@ RSpec.describe 'Episodes' do
     it 'displays the episode' do
       click_on 'ep.1 2月2日'
 
-      expect(page).to have_content 'ep.1 2月2日'
-      expect(page).to have_content '必聴です'
+      expect(page).to have_text 'ep.1 2月2日'
+      expect(page).to have_text '必聴です'
       audio = all('audio')
       expect(audio.size).to eq 1
     end
