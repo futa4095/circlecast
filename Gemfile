@@ -12,6 +12,10 @@ gem 'rails', '8.1.4'
 # default gem since Ruby 4.0
 gem 'benchmark'
 
+# sprockets 4.2.1 passes the removed create_additions option to JSON.parse,
+# which raises on json 3.x and prevents the app from booting in production
+gem 'json', '< 3'
+
 # The original asset pipeline for Rails [https://github.com/rails/sprockets-rails]
 gem 'sprockets-rails'
 
