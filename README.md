@@ -1,6 +1,6 @@
 # CIRCLECAST
 
-![CIRCLECASTのロゴ](https://github.com/futa4095/private-podcast/assets/69447745/c8ab19cc-2d7a-4c1b-8f28-bacd8e36874b)
+![CIRCLECASTのロゴ](https://github.com/futa4095/circlecast/assets/69447745/c8ab19cc-2d7a-4c1b-8f28-bacd8e36874b)
 
 ## 概要
 
@@ -8,14 +8,14 @@
 
 ## スクリーンショット
 
-![スクリーンショット1](https://github.com/futa4095/private-podcast/assets/69447745/96e18f5a-877f-4b18-a658-ca00fad5400f)
-![スクリーンショット2](https://github.com/futa4095/private-podcast/assets/69447745/91fb2ebb-023b-4284-8b8b-225ef8c1a825)
-![スクリーンショット3](https://github.com/futa4095/private-podcast/assets/69447745/a9cf8858-eee5-465d-acd8-75196b216755)
+![スクリーンショット1](https://github.com/futa4095/circlecast/assets/69447745/96e18f5a-877f-4b18-a658-ca00fad5400f)
+![スクリーンショット2](https://github.com/futa4095/circlecast/assets/69447745/91fb2ebb-023b-4284-8b8b-225ef8c1a825)
+![スクリーンショット3](https://github.com/futa4095/circlecast/assets/69447745/a9cf8858-eee5-465d-acd8-75196b216755)
 
 ## 環境
 
-- Ruby 3.4
-- Rails 7.2
+- Ruby 4.0
+- Rails 8.1
 - データベース: PostgreSQL
 - 認証: Devise
 - ファイルアップロード: Active Storage
@@ -25,8 +25,8 @@
 1. リポジトリをクローンします。
 
 ```sh
-git clone https://github.com/futa4095/private-podcast
-cd private-podcast
+git clone https://github.com/futa4095/circlecast
+cd circlecast
 ```
 
 2. Gemをインストール、データベースの作成を実行します。
@@ -38,7 +38,7 @@ bin/setup
 3. 必要に応じて、データベースに初期データを投入します。
 
 ```sh
-rails db:seed
+bin/rails db:seed
 ```
 
 4. サーバーを起動します。
