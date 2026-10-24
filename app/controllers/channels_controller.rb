@@ -26,7 +26,7 @@ class ChannelsController < ApplicationController
     if @channel.save
       redirect_to channel_url(@channel), notice: '番組を作成しました'
     else
-      render :new, status: :unprocessable_entity
+      render :new, status: :unprocessable_content
     end
   end
 
@@ -34,7 +34,7 @@ class ChannelsController < ApplicationController
     if @channel.update(channel_params)
       redirect_to channel_url(@channel), notice: '番組を更新しました'
     else
-      render :edit, status: :unprocessable_entity
+      render :edit, status: :unprocessable_content
     end
   end
 
@@ -46,20 +46,20 @@ class ChannelsController < ApplicationController
   private
 
   def set_group
-    @group = current_user.groups.find(params[:group_id])
+    @group = current_user.groups.find(params.expect(:group_id))
   end
 
   def set_channel
-    @channel = current_user.channels.find(params[:id])
+    @channel = current_user.channels.find(params.expect(:id))
   end
 
   def channel_params
-    params.require(:channel).permit(:title, :description, :artwork)
+    params.expect(channel: %i[title description artwork])
   end
 
   def require_group_admin
     return if @group.admin? current_user
 
-    redirect_back fallback_location: @group, alert: 'この操作を行うには、グループ管理者である必要があります'
+    redirect_back_or_to(@group, alert: 'この操作を行うには、グループ管理者である必要があります')
   end
 end

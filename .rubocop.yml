@@ -38,3 +38,7 @@ RSpec/ExampleLength:
 
 RSpec/MultipleExpectations:
   Enabled: false
+
+# have_no_text after visit is an intentional pattern in system specs
+Capybara/RSpec/NegationMatcherAfterVisit:
+  Enabled: false

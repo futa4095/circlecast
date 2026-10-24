@@ -19,9 +19,9 @@ RSpec.describe Groups::MembersHelper do
       it 'returns a button tag' do
         result = helper.toggle_button(current_user, membership, :admin)
         expect(result).to match(/<form[^>]+method="post"/)
-        expect(result).to match(/aria-checked="true"/)
+        expect(result).to include('aria-checked="true"')
         expect(result).to match(/class=".*bg-blue-700.*"/)
-        expect(result).to match(/<span/)
+        expect(result).to include('<span')
       end
     end
   end

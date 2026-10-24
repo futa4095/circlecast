@@ -17,9 +17,9 @@ RSpec.describe 'Channels' do
       fill_in '説明', with: 'テスト番組の説明文です。毎日お昼頃に投稿しています。その日のちょっとしたニュースをお届けします。'
       click_on '登録する'
 
-      expect(page).to have_content '番組を作成しました'
-      expect(page).to have_content 'テスト番組のタイトル'
-      expect(page).to have_content 'テスト番組の説明文です。'
+      expect(page).to have_text '番組を作成しました'
+      expect(page).to have_text 'テスト番組のタイトル'
+      expect(page).to have_text 'テスト番組の説明文です。'
     end
 
     it 'deletes the channel' do
@@ -27,8 +27,8 @@ RSpec.describe 'Channels' do
       find('.menu-button').click
       accept_confirm { click_on '削除' }
 
-      expect(page).to have_content '番組を削除しました'
-      expect(page).to have_no_content 'ばんぐみ1'
+      expect(page).to have_text '番組を削除しました'
+      expect(page).to have_no_text 'ばんぐみ1'
     end
   end
 
@@ -39,8 +39,8 @@ RSpec.describe 'Channels' do
     end
 
     it 'displays the list of episodes' do
-      expect(page).to have_content '第49回のエピソード'
-      expect(page).to have_content '第30回のエピソード'
+      expect(page).to have_text '第49回のエピソード'
+      expect(page).to have_text '第30回のエピソード'
     end
 
     it 'does not show the menu button' do
@@ -48,7 +48,7 @@ RSpec.describe 'Channels' do
     end
 
     it 'does not show the option to create a new episode' do
-      expect(page).to have_no_content 'エピソードを作成'
+      expect(page).to have_no_text 'エピソードを作成'
     end
   end
 
@@ -56,13 +56,13 @@ RSpec.describe 'Channels' do
     it 'shows a message encouraging to create a new post' do
       sign_in users(:nakajima)
       visit channel_path(channels(:group2_ch1))
-      expect(page).to have_content 'ポッドキャストをみんなに届けよう'
+      expect(page).to have_text 'ポッドキャストをみんなに届けよう'
     end
 
     it 'shows a message that the channel is under preparation' do
       sign_in users(:nbc_student1)
       visit channel_path(channels(:nbc_channel4))
-      expect(page).to have_content 'この番組は準備中です'
+      expect(page).to have_text 'この番組は準備中です'
     end
   end
 end

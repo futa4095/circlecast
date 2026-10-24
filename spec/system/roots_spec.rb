@@ -5,7 +5,7 @@ require 'rails_helper'
 RSpec.describe 'Roots' do
   it 'displays the home page' do
     visit root_path
-    expect(page).to have_content 'CIRCLECAST'
+    expect(page).to have_text 'CIRCLECAST'
     expect(page).to have_none_of_selectors 'body header'
   end
 

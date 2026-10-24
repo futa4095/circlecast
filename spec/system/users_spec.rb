@@ -8,12 +8,12 @@ RSpec.describe 'Users' do
     fill_in 'メールアドレス', with: 'nakajima@example.com'
     fill_in 'パスワード', with: 'passpass'
     click_on 'ログイン'
-    expect(page).to have_content 'ログインしました。'
-    expect(page).to have_content '参加しているグループ'
+    expect(page).to have_text 'ログインしました。'
+    expect(page).to have_text '参加しているグループ'
 
     find('header nav svg').click
     click_on 'ログアウト'
-    expect(page).to have_content 'ログアウトしました。'
+    expect(page).to have_text 'ログアウトしました。'
     expect(page).to have_current_path root_path, ignore_query: true
   end
 

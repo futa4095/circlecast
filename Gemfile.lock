@@ -83,7 +83,7 @@ GEM
       uri (>= 0.13.1)
     addressable (2.8.7)
       public_suffix (>= 2.0.2, < 7.0)
-    ast (2.4.2)
+    ast (2.4.3)
     aws-eventstream (1.3.0)
     aws-partitions (1.1034.0)
     aws-sdk-core (3.214.1)
@@ -102,6 +102,7 @@ GEM
       aws-eventstream (~> 1, >= 1.0.2)
     base64 (0.3.0)
     bcrypt (3.1.22)
+    benchmark (0.5.0)
     better_html (2.1.1)
       actionview (>= 6.0)
       activesupport (>= 6.0)
@@ -109,7 +110,7 @@ GEM
       erubi (~> 1.4)
       parser (>= 2.4)
       smart_properties
-    bigdecimal (3.3.1)
+    bigdecimal (4.1.3)
     bindex (0.8.1)
     bootsnap (1.18.4)
       msgpack (~> 1.2)
@@ -164,6 +165,7 @@ GEM
       rubocop (>= 1)
       smart_properties
     erubi (1.13.1)
+    ffi (1.17.1)
     ffi (1.17.1-x86_64-darwin)
     ffi (1.17.1-x86_64-linux-gnu)
     globalid (1.4.0)
@@ -194,7 +196,7 @@ GEM
       actionview (>= 5.0.0)
       activesupport (>= 5.0.0)
     jmespath (1.6.2)
-    json (2.9.1)
+    json (3.1.0)
     kaminari (1.2.2)
       activesupport (>= 4.1.0)
       kaminari-actionview (= 1.2.2)
@@ -207,7 +209,7 @@ GEM
       activerecord
       kaminari-core (= 1.2.2)
     kaminari-core (1.2.2)
-    language_server-protocol (3.17.0.3)
+    language_server-protocol (3.17.0.6)
     launchy (3.0.1)
       addressable (~> 2.8)
       childprocess (~> 5.0)
@@ -218,6 +220,7 @@ GEM
       letter_opener (~> 1.9)
       railties (>= 6.1)
       rexml
+    lint_roller (1.1.0)
     logger (1.7.0)
     loofah (2.25.2)
       crass (~> 1.0.2)
@@ -236,8 +239,8 @@ GEM
       drb (~> 2.0)
       prism (~> 1.5)
     msgpack (1.7.5)
-    multi_xml (0.7.1)
-      bigdecimal (~> 3.1)
+    multi_xml (0.9.1)
+      bigdecimal (>= 3.1, < 5)
     net-imap (0.6.8)
       date
       net-protocol
@@ -253,8 +256,8 @@ GEM
     nokogiri (1.19.4-x86_64-linux-gnu)
       racc (~> 1.4)
     orm_adapter (0.5.0)
-    parallel (1.26.3)
-    parser (3.3.6.0)
+    parallel (2.3.0)
+    parser (3.3.12.0)
       ast (~> 2.4.1)
       racc
     pg (1.5.9)
@@ -319,7 +322,7 @@ GEM
       rbs (>= 4.0.0)
       tsort
     recaptcha (5.19.0)
-    regexp_parser (2.10.0)
+    regexp_parser (2.13.1)
     reline (0.7.0)
       io-console (~> 0.5)
     resend (0.17.1)
@@ -345,30 +348,37 @@ GEM
       rspec-mocks (>= 3.13.0, < 5.0.0)
       rspec-support (>= 3.13.0, < 5.0.0)
     rspec-support (3.13.7)
-    rubocop (1.70.0)
-      json (~> 2.3)
-      language_server-protocol (>= 3.17.0)
-      parallel (~> 1.10)
+    rubocop (1.92.1)
+      json (>= 2.3)
+      language_server-protocol (~> 3.17.0.2)
+      lint_roller (~> 1.1.0)
+      parallel (>= 1.10)
       parser (>= 3.3.0.2)
       rainbow (>= 2.2.2, < 4.0)
-      regexp_parser (>= 2.9.3, < 3.0)
-      rubocop-ast (>= 1.36.2, < 2.0)
+      regexp_parser (>= 2.11.3, < 3.0)
+      rubocop-ast (>= 1.49.0, < 2.0)
       ruby-progressbar (~> 1.7)
       unicode-display_width (>= 2.4.0, < 4.0)
-    rubocop-ast (1.37.0)
-      parser (>= 3.3.1.0)
-    rubocop-capybara (2.21.0)
-      rubocop (~> 1.41)
-    rubocop-performance (1.23.1)
-      rubocop (>= 1.48.1, < 2.0)
-      rubocop-ast (>= 1.31.1, < 2.0)
-    rubocop-rails (2.28.0)
+    rubocop-ast (1.50.0)
+      parser (>= 3.3.7.2)
+      prism (~> 1.7)
+    rubocop-capybara (3.1.0)
+      lint_roller (~> 1.1)
+      rubocop (~> 1.89)
+    rubocop-performance (1.27.0)
+      lint_roller (~> 1.1)
+      rubocop (>= 1.89.0, < 2.0)
+      rubocop-ast (>= 1.47.1, < 2.0)
+    rubocop-rails (2.38.0)
       activesupport (>= 4.2.0)
+      lint_roller (~> 1.1)
       rack (>= 1.1)
-      rubocop (>= 1.52.0, < 2.0)
-      rubocop-ast (>= 1.31.1, < 2.0)
-    rubocop-rspec (3.3.0)
-      rubocop (~> 1.61)
+      rubocop (>= 1.89.0, < 2.0)
+      rubocop-ast (>= 1.44.0, < 2.0)
+    rubocop-rspec (3.10.2)
+      lint_roller (~> 1.1)
+      regexp_parser (>= 2.0)
+      rubocop (~> 1.86, >= 1.86.2)
     ruby-progressbar (1.13.0)
     ruby-vips (2.2.2)
       ffi (~> 1.12)
@@ -410,9 +420,9 @@ GEM
       railties (>= 6.0.0)
     tzinfo (2.0.6)
       concurrent-ruby (~> 1.0)
-    unicode-display_width (3.1.3)
-      unicode-emoji (~> 4.0, >= 4.0.4)
-    unicode-emoji (4.0.4)
+    unicode-display_width (3.3.0)
+      unicode-emoji (~> 4.3)
+    unicode-emoji (4.3.0)
     uniform_notifier (1.16.0)
     uri (1.1.2)
     useragent (0.16.11)
@@ -440,6 +450,7 @@ PLATFORMS
 DEPENDENCIES
   active_storage_validations
   aws-sdk-s3
+  benchmark
   bootsnap
   brakeman
   bullet
@@ -479,7 +490,7 @@ DEPENDENCIES
   web-console
 
 RUBY VERSION
-   ruby 3.4.1p0
+  ruby 4.0.9
 
 BUNDLED WITH
-   2.5.23
+  4.0.20

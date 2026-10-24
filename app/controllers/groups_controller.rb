@@ -28,7 +28,7 @@ class GroupsController < ApplicationController
       @group.create_invitation!(token: SecureRandom.urlsafe_base64)
       redirect_to group_url(@group), notice: 'グループを作成しました'
     else
-      render :new, status: :unprocessable_entity
+      render :new, status: :unprocessable_content
     end
   end
 
@@ -36,7 +36,7 @@ class GroupsController < ApplicationController
     if @group.update(group_params)
       redirect_to group_url(@group), notice: 'グループを更新しました'
     else
-      render :edit, status: :unprocessable_entity
+      render :edit, status: :unprocessable_content
     end
   end
 
@@ -49,11 +49,11 @@ class GroupsController < ApplicationController
   private
 
   def set_group
-    @group = current_user.groups.find(params[:id])
+    @group = current_user.groups.find(params.expect(:id))
   end
 
   def group_params
-    params.require(:group).permit(:name, :description, :icon)
+    params.expect(group: %i[name description icon])
   end
 
   def join_group
@@ -69,6 +69,6 @@ class GroupsController < ApplicationController
   def require_group_admin
     return if @group.admin? current_user
 
-    redirect_back fallback_location: @group, alert: 'この操作を行うには、グループ管理者である必要があります'
+    redirect_back_or_to(@group, alert: 'この操作を行うには、グループ管理者である必要があります')
   end
 end
